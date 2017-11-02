@@ -61,14 +61,20 @@ public class ColorioRender extends BufferedImage{
         double screenGreen[][] = new double[ColorioFrame.width][ColorioFrame.height];
         double screenBlue[][] = new double[ColorioFrame.width][ColorioFrame.height];
         for(Centroid centroid : centroids){
-            int startPointX = (int) (centroid.getX()-centroid.getWeight()*renderRange);
-            int endPointX = (int) (startPointX + 2*centroid.getWeight()*renderRange);
-            if(startPointX<0) startPointX=0;
-            if(endPointX>getWidth()) endPointX = getWidth();
-            int startPointY = (int) (centroid.getY()-centroid.getWeight()*renderRange);
-            int endPointY = (int) (startPointY + 2*centroid.getWeight()*renderRange);
-            if(startPointY<0) startPointY=0;
-            if(endPointY>getHeight()) endPointY=getHeight();
+            int startPointX = (int) (centroid.getX()-minRenderRange/2);
+            int endPointX = (int) (startPointX+minRenderRange);
+            int startPointY = (int) (centroid.getY()-minRenderRange/2);
+            int endPointY = (int) (startPointY+minRenderRange);
+            if (centroid.getWeight()*renderRange>minRenderRange) {
+                startPointX = (int) (centroid.getX()-centroid.getWeight()*renderRange);
+                endPointX = (int) (startPointX + 2*centroid.getWeight()*renderRange);
+                if(startPointX<0) startPointX=0;
+                if(endPointX>getWidth()) endPointX = getWidth();
+                startPointY = (int) (centroid.getY()-centroid.getWeight()*renderRange);
+                endPointY = (int) (startPointY + 2*centroid.getWeight()*renderRange);
+                if(startPointY<0) startPointY=0;
+                if(endPointY>getHeight()) endPointY=getHeight();
+            }
             for (int i=startPointX;i<endPointX;i++){
                 for (int j=startPointY;j<endPointY;j++){
                     double intensity = (2.0/((i-centroid.getX())*(i-centroid.getX())+(j-centroid.getY())*(j-centroid.getY()))*centroid.getWeight());
