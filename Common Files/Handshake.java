@@ -1,9 +1,8 @@
 import java.io.*;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
-import java.util.logging.Level;
 
-public class Handshake implements Serializable{
+public class Handshake implements UDPSerializable{
     private String name;
     private int id;
 
@@ -14,6 +13,17 @@ public class Handshake implements Serializable{
     public Handshake(){
         name=null;
         id=0;
+    }
+
+    public int getId(){return id;}
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return ("name: " + name + ", id: " + id);
     }
 
     public DatagramPacket toDatagramPacket(InetAddress address, int port) {
