@@ -1,34 +1,31 @@
-import java.util.HashMap;
+import java.util.concurrent.BlockingQueue;
 
-
-public class ColorioGameMap implements Runnable {
+public class ColorioServerOut implements Runnable{
     private Thread t;
     private String threadName;
-
-    HashMap<Integer, Player> players;
-
-
-
-
-    ColorioGameMap(String name){
+    private BlockingQueue<byte[]> toSend;
+    ColorioServerOut(String name, BlockingQueue<byte[]> send){
         threadName = name;
+        toSend = send;
         System.out.println("Creating thread " + threadName);
     }
 
-    public void run(){
-
-
-
+    public void initServerOut(){
 
     }
 
+    public void run() {
 
+    }
 
     public void start(){
         System.out.println("Starting thread " + threadName);
+        initServerOut();
         if(t == null){
             t = new Thread(this, threadName);
             t.start();
         }
     }
+
+
 }
