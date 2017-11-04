@@ -56,4 +56,12 @@ public class Handshake implements Serializable{
         id=recivedPacket.id;
         return true;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
+    }
 }

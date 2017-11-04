@@ -15,25 +15,23 @@ public class ColorioServerTester implements Runnable{
         System.out.println("Running " + threadName);
 
         try {
-            Socket s = new Socket("localhost", 60010);
-            BufferedWriter out = new BufferedWriter(
-                    new OutputStreamWriter(s.getOutputStream()));
+            DatagramSocket clientSocket = new DatagramSocket(49156);
+            InetAddress IPAddress = InetAddress.getByName("localhost");
+            int i = 0;
+            while(true) {
 
-            while (true) {
-                out.write("Hello World!");
-                out.newLine();
-                out.flush();
+                byte[] sendData = new byte[1024];
+                String sentence = "Hello World!" + i++;
+                sendData = sentence.getBytes();
+                DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 49155);
+                clientSocket.send(sendPacket);
 
-                Thread.sleep(200);
+
             }
-
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        }catch(IOException e){
             e.printStackTrace();
         }
+
 
         System.out.println("Exiting thread " + threadName);
     }
