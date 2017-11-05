@@ -64,6 +64,10 @@ public class Handshake implements UDPSerializable{
             System.out.println("Class not found: {0}");
             return false;
         }
+        catch (ClassCastException e){
+            System.out.println("Wrong class!");
+            return false;
+        }
         name=recivedPacket.name;
         id=recivedPacket.id;
         return true;

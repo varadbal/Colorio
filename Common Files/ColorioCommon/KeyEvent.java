@@ -65,6 +65,10 @@ public class KeyEvent implements UDPSerializable {
             System.out.println("Class not found: {0}");
             return false;
         }
+        catch (ClassCastException e){
+            System.out.println("Wrong class!");
+            return false;
+        }
         keyChar=recivedPacket.keyChar;
         timeStamp=recivedPacket.timeStamp;
         return true;
