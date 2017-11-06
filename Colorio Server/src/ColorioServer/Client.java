@@ -1,14 +1,20 @@
 package ColorioServer;
 
+import ColorioCommon.Centroid;
+import com.sun.istack.internal.NotNull;
+
 import java.net.InetAddress;
+import java.time.Instant;
 
 public class Client {
-    private String name;
-    private InetAddress addr;
-    private boolean readyToPlay = false;
+    private String name;            //Communciation modifies
+    private InetAddress addr;       //Communication modifies
+    private boolean isPlaying = false;  //Communication modifies, GameLogic uses
+    private Centroid cent = null;   //GameLogic modifies (!)
+    private long lastModified = 0L; //Last Game-Modify
 
 
-    Client(String name, InetAddress address){
+    Client(@NotNull String name, @NotNull InetAddress address){
         this.name = name;
         addr = address;
     }
@@ -21,15 +27,30 @@ public class Client {
         return addr;
     }
 
-    public boolean isReadyToPlay() {
-        return readyToPlay;
+    public Centroid getCent(){
+        return this.cent;
     }
 
-    public void setAddr(InetAddress addr) {
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    public long getLastModified() {
+        return lastModified;
+    }
+
+    public void setAddr(@NotNull InetAddress addr) {
         this.addr = addr;
     }
 
-    public void setReadyToPlay(boolean readyToPlay) {
-        this.readyToPlay = readyToPlay;
+    public void setPlaying(boolean playing) {
+        this.isPlaying = playing;
     }
+
+    public void setCent(Centroid cent) {
+        this.cent = cent;
+        lastModified = Instant.now().toEpochMilli();
+    }
+
+
 }

@@ -15,4 +15,5 @@ public class Centroid extends Point2D.Double {
     public double getWeight() {
         return weight;
     }
+    public Color getColor() {return color;}
 }

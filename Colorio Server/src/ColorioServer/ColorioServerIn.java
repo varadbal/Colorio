@@ -53,7 +53,7 @@ public class ColorioServerIn implements Runnable {
                         //Check ColorioServer.Client
                         if(h.getName().equals(clients.get(h.getId()).getName())) {
                             //Set Ready to play
-                            clients.get(h.getId()).setReadyToPlay(true);
+                            clients.get(h.getId()).setPlaying(true);
                         }
                     }
                 }else if(false/*NOT HANDSHAKE*/){
