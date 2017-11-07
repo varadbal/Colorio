@@ -1,27 +1,55 @@
 package ColorioCommon;
 
+import com.sun.istack.internal.NotNull;
+
 import java.awt.*;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
+/**
+ * UDPSerializable wrapper class for an ArrayList
+ * ATM holds Centroids, maybe change that later
+ * First one should be the client's own
+ */
 public class GameStatus implements UDPSerializable{
-    //ide jönnek majd a változók, ki kell még dolgozni
+    /**
+     * Instance variables
+     */
     private ArrayList<Centroid> centroids;
+
+    /**
+     * Constructor
+     */
     public  GameStatus(){
         centroids = new ArrayList<>();
-        //teszt súlypontok
-        centroids.add(new Centroid(150.5,150.1, 50.0,Color.BLUE));
-        centroids.add(new Centroid(250.5,350.1, 2.0,Color.RED));
-        centroids.add(new Centroid(150.5,550.1, 25.0,Color.CYAN));
-        centroids.add(new Centroid(550.5,250.1, 35.0,Color.green));
     }
 
+    /**
+     * Getters, Setters
+     */
     public ArrayList<Centroid> getCentroids() {
         return centroids;
     }
+    public void setCentroids(@NotNull ArrayList<Centroid> newCents){ centroids = newCents; }
+    public void addCentroid (Centroid cent) {
+        if(centroids == null){
+            centroids = new ArrayList<Centroid>();
+        }
+        centroids.add(cent);
+    }
+    public void addCentroid (int index, Centroid cent){
+        if(centroids == null){
+            centroids = new ArrayList<Centroid>();
+        }
+        centroids.add(index, cent);
+    }
 
+    /**
+     * UDPSerializable implementation
+     */
     @Override
     public DatagramPacket toDatagramPacket(InetAddress address, int port) {
         try {

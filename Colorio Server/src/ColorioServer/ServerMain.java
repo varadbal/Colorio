@@ -2,11 +2,10 @@ package ColorioServer;
 
 
 import ColorioCommon.KeyEvent;
-import java.net.DatagramPacket;
 import java.util.concurrent.*;
 
 /**
- * TODO delete every class from ColorioServer, except: Client, Server, GameLogic, ServerMain, OutPacket
+ * @author Balazs Varady
  *
  */
 public class ServerMain {
