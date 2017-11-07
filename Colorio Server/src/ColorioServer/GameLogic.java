@@ -8,9 +8,7 @@ import com.sun.istack.internal.NotNull;
 import java.awt.*;
 import java.net.DatagramPacket;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -29,7 +27,7 @@ public class GameLogic implements Runnable {
      * Instance variables regarding the Class
      */
     private ConcurrentMap<Integer, Client> clients = null;
-    private BlockingQueue<DatagramPacket> toSend = null;
+    private BlockingQueue<OutPacket> toSend = null;
     private ConcurrentLinkedQueue<KeyEvent> toHandle = null;
     private boolean isRunning = false;
     /**
@@ -46,7 +44,7 @@ public class GameLogic implements Runnable {
      * @param toHandle A queue for communication with ServerIn
      */
     public GameLogic(String threadName, @NotNull ConcurrentMap<Integer, Client> clients,
-                     @NotNull BlockingQueue<DatagramPacket> toSend, @NotNull ConcurrentLinkedQueue<KeyEvent> toHandle) {
+                     @NotNull BlockingQueue<OutPacket> toSend, @NotNull ConcurrentLinkedQueue<KeyEvent> toHandle) {
         this.threadName = threadName;
         this.clients = clients;
         this.toSend = toSend;
@@ -126,17 +124,24 @@ public class GameLogic implements Runnable {
      * Preparing and sending a GameStatus to every client
      * TODO implement, ATM only sends 'something'
      * TODO implement GameStatus
-     * TODO make GameLogic independent from Communication (rewrite toSend)
      */
     private void sendStatus(){
         GameStatus currentStatus = new GameStatus();
-        for(Client i : clients.values()){
+        for(Map.Entry<Integer, Client> i : clients.entrySet()){
+            try{
+                toSend.put(new OutPacket(i.getKey(), currentStatus));
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+
+        /*for(Client i : clients.values()){
             try {
                 toSend.put(currentStatus.toDatagramPacket(i.getAddr(), 49155));
             }catch(InterruptedException e){
                 e.printStackTrace();
             }
-        }
+        }*/
     }
 
     /**

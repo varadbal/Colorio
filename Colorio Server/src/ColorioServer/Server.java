@@ -25,7 +25,8 @@ public class Server {
     /**
      * Instance variables
      */
-    private BlockingQueue<DatagramPacket> toSend = null;
+    private BlockingQueue<OutPacket> toSend = null;
+    ConcurrentMap<Integer, Client> clients = null;
     private ServerIn sIn = null;
     private ServerOut sOut = null;
     private boolean isRunning = false;
@@ -39,10 +40,11 @@ public class Server {
      * @param clients A map of the currently active clients
      * @param toHandle A queue for communication with the Game Logic
      */
-    public Server(@NotNull BlockingQueue<DatagramPacket> toSend,
+    public Server(@NotNull BlockingQueue<OutPacket> toSend,
                   @NotNull ConcurrentMap<Integer, Client> clients, @NotNull ConcurrentLinkedQueue<KeyEvent> toHandle) {
         this.toSend = toSend;
-        sIn = new ServerIn("ServerIn-1", clients, toHandle);
+        this.clients = clients;
+        sIn = new ServerIn("ServerIn-1", toHandle);
         sOut = new ServerOut("ServerOut-1");
     }
 
@@ -95,17 +97,15 @@ public class Server {
         /**
          * Instance variables
          */
-        private ConcurrentMap<Integer, Client> clients;
         private ConcurrentLinkedQueue<KeyEvent> toHandle;
 
         /**
          * Constructor
          * @param threadName The name of the thread
+         * @param toHandle The queue of the KeyEvents to handle
          */
-        private ServerIn(String threadName, @NotNull ConcurrentMap<Integer, Client> clients,
-                         @NotNull ConcurrentLinkedQueue<KeyEvent> toHandle) {
+        private ServerIn(String threadName, @NotNull ConcurrentLinkedQueue<KeyEvent> toHandle) {
             this.threadName = threadName;
-            this.clients = clients;
             this.toHandle = toHandle;
         }
 
@@ -169,19 +169,20 @@ public class Server {
          */
         private void doHandshake(@NotNull Handshake h, @NotNull InetAddress ip){
             if(h.getName() != null && h.getId() == 0){ //First shake
-                int nextId = Collections.max(clients.keySet()) + 1;             //TODO more elegant nextId
-                clients.put(nextId, new Client(h.getName(), ip));
-                DatagramPacket dp = new Handshake(h.getName(), h.getId()).toDatagramPacket(ip, port);
+                int nextId = Collections.max(Server.this.clients.keySet()) + 1;             //TODO more elegant nextId
+                Server.this.clients.put(nextId, new Client(h.getName(), ip));
+                OutPacket op = new OutPacket(nextId, new Handshake(h.getName(), nextId));
+                //DatagramPacket dp = new Handshake(h.getName(), h.getId()).toDatagramPacket(ip, port);
                 try {
-                    toSend.put(dp);
+                    toSend.put(op);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
 
             }else if(h.getName() != null &&h.getId() != 0){ //Second shake
                 if(h.getName().equals(clients.get(h.getId()).getName())){ //Data Correct
-                    clients.get(h.getId()).setAddr(ip);
-                    clients.get(h.getId()).setPlaying(true);
+                    Server.this.clients.get(h.getId()).setAddr(ip);
+                    Server.this.clients.get(h.getId()).setPlaying(true);
                 }
             }
         }
@@ -223,14 +224,15 @@ public class Server {
 
         /**
          * Thread run method - sends the elements of toSend
-         * TODO make toSend a BlockingQueue<UDPSerializable>
+         *     Takes an element from toSend, converts its packet to DatagramPacket whose IP id the IP-Address of its client
          */
         @Override
         public void run() {
             System.out.println("Running thread " + threadName);
             while(Server.this.isRunning){
                 try {
-                    socket.send(toSend.take());
+                    OutPacket ts = toSend.take();
+                    socket.send(ts.getPacket().toDatagramPacket(clients.get(ts.getTargetId()).getAddr(), port));
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }catch (IOException e){
