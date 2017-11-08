@@ -2,6 +2,8 @@ package ColorioClient;
 import ColorioCommon.Centroid;
 import ColorioCommon.KeyEvent;
 import ColorioCommon.GameStatus;
+import ColorioCommon.KeyStatus;
+
 import javax.swing.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -115,6 +117,14 @@ public class ColorioFrame extends JFrame implements KeyListener, Runnable, Compo
         System.out.println(str+": "+(act-partRef)+"ns  --  "+(act-ref)+"ns\nAverage FPS: "+ 1000000000.0/(act-ref)*(double)i+" Actual FPS: " + 1000000000.0/(act-partRef)*20);
         partRef=act;
         System.out.flush();
+    }
+
+    public KeyStatus getKeyStatus(){
+        return new KeyStatus(wPressed,aPressed,sPressed,dPressed);
+    }
+
+    public void refreshGameStatus(GameStatus status){
+        this.status=status;
     }
 
     @Override

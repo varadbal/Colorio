@@ -16,6 +16,13 @@ public class Render extends BufferedImage{
     private final double minRenderRange=30;
     private static double sigmoidCache[];
     private static boolean isSigmoidCacheFilled=false;
+
+    /**
+     * @param width
+     * @param height
+     * @param status0
+     * @param frame
+     */
     public Render(int width, int height, GameStatus status0, ColorioFrame frame) {
         super(width, height, BufferedImage.TYPE_INT_RGB);
         status=status0;
