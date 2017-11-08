@@ -6,18 +6,22 @@ import ColorioCommon.KeyEvent;
 import com.sun.istack.internal.NotNull;
 
 import java.awt.*;
-import java.net.DatagramPacket;
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.logging.Logger;
 
 /**
  * ColorIo Server Game Logic class
  * @Author Balazs Varady
  */
 public class GameLogic implements Runnable {
+    /**
+     * Logger
+     */
+    private static final Logger LOGGER = Logger.getLogger(GameLogic.class.getName());
     /**
      * Thread variables
      */
@@ -103,7 +107,7 @@ public class GameLogic implements Runnable {
         Collection<Client> clis = clients.values();
         for(Client c : clis){
             if(c.isPlaying()){  //If it should have everything defined
-                if(c.getCent() == null){ //Player-Object not yet defined
+                if(c.getCent() == null){ //Player's object not yet defined
 
                     Random rand = new Random();         //TODO more elegant
                     float r = rand.nextFloat();
@@ -122,26 +126,32 @@ public class GameLogic implements Runnable {
 
     /**
      * Preparing and sending a GameStatus to every client
-     * TODO implement, ATM only sends 'something'
-     * TODO implement GameStatus
+     *     Gets the entry set of 'clients'
+     *     For each entry (client)
+     *        Iterate through the set and make a GameStatus with first (0.) element as the client's own
+     *        Send this GameStatus to the client
+     * @implSpec O(n square), where n is the number of clients
      */
     private void sendStatus(){
-        GameStatus currentStatus = new GameStatus();
-        for(Map.Entry<Integer, Client> i : clients.entrySet()){
+        //LOGGER.info("Sending");
+        GameStatus currentStatus;
+        Set<Map.Entry<Integer, Client>> es = clients.entrySet();
+
+        for(Map.Entry<Integer, Client> i : es){
+            currentStatus = new GameStatus();
+            for(Map.Entry<Integer, Client> j : es){
+                if(j.getKey() == i.getKey()){
+                    currentStatus.addCentroid(0, j.getValue().getCent());
+                }else{
+                    currentStatus.addCentroid(j.getValue().getCent());
+                }
+            }
             try{
                 toSend.put(new OutPacket(i.getKey(), currentStatus));
             }catch (InterruptedException e){
                 e.printStackTrace();
             }
         }
-
-        /*for(Client i : clients.values()){
-            try {
-                toSend.put(currentStatus.toDatagramPacket(i.getAddr(), 49155));
-            }catch(InterruptedException e){
-                e.printStackTrace();
-            }
-        }*/
     }
 
     /**

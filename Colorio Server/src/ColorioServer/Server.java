@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentMap;
+import java.util.logging.Logger;
 
 /**
  * ColorIo server-end communication class
@@ -22,6 +23,10 @@ import java.util.concurrent.ConcurrentMap;
  */
 
 public class Server {
+    /**
+     * Logger
+     */
+    private static final Logger LOGGER = Logger.getLogger(Server.class.getName());
     /**
      * Instance variables
      */
@@ -189,7 +194,7 @@ public class Server {
     }
 
     /**
-     * Thread for sending the Datagram Packets from toSend
+     * Thread for sending the OutPackets (from toSend) as DatagramPackets
      * Should not be instantiated/manipulated from outside
      */
     private class ServerOut implements Runnable{
