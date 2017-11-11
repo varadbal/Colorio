@@ -98,7 +98,7 @@ public class ColorioFrame extends JFrame implements KeyListener, Runnable, Compo
     public KeyEvent keyInput(){
         try {
             wait();
-            return new KeyEvent(keyEvent);
+            return new KeyEvent(1, keyEvent); //TODO provide proper playerId
         } catch (InterruptedException e) {
             e.printStackTrace();
             return null;
@@ -120,7 +120,7 @@ public class ColorioFrame extends JFrame implements KeyListener, Runnable, Compo
     }
 
     public KeyStatus getKeyStatus(){
-        return new KeyStatus(wPressed,aPressed,sPressed,dPressed);
+        return new KeyStatus(1, wPressed,aPressed,sPressed,dPressed); //TODO provide proper playerId
     }
 
     public void refreshGameStatus(GameStatus status){

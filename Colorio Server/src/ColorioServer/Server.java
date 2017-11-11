@@ -2,6 +2,8 @@ package ColorioServer;
 
 import ColorioCommon.Handshake;
 import ColorioCommon.KeyEvent;
+import ColorioCommon.KeyInput;
+import ColorioCommon.UDPSerializable;
 import com.sun.istack.internal.NotNull;
 
 import java.io.ByteArrayInputStream;
@@ -46,7 +48,7 @@ public class Server {
      * @param toHandle A queue for communication with the Game Logic
      */
     public Server(@NotNull BlockingQueue<OutPacket> toSend,
-                  @NotNull ConcurrentMap<Integer, Client> clients, @NotNull ConcurrentLinkedQueue<KeyEvent> toHandle) {
+                  @NotNull ConcurrentMap<Integer, Client> clients, @NotNull ConcurrentLinkedQueue<KeyInput> toHandle) {
         this.toSend = toSend;
         this.clients = clients;
         sIn = new ServerIn("ServerIn-1", toHandle);
@@ -102,14 +104,14 @@ public class Server {
         /**
          * Instance variables
          */
-        private ConcurrentLinkedQueue<KeyEvent> toHandle;
+        private ConcurrentLinkedQueue<KeyInput> toHandle;
 
         /**
          * Constructor
          * @param threadName The name of the thread
          * @param toHandle The queue of the KeyEvents to handle
          */
-        private ServerIn(String threadName, @NotNull ConcurrentLinkedQueue<KeyEvent> toHandle) {
+        private ServerIn(String threadName, @NotNull ConcurrentLinkedQueue<KeyInput> toHandle) {
             this.threadName = threadName;
             this.toHandle = toHandle;
         }
@@ -144,50 +146,47 @@ public class Server {
                     e.printStackTrace();
                 }
 
-                Object o = null;
-                try {
-                    o = new ObjectInputStream(new ByteArrayInputStream(receivePacket.getData())).readObject();
-                }catch (IOException e){
-                    e.printStackTrace();
-                }catch (ClassNotFoundException e){
-                    e.printStackTrace();
-                }
+                UDPSerializable o = null;
+                o.getFromDatagramPacket(receivePacket);
 
-                if(o instanceof Handshake){
+                if(o instanceof Handshake){ //Either connecting first shake or disconnecting
                     Handshake h = (Handshake) o;
-                    doHandshake(h, receivePacket.getAddress());
+                    gotHandshake(h, receivePacket.getAddress());
 
                 } else if(o instanceof KeyEvent){
                     KeyEvent k = (KeyEvent) o;
                     clients.get(k.getId()).setAddr(receivePacket.getAddress()); //Update IP - might have changed
                     toHandle.add(k);
                 }
+
             }
         }
 
         /**
-         * Method for handling an incoming Handshake-Object, always doing an appropriate step in a handshake
-         *     If first shake, save client and give it an Id
-         *     If second shake, check data and set playing, (update IP - might have changed)
+         * Method for handling an incoming Handshake-Object, which, according to the communication protocol,
+         * means either connecting or disconnecting client.
          * @param h The incoming Handshake-Object
          * @param ip The source-IP of the Handshake-Object
          */
-        private void doHandshake(@NotNull Handshake h, @NotNull InetAddress ip){
-            if(h.getName() != null && h.getId() == 0){ //First shake
+        private void gotHandshake(@NotNull Handshake h, @NotNull InetAddress ip){
+            if(h.getName() != null && h.getId() == 0){              //Connecting client
                 int nextId = Collections.max(Server.this.clients.keySet()) + 1;             //TODO more elegant nextId
+
                 Server.this.clients.put(nextId, new Client(h.getName(), ip));
                 OutPacket op = new OutPacket(nextId, new Handshake(h.getName(), nextId));
-                //DatagramPacket dp = new Handshake(h.getName(), h.getId()).toDatagramPacket(ip, port);
                 try {
                     toSend.put(op);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
 
-            }else if(h.getName() != null &&h.getId() != 0){ //Second shake
-                if(h.getName().equals(clients.get(h.getId()).getName())){ //Data Correct
-                    Server.this.clients.get(h.getId()).setAddr(ip);
-                    Server.this.clients.get(h.getId()).setPlaying(true);
+            }else if(h.getName() == null && h.getId() != 0) {         //Disconnecting Client
+                OutPacket op = new OutPacket(h.getId(), new Handshake(null, 0));
+                Server.this.clients.get(h.getId()).setPlaying(false);
+                try {
+                    toSend.put(op);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
                 }
             }
         }

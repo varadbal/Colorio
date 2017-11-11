@@ -3,20 +3,57 @@ package ColorioCommon;
 import java.io.*;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
+import java.time.Instant;
 
-public class KeyStatus implements UDPSerializable {
+public class KeyStatus implements UDPSerializable, KeyInput{
+    private int playerId;       //For identification on the server-side
+    private long timeStamp;     //For validity check on the server-side
+
     private boolean wPressed;
     private boolean aPressed;
     private boolean sPressed;
     private boolean dPressed;
 
-    public KeyStatus(boolean wPressed, boolean aPressed, boolean sPressed, boolean dPressed) {
+    public KeyStatus(int playerId, boolean wPressed, boolean aPressed, boolean sPressed, boolean dPressed) {
+        this.playerId = playerId;
         this.wPressed = wPressed;
         this.aPressed = aPressed;
         this.sPressed = sPressed;
         this.dPressed = dPressed;
+        timeStamp = Instant.now().toEpochMilli();
     }
 
+
+    /**
+     * Getters
+     */
+    public int getPlayerId() {
+        return playerId;
+    }
+
+    public boolean isWPressed() {
+        return wPressed;
+    }
+
+    public boolean isAPressed() {
+        return aPressed;
+    }
+
+    public boolean isSPressed() {
+        return sPressed;
+    }
+
+    public boolean isDPressed() {
+        return dPressed;
+    }
+
+    public long getTimeStamp() {
+        return timeStamp;
+    }
+
+    /**
+     * UDPSerializable Overrides
+     */
     @Override
     public DatagramPacket toDatagramPacket(InetAddress address, int port) {
         try {

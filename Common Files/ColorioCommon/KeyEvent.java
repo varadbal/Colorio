@@ -4,17 +4,24 @@ import java.io.*;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 
-public class KeyEvent implements UDPSerializable {
+public class KeyEvent implements UDPSerializable, KeyInput {
 
+    private int playerId;
     private char keyChar;
     private long timeStamp;
     private int id;
 
-    public KeyEvent(java.awt.event.KeyEvent e){
+    public KeyEvent(int playerId, java.awt.event.KeyEvent e){
+        this.playerId = playerId;
         keyChar=e.getKeyChar();
         timeStamp=e.getWhen();
         id=e.getID();
     }
+
+    /**
+     * Getters
+     */
+    public int getPlayerId() {return playerId;}
 
     public int getId(){return id;}
 
@@ -22,6 +29,10 @@ public class KeyEvent implements UDPSerializable {
 
     public char getKeyChar(){return keyChar;}
 
+
+    /**
+     * Overrides
+     */
     @Override
     public String toString() {
         return ("Keychar: "+keyChar+" id: "+id);
