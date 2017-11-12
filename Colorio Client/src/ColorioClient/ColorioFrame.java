@@ -19,6 +19,7 @@ public class ColorioFrame extends JFrame implements KeyListener, Runnable, Compo
     public boolean aPressed = false;
     public boolean sPressed = false;
     public boolean dPressed = false;
+    private int playerID=-1;
     private long ref;
     private long partRef;
     private JLabel pictureHolder;
@@ -42,6 +43,10 @@ public class ColorioFrame extends JFrame implements KeyListener, Runnable, Compo
     public void drawBufferedImage(BufferedImage bufferedImage){
         pictureHolder.setIcon(new ImageIcon(bufferedImage));
         pack();
+    }
+
+    public void setPlayerID(int playerID){
+        this.playerID = playerID;
     }
 
     @Override
@@ -98,7 +103,7 @@ public class ColorioFrame extends JFrame implements KeyListener, Runnable, Compo
     public KeyEvent keyInput(){
         try {
             wait();
-            return new KeyEvent(1, keyEvent); //TODO provide proper playerId
+            return new KeyEvent(playerID, keyEvent);
         } catch (InterruptedException e) {
             e.printStackTrace();
             return null;
@@ -120,7 +125,7 @@ public class ColorioFrame extends JFrame implements KeyListener, Runnable, Compo
     }
 
     public KeyStatus getKeyStatus(){
-        return new KeyStatus(1, wPressed,aPressed,sPressed,dPressed); //TODO provide proper playerId
+        return new KeyStatus(playerID, wPressed,aPressed,sPressed,dPressed);
     }
 
     public void refreshGameStatus(GameStatus status){

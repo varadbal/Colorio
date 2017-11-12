@@ -103,6 +103,7 @@ public class ClientSocket extends DatagramSocket {
                 }
                 log("handshake","Successful handshake happened.");
                 messageLabel.setText("Connected");
+                frame.setPlayerID(handshakeResponse.getId());
                 frame.setVisible(true);
                 log("handshake","Starting receive and send threads...");
                 ReceiveThread receiveThread = new ReceiveThread();
