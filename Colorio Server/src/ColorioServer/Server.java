@@ -1,14 +1,9 @@
 package ColorioServer;
 
-import ColorioCommon.Handshake;
-import ColorioCommon.KeyEvent;
-import ColorioCommon.KeyInput;
-import ColorioCommon.UDPSerializable;
+import ColorioCommon.*;
 import com.sun.istack.internal.NotNull;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -18,6 +13,8 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Logger;
+
+import static ColorioCommon.Constants.portNumber;
 
 /**
  * ColorIo server-end communication class
@@ -33,22 +30,22 @@ public class Server {
      * Instance variables
      */
     private BlockingQueue<OutPacket> toSend = null;
-    ConcurrentMap<Integer, Client> clients = null;
+    private ConcurrentMap<Integer, Client> clients = null;
     private ServerIn sIn = null;
     private ServerOut sOut = null;
     private boolean isRunning = false;
 
-    private int port = 49155;
+    private int port = portNumber;
     private DatagramSocket socket = null;
 
     /**
      * Constructor, creating the threads, setting up the communication between threads
      * @param toSend A queue for communication with the ServerOut
-     * @param clients A map of the currently active clients
+     * @param clients A map of the clients (id, Client)
      * @param toHandle A queue for communication with the Game Logic
      */
     public Server(@NotNull BlockingQueue<OutPacket> toSend,
-                  @NotNull ConcurrentMap<Integer, Client> clients, @NotNull ConcurrentLinkedQueue<KeyInput> toHandle) {
+                  @NotNull ConcurrentMap<Integer, Client> clients, @NotNull BlockingQueue<KeyInput> toHandle) {
         this.toSend = toSend;
         this.clients = clients;
         sIn = new ServerIn("ServerIn-1", toHandle);
@@ -68,6 +65,7 @@ public class Server {
 
     /**
      * Starting the in- and out-threads, (if they exist)
+     * TODO complete
      */
     public void start(){
         initializeServer();
@@ -93,9 +91,10 @@ public class Server {
 
     /**
      * Thread for handling the incoming messages
-     * Should not be instantiated/manipulated from outside
+     * Should not be manipulated from outside
      */
     private class ServerIn implements Runnable{
+        //region Variables
         /**
          * Thread variables
          */
@@ -104,14 +103,15 @@ public class Server {
         /**
          * Instance variables
          */
-        private ConcurrentLinkedQueue<KeyInput> toHandle;
+        private BlockingQueue<KeyInput> toHandle;
+        //endregion
 
         /**
          * Constructor
          * @param threadName The name of the thread
          * @param toHandle The queue of the KeyEvents to handle
          */
-        private ServerIn(String threadName, @NotNull ConcurrentLinkedQueue<KeyInput> toHandle) {
+        private ServerIn(String threadName, @NotNull BlockingQueue<KeyInput> toHandle) {
             this.threadName = threadName;
             this.toHandle = toHandle;
         }
@@ -132,7 +132,7 @@ public class Server {
          *     Create a DatagramPacket: receivePacket
          *     Receive data from the socket
          *     Deserialize the data
-         *     Decide its type and act accordingly (do handshake or add key event to the handle queue)
+         *     Decide its type and act accordingly (do handshake or add KeyInput to the handle queue)
          */
         @Override
         public void run() {
@@ -149,13 +149,13 @@ public class Server {
                 UDPSerializable o = null;
                 o.getFromDatagramPacket(receivePacket);
 
-                if(o instanceof Handshake){ //Either connecting first shake or disconnecting
+                if(o instanceof Handshake){         //Either connecting first shake or disconnecting
                     Handshake h = (Handshake) o;
                     gotHandshake(h, receivePacket.getAddress());
 
-                } else if(o instanceof KeyEvent){
+                } else if(o instanceof KeyInput){   //At this point it does not matter what kind, just pass to GameLogic
                     KeyEvent k = (KeyEvent) o;
-                    clients.get(k.getId()).setAddr(receivePacket.getAddress()); //Update IP - might have changed
+                    clients.get(k.getPlayerId()).setAddr(receivePacket.getAddress()); //Update IP - might have changed
                     toHandle.add(k);
                 }
 
@@ -194,7 +194,7 @@ public class Server {
 
     /**
      * Thread for sending the OutPackets (from toSend) as DatagramPackets
-     * Should not be instantiated/manipulated from outside
+     * Should not be manipulated from outside
      */
     private class ServerOut implements Runnable{
         /**

@@ -13,10 +13,10 @@ public class ServerMain {
     public static void main(String[] args) {
         ConcurrentMap<Integer, Client> clients = new ConcurrentHashMap<>();
         BlockingQueue<OutPacket> toSend = new LinkedBlockingQueue<>();
-        ConcurrentLinkedQueue<KeyInput> toHandle = new ConcurrentLinkedQueue<>();
+        BlockingQueue<KeyInput> toHandle = new LinkedBlockingQueue<>();
 
         Server serv = new Server(toSend, clients, toHandle);
-        GameLogic gl = new GameLogic("GL-1", clients, toSend, toHandle);
+        GameLogic gl = new GameLogic(clients, toSend, toHandle);
 
         serv.start();
         gl.start();

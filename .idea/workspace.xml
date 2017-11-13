@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="unnamed" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="fb7f0594-d71f-46b3-9e45-d940470ac768" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,8 +19,8 @@
       <file leaf-file-name="ServerMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/ServerMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="2" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+            <state relative-caret-position="315">
+              <caret line="15" column="69" lean-forward="false" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -26,78 +31,124 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="28" column="65" lean-forward="false" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
+            <state relative-caret-position="63">
+              <caret line="3" column="39" lean-forward="true" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="method#Server#0;class#Server#0" expanded="false" />
                 <element signature="method#initializeServer#0;class#Server#0" expanded="false" />
                 <element signature="method#start#0;class#Server#0" expanded="false" />
-                <element signature="class#ServerIn#0;class#Server#0" expanded="false" />
+                <element signature="e#2605#2623#0" expanded="false" />
                 <element signature="method#ServerIn#0;class#ServerIn#0;class#Server#0" expanded="false" />
                 <element signature="method#start#0;class#ServerIn#0;class#Server#0" expanded="false" />
-                <element signature="method#run#0;class#ServerIn#0;class#Server#0" expanded="false" />
-                <element signature="method#doHandshake#0;class#ServerIn#0;class#Server#0" expanded="false" />
+                <element signature="method#gotHandshake#0;class#ServerIn#0;class#Server#0" expanded="false" />
                 <element signature="class#ServerOut#0;class#Server#0" expanded="false" />
                 <element signature="method#start#0;class#ServerOut#0;class#Server#0" expanded="false" />
-                <element signature="method#run#0;class#ServerOut#0;class#Server#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OutPacket.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/OutPacket.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="33" lean-forward="false" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-              <folding>
-                <marker date="1510086524059" expanded="false" signature="314:325" ph=" { " />
-                <marker date="1510086524059" expanded="false" signature="342:348" ph=" }" />
-                <marker date="1510086524059" expanded="false" signature="388:399" ph=" { " />
-                <marker date="1510086524059" expanded="false" signature="413:419" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameLogic.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameLogic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="104" column="7" lean-forward="true" selection-start-line="104" selection-start-column="7" selection-end-line="104" selection-end-column="7" />
+            <state relative-caret-position="1853">
+              <caret line="128" column="41" lean-forward="false" selection-start-line="128" selection-start-column="41" selection-end-line="128" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#GameLogic#0;class#GameLogic#0" expanded="false" />
                 <element signature="method#start#0;class#GameLogic#0" expanded="false" />
-                <element signature="method#run#0;class#GameLogic#0" expanded="false" />
-                <element signature="method#checkPlayers#0;class#GameLogic#0" expanded="false" />
-                <element signature="method#sendStatus#0;class#GameLogic#0" expanded="false" />
-                <element signature="docComment;method#centroidMoveLeft#0;class#GameLogic#0" expanded="false" />
-                <element signature="method#centroidMoveLeft#0;class#GameLogic#0" expanded="false" />
-                <marker date="1510090886143" expanded="false" signature="5164:6135" ph="{...}" />
-                <marker date="1510090886143" expanded="false" signature="6141:6502" ph="/**...*/" />
-                <marker date="1510090886143" expanded="false" signature="6615:6767" ph="{...}" />
-                <marker date="1510090886143" expanded="false" signature="6773:7136" ph="/**...*/" />
-                <marker date="1510090886143" expanded="false" signature="7251:7403" ph="{...}" />
-                <marker date="1510090886143" expanded="false" signature="7409:7775" ph="/**...*/" />
-                <marker date="1510090886143" expanded="false" signature="7891:8043" ph="{...}" />
+                <element signature="e#2283#2301#0" expanded="false" />
+                <element signature="e#2614#2615#0" expanded="true" />
+                <element signature="e#2666#2667#0" expanded="true" />
+                <element signature="method#start#0;class#MovePlayers#0;class#GameLogic#0" expanded="false" />
+                <element signature="class#HandleInput#0;class#GameLogic#0" expanded="false" />
+                <element signature="method#HandleInput#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+                <element signature="method#start#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+                <element signature="method#run#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+                <element signature="method#updateStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+                <element signature="e#6065#6127#0" expanded="false" />
+                <element signature="method#checkStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+                <element signature="class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
+                <element signature="e#10023#10041#0" expanded="false" />
+                <element signature="method#SendGameStatus#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
+                <element signature="method#start#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
+                <element signature="method#run#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameStatus.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/GameStatus.java">
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="42" column="43" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+            <state relative-caret-position="210">
+              <caret line="10" column="41" lean-forward="false" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/Client.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
               <folding>
-                <element signature="method#addCentroid#0;class#GameStatus#0" expanded="false" />
-                <element signature="method#addCentroid#1;class#GameStatus#0" expanded="false" />
-                <element signature="method#toDatagramPacket#0;class#GameStatus#0" expanded="false" />
-                <element signature="method#getFromDatagramPacket#0;class#GameStatus#0" expanded="false" />
+                <element signature="method#Client#0;class#Client#0" expanded="false" />
+                <element signature="method#keyCheck#0;class#Client#0" expanded="false" />
+                <element signature="method#setKeys#0;class#Client#0" expanded="false" />
+                <element signature="method#setKeys#1;class#Client#0" expanded="false" />
+                <element signature="method#keyCheck#1;class#Client#0" expanded="false" />
+                <element signature="method#toClientKeys#0;class#Client#0" expanded="false" />
+                <element signature="class#ClientKeys#0;class#Client#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KeyStatus.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/KeyStatus.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="9" column="71" lean-forward="false" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KeyEvent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/KeyEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ColorioFrame.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/ColorioFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2016">
+              <caret line="105" column="33" lean-forward="false" selection-start-line="105" selection-start-column="33" selection-end-line="105" selection-end-column="33" />
+              <folding>
+                <marker date="1510485302306" expanded="true" signature="3531:3537" ph="{...}" />
+                <marker date="1510485302306" expanded="false" signature="3591:3601" ph=" { " />
+                <marker date="1510485302306" expanded="false" signature="3620:3626" ph=" }" />
+                <marker date="1510485302306" expanded="true" signature="3664:4392" ph="{...}" />
+                <marker date="1510485302306" expanded="true" signature="4459:4467" ph="{}" />
+                <marker date="1510485302306" expanded="true" signature="4532:4540" ph="{}" />
+                <marker date="1510485302306" expanded="true" signature="4605:4667" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientSocket.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/ClientSocket.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="12" column="86" lean-forward="false" selection-start-line="12" selection-start-column="86" selection-end-line="12" selection-end-column="86" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,6 +158,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -114,6 +166,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>toSend</find>
+      <find>id</find>
+      <find>send</find>
     </findStrings>
     <dirStrings>
       <dir>D:\myProjects\GitHub\Colorio\Colorio Server\src</dir>
@@ -146,13 +200,20 @@
         <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServerIn.java" />
         <option value="$PROJECT_DIR$/Colorio Server/src/ServerMain.java" />
         <option value="$PROJECT_DIR$/Common Files/ColorioCommon/Centroid.java" />
-        <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/Client.java" />
         <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/UDPPacket.java" />
         <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/OutPacket.java" />
-        <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/ServerMain.java" />
         <option value="$PROJECT_DIR$/Common Files/ColorioCommon/GameStatus.java" />
+        <option value="$PROJECT_DIR$/Common Files/ColorioCommon/KeyInput.java" />
+        <option value="$PROJECT_DIR$/Common Files/ColorioCommon/KeyEvent.java" />
+        <option value="$PROJECT_DIR$/Common Files/ColorioCommon/KeyStatus.java" />
+        <option value="$PROJECT_DIR$/Colorio Client/src/ColorioClient/ColorioFrame.java" />
+        <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/ServerMain.java" />
         <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/Server.java" />
+        <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/ClientKeys.java" />
         <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java" />
+        <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/Client.java" />
+        <option value="$PROJECT_DIR$/Colorio Client/src/ColorioClient/ClientSocket.java" />
+        <option value="$PROJECT_DIR$/Common Files/ColorioCommon/Constants.java" />
       </list>
     </option>
   </component>
@@ -177,8 +238,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -237,13 +299,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/KH_L02_1" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
@@ -261,9 +322,9 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.ServerDevelopment">
-    <configuration name="ClientMain" type="Application" factoryName="Application">
+    <configuration name="ClientTest" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="ColorioClient.Main" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -288,6 +349,10 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Colorio" />
       <envs />
+      <method>
+        <option name="Make" enabled="false" />
+        <option name="MakeProject" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -372,7 +437,7 @@
     </configuration>
     <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.ServerDevelopment" />
-      <item index="1" class="java.lang.String" itemvalue="Application.ClientMain" />
+      <item index="1" class="java.lang.String" itemvalue="Application.ClientTest" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -401,9 +466,9 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -417,32 +482,11 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39955848" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39955848" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -450,15 +494,19 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="20" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/Server.java</url>
+          <line>114</line>
+          <properties />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="40" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServerTester.java" />
-    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioGameMap.java" />
-    <entry file="file://$PROJECT_DIR$/Colorio Server/src/Player.java" />
-    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServerIn.java" />
     <entry file="file://$PROJECT_DIR$/Colorio Server/src/ServerMain.java" />
     <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServerIn.java" />
     <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServerTester.java" />
@@ -490,11 +538,19 @@
     <entry file="file://$PROJECT_DIR$/Colorio Server/src/Client.java" />
     <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServerIn.java" />
     <entry file="file://$PROJECT_DIR$/Common Files/Handshake.java" />
-    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Handshake.java">
+    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/ColorioServerIn.java" />
+    <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/Render.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/ColorioGameMap.java" />
+    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/GameStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="42" column="43" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -505,74 +561,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/ClientSocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/ColorioServerIn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-185">
-          <caret line="53" column="68" lean-forward="false" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/ColorioFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2891">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/Render.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/ColorioGameMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Centroid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="17" column="43" lean-forward="false" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#901#902#0" expanded="false" />
-            <element signature="e#936#937#0" expanded="false" />
-            <element signature="method#setCent#0;class#Client#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/KeyEvent.java">
+    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Handshake.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/UDPSerializable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <caret line="6" column="55" lean-forward="true" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/KeyInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -580,80 +589,142 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="9" column="33" lean-forward="false" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-          <folding>
-            <marker date="1510086524059" expanded="false" signature="314:325" ph=" { " />
-            <marker date="1510086524059" expanded="false" signature="342:348" ph=" }" />
-            <marker date="1510086524059" expanded="false" signature="388:399" ph=" { " />
-            <marker date="1510086524059" expanded="false" signature="413:419" ph=" }" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/Server.java">
+    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/KeyEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="28" column="65" lean-forward="false" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Server#0;class#Server#0" expanded="false" />
-            <element signature="method#initializeServer#0;class#Server#0" expanded="false" />
-            <element signature="method#start#0;class#Server#0" expanded="false" />
-            <element signature="class#ServerIn#0;class#Server#0" expanded="false" />
-            <element signature="method#ServerIn#0;class#ServerIn#0;class#Server#0" expanded="false" />
-            <element signature="method#start#0;class#ServerIn#0;class#Server#0" expanded="false" />
-            <element signature="method#run#0;class#ServerIn#0;class#Server#0" expanded="false" />
-            <element signature="method#doHandshake#0;class#ServerIn#0;class#Server#0" expanded="false" />
-            <element signature="class#ServerOut#0;class#Server#0" expanded="false" />
-            <element signature="method#start#0;class#ServerOut#0;class#Server#0" expanded="false" />
-            <element signature="method#run#0;class#ServerOut#0;class#Server#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="126">
+          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/GameStatus.java">
+    <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/ColorioFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="42" column="43" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+        <state relative-caret-position="2016">
+          <caret line="105" column="33" lean-forward="false" selection-start-line="105" selection-start-column="33" selection-end-line="105" selection-end-column="33" />
           <folding>
-            <element signature="method#addCentroid#0;class#GameStatus#0" expanded="false" />
-            <element signature="method#addCentroid#1;class#GameStatus#0" expanded="false" />
-            <element signature="method#toDatagramPacket#0;class#GameStatus#0" expanded="false" />
-            <element signature="method#getFromDatagramPacket#0;class#GameStatus#0" expanded="false" />
+            <marker date="1510485302306" expanded="true" signature="3531:3537" ph="{...}" />
+            <marker date="1510485302306" expanded="false" signature="3591:3601" ph=" { " />
+            <marker date="1510485302306" expanded="false" signature="3620:3626" ph=" }" />
+            <marker date="1510485302306" expanded="true" signature="3664:4392" ph="{...}" />
+            <marker date="1510485302306" expanded="true" signature="4459:4467" ph="{}" />
+            <marker date="1510485302306" expanded="true" signature="4532:4540" ph="{}" />
+            <marker date="1510485302306" expanded="true" signature="4605:4667" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/ServerMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="2" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+        <state relative-caret-position="315">
+          <caret line="15" column="69" lean-forward="false" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/KeyStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="71" lean-forward="false" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/ClientKeys.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Centroid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="17" column="43" lean-forward="false" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="39" lean-forward="true" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+          <folding>
+            <element signature="method#Server#0;class#Server#0" expanded="false" />
+            <element signature="method#initializeServer#0;class#Server#0" expanded="false" />
+            <element signature="method#start#0;class#Server#0" expanded="false" />
+            <element signature="e#2605#2623#0" expanded="false" />
+            <element signature="method#ServerIn#0;class#ServerIn#0;class#Server#0" expanded="false" />
+            <element signature="method#start#0;class#ServerIn#0;class#Server#0" expanded="false" />
+            <element signature="method#gotHandshake#0;class#ServerIn#0;class#Server#0" expanded="false" />
+            <element signature="class#ServerOut#0;class#Server#0" expanded="false" />
+            <element signature="method#start#0;class#ServerOut#0;class#Server#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="104" column="7" lean-forward="true" selection-start-line="104" selection-start-column="7" selection-end-line="104" selection-end-column="7" />
+        <state relative-caret-position="1853">
+          <caret line="128" column="41" lean-forward="false" selection-start-line="128" selection-start-column="41" selection-end-line="128" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#GameLogic#0;class#GameLogic#0" expanded="false" />
             <element signature="method#start#0;class#GameLogic#0" expanded="false" />
-            <element signature="method#run#0;class#GameLogic#0" expanded="false" />
-            <element signature="method#checkPlayers#0;class#GameLogic#0" expanded="false" />
-            <element signature="method#sendStatus#0;class#GameLogic#0" expanded="false" />
-            <element signature="docComment;method#centroidMoveLeft#0;class#GameLogic#0" expanded="false" />
-            <element signature="method#centroidMoveLeft#0;class#GameLogic#0" expanded="false" />
-            <marker date="1510090886143" expanded="false" signature="5164:6135" ph="{...}" />
-            <marker date="1510090886143" expanded="false" signature="6141:6502" ph="/**...*/" />
-            <marker date="1510090886143" expanded="false" signature="6615:6767" ph="{...}" />
-            <marker date="1510090886143" expanded="false" signature="6773:7136" ph="/**...*/" />
-            <marker date="1510090886143" expanded="false" signature="7251:7403" ph="{...}" />
-            <marker date="1510090886143" expanded="false" signature="7409:7775" ph="/**...*/" />
-            <marker date="1510090886143" expanded="false" signature="7891:8043" ph="{...}" />
+            <element signature="e#2283#2301#0" expanded="false" />
+            <element signature="e#2614#2615#0" expanded="true" />
+            <element signature="e#2666#2667#0" expanded="true" />
+            <element signature="method#start#0;class#MovePlayers#0;class#GameLogic#0" expanded="false" />
+            <element signature="class#HandleInput#0;class#GameLogic#0" expanded="false" />
+            <element signature="method#HandleInput#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+            <element signature="method#start#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+            <element signature="method#run#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+            <element signature="method#updateStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+            <element signature="e#6065#6127#0" expanded="false" />
+            <element signature="method#checkStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+            <element signature="class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
+            <element signature="e#10023#10041#0" expanded="false" />
+            <element signature="method#SendGameStatus#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
+            <element signature="method#start#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
+            <element signature="method#run#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+          <folding>
+            <element signature="method#Client#0;class#Client#0" expanded="false" />
+            <element signature="method#keyCheck#0;class#Client#0" expanded="false" />
+            <element signature="method#setKeys#0;class#Client#0" expanded="false" />
+            <element signature="method#setKeys#1;class#Client#0" expanded="false" />
+            <element signature="method#keyCheck#1;class#Client#0" expanded="false" />
+            <element signature="method#toClientKeys#0;class#Client#0" expanded="false" />
+            <element signature="class#ClientKeys#0;class#Client#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/ClientSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="12" column="86" lean-forward="false" selection-start-line="12" selection-start-column="86" selection-end-line="12" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="41" lean-forward="false" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -663,6 +734,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>unnamed</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
