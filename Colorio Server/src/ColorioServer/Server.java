@@ -9,6 +9,8 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.Collections;
+import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Logger;
@@ -135,6 +137,7 @@ public class Server {
          *     Receive data from the socket
          *     Deserialize the data
          *     Decide its type and act accordingly (do handshake or add KeyInput to the handle queue)
+         *     TODO refresh IP
          */
         @Override
         public void run() {
@@ -155,9 +158,9 @@ public class Server {
                     Handshake h = (Handshake) o;
                     gotHandshake(h, receivePacket.getAddress());
 
-                } else if(o instanceof KeyInput){   //At this point it does not matter what kind, just pass to GameLogic
-                    KeyEvent k = (KeyEvent) o;
-                    clients.get(k.getPlayerId()).setAddr(receivePacket.getAddress()); //Update IP - might have changed
+                } else if(o instanceof KeyInput){   //At this point it does not matter what kind, just pass it to GameLogic
+                    KeyInput k = (KeyInput) o;
+                    //clients.get(k.getPlayerId()).setAddr(receivePacket.getAddress()); //Update IP - might have changed
                     toHandle.add(k);
                 }
 
@@ -172,8 +175,13 @@ public class Server {
          */
         private void gotHandshake(@NotNull Handshake h, @NotNull InetAddress ip){
             if(h.getName() != null && h.getId() == 0){              //Connecting client
-                int nextId = Collections.max(Server.this.clients.keySet()) + 1;             //TODO more elegant nextId
 
+                int nextId;
+                try {
+                    nextId = Collections.max(Server.this.clients.keySet()) + 1;             //TODO more elegant nextId
+                }catch (NoSuchElementException e){
+                    nextId = 1;
+                }
                 Server.this.clients.put(nextId, new Client(h.getName(), ip));
                 OutPacket op = new OutPacket(nextId, new Handshake(h.getName(), nextId));
                 try {
@@ -231,6 +239,7 @@ public class Server {
         /**
          * Thread run method - sends the elements of toSend
          *     Takes an element from toSend, converts its packet to DatagramPacket whose IP id the IP-Address of its client
+         * TODO use IP instead of localhost
          */
         @Override
         public void run() {
@@ -238,7 +247,8 @@ public class Server {
             while(Server.this.isRunning){
                 try {
                     OutPacket ts = toSend.take();
-                    socket.send(ts.getPacket().toDatagramPacket(/*clients.get(ts.getTargetId()).getAddr()*/InetAddress.getByName("localhost"), outPort));
+                    DatagramPacket readyPacket = ts.getPacket().toDatagramPacket(InetAddress.getByName("localhost"), outPort);
+                    socket.send(readyPacket);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }catch (IOException e){

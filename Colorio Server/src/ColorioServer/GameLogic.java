@@ -125,8 +125,10 @@ public class GameLogic{
                 Set<Map.Entry<Integer, Client>> es = clients.entrySet();
 
                 for(Map.Entry<Integer, Client> i : es){
-                    i.getValue().moveCentroid();
-                    checkMap(i.getKey());
+                    if(i.getValue().isPlaying()) {
+                        i.getValue().moveCentroid();
+                        checkMap(i.getKey());
+                    }
                 }
             }
 
@@ -344,7 +346,7 @@ public class GameLogic{
         }
 
         /**
-         * Prepare and 'send' a GameStatus object for each client
+         * Prepare and 'send' a GameStatus object for each (playing) client
          */
         private void send(){
             //LOGGER.info("Sending");
@@ -352,18 +354,20 @@ public class GameLogic{
             Set<Map.Entry<Integer, Client>> es = clients.entrySet();
 
             for(Map.Entry<Integer, Client> i : es){
-                currentStatus = new GameStatus();
-                for(Map.Entry<Integer, Client> j : es){
-                    if(j.getKey() == i.getKey()){
-                        currentStatus.addCentroid(0, j.getValue().getCent());
-                    }else{
-                        currentStatus.addCentroid(j.getValue().getCent());
+                if(i.getValue().isPlaying()) {
+                    currentStatus = new GameStatus();
+                    for (Map.Entry<Integer, Client> j : es) {
+                        if (j.getKey() == i.getKey()) {
+                            currentStatus.addCentroid(0, j.getValue().getCent());
+                        } else {
+                            currentStatus.addCentroid(j.getValue().getCent());
+                        }
                     }
-                }
-                try{
-                    toSend.put(new OutPacket(i.getKey(), currentStatus));
-                }catch (InterruptedException e){
-                    e.printStackTrace();
+                    try {
+                        toSend.put(new OutPacket(i.getKey(), currentStatus));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
