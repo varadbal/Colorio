@@ -10,11 +10,12 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.Collections;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Logger;
 
-import static ColorioCommon.Constants.portNumber;
+import static ColorioCommon.Constants.clientPort;
+import static ColorioCommon.Constants.serverPort;
+
 
 /**
  * ColorIo server-end communication class
@@ -35,7 +36,8 @@ public class Server {
     private ServerOut sOut = null;
     private boolean isRunning = false;
 
-    private int port = portNumber;
+    private int inPort = serverPort;
+    private int outPort = clientPort;
     private DatagramSocket socket = null;
 
     /**
@@ -57,7 +59,7 @@ public class Server {
      */
     private void initializeServer(){
         try {
-            socket = new DatagramSocket(port);
+            socket = new DatagramSocket(inPort);
         }catch (SocketException e){
             e.printStackTrace();
         }
@@ -146,8 +148,8 @@ public class Server {
                     e.printStackTrace();
                 }
 
-                UDPSerializable o = null;
-                o.getFromDatagramPacket(receivePacket);
+                UDPSerializable o = UDPSerializable.getClassFromDatagramPacket(receivePacket);
+                //o.getFromDatagramPacket(receivePacket);
 
                 if(o instanceof Handshake){         //Either connecting first shake or disconnecting
                     Handshake h = (Handshake) o;
@@ -236,7 +238,7 @@ public class Server {
             while(Server.this.isRunning){
                 try {
                     OutPacket ts = toSend.take();
-                    socket.send(ts.getPacket().toDatagramPacket(clients.get(ts.getTargetId()).getAddr(), port));
+                    socket.send(ts.getPacket().toDatagramPacket(/*clients.get(ts.getTargetId()).getAddr()*/InetAddress.getByName("localhost"), outPort));
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }catch (IOException e){

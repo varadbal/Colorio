@@ -7,3 +7,5 @@ Colorio Client/.idea/workspace.xml
 *.class
 *.class
 *.class
+.idea/artifacts/unnamed.xml
+Colorio Server/out/artifacts/unnamed/unnamed.jar

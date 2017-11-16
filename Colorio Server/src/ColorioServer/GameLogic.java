@@ -48,7 +48,7 @@ public class GameLogic{
     }
 
     /**
-     * Starting the Move- and Send-threads
+     * Starting the Move-, Send and Handle-threads
      * TODO complete
      */
     public void start(){

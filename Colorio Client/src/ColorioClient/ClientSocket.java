@@ -6,11 +6,10 @@ import javax.swing.*;
 import java.io.IOException;
 import java.net.*;
 
-import static ColorioCommon.Constants.portNumber;
 
 public class ClientSocket extends DatagramSocket {
     public static boolean isLoggerOn=true;
-    public static int defaultPort=portNumber;       //FIXME not sure if I set it right
+    public static int defaultPort=12345;
     private String name;
     private InetAddress address;
     private int port;
@@ -25,9 +24,9 @@ public class ClientSocket extends DatagramSocket {
      * @throws IOException
      */
     public ClientSocket(InetAddress address, String name, JLabel messageLabel) throws IOException {
-        super(defaultPort);
+        super(Constants.clientPort);
         this.messageLabel = messageLabel;
-        this.port = defaultPort;
+        this.port = Constants.serverPort;
         this.name=name;
         this.address=address;
         frame = new ColorioFrame(this);

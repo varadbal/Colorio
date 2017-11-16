@@ -19,9 +19,9 @@ public interface UDPSerializable extends Serializable {
                 return null;
             }
 
-            KeyEvent recivedPacket = null;
+            UDPSerializable recivedPacket = null;
             try {
-                recivedPacket = (KeyEvent) ois.readObject();
+                recivedPacket = (UDPSerializable) ois.readObject();
             } catch (IOException e) {
                 System.out.println("Read object error: {0}");
                 return null;

@@ -8,5 +8,6 @@ public abstract class Constants {
 
     public static double startingWeight = 1.0;
 
-    public static int portNumber = 49155;
+    public static int serverPort = 49155;
+    public static int clientPort = 49154;
 }
