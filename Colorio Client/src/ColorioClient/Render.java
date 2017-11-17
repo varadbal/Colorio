@@ -6,9 +6,11 @@ import ColorioCommon.GameStatus;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+/**
+ * This class renders the frames
+ */
 public class Render extends BufferedImage{
     private GameStatus status;
-    private ColorioFrame frame;
     private static final double sigmoidStep=0.0005;
     private static final int sigmoidTableSize=32768;
     private final double whiteLimit=0.01;
@@ -18,15 +20,14 @@ public class Render extends BufferedImage{
     private static boolean isSigmoidCacheFilled=false;
 
     /**
-     * @param width
-     * @param height
-     * @param status0
-     * @param frame
+     * Constructor
+     * @param width width of the image to render
+     * @param height height of the image to render
+     * @param status the status of the game to render
      */
-    public Render(int width, int height, GameStatus status0, ColorioFrame frame) {
+    public Render(int width, int height, GameStatus status) {
         super(width, height, BufferedImage.TYPE_INT_RGB);
-        status=status0;
-        this.frame=frame;
+        this.status =status;
         if(!isSigmoidCacheFilled){
             sigmoidCache=new double[sigmoidTableSize];
             for (int i=0;i<sigmoidTableSize;i++){
@@ -36,13 +37,21 @@ public class Render extends BufferedImage{
         }
     }
 
-    private double maxSum=0;
-
+    /**
+     * This is a sigmoid function
+     * @param x the value
+     * @return sigmoid value od x
+     */
     private static double sigmoid(double x)
     {
         return 1 / (1 + Math.exp(-x));
     }
 
+    /**
+     * This is a sigmoid function, accelerated with cache table
+     * @param x the value
+     * @return sigmoid value od x
+     */
     private double cacheSigmoid(double x){
         int q = (int) (x/sigmoidStep);
         if(q>(sigmoidTableSize-1)) return 1;
@@ -51,27 +60,15 @@ public class Render extends BufferedImage{
         }
     }
 
+    /**
+     * This function renders the frame from gameStatus
+     */
     public void render(){
-        double sum=0;
-        int bi=0;
         ArrayList<Centroid> centroids = status.getCentroids();
-        /*for (int i=0;i<getWidth();i++){
-            for (int j=0;j<getHeight();j++){
-                sum=0;
-                for(ColorioCommon.Centroid centroid : centroids){
-                    sum+=5.0/((i-centroid.getX())*(i-centroid.getX())+(j-centroid.getY())*(j-centroid.getY()))*centroid.getWeight();
-                }
-                int gray=255- (int) (((cacheSigmoid(sum)-0.5))*2*255);
-                int rgb = gray;
-                rgb = (rgb << 8) + gray;
-                rgb = (rgb << 8) + gray;
-                setRGB(i,j,rgb);
-            }
-        }*/
         double screen[][] = new double[ColorioFrame.width][ColorioFrame.height];
         double screenRed[][] = new double[ColorioFrame.width][ColorioFrame.height];
         double screenGreen[][] = new double[ColorioFrame.width][ColorioFrame.height];
-        double screenBlue[][] = new double[ColorioFrame.width][ColorioFrame.height];
+        double screenBlue[][] = new double[ColorioFrame.width][ColorioFrame.height];/*
         for(Centroid centroid : centroids){
             int startPointX = (int) (centroid.getX()-minRenderRange/2);
             int endPointX = (int) (startPointX+minRenderRange);
@@ -80,13 +77,11 @@ public class Render extends BufferedImage{
             if (centroid.getWeight()*renderRange>minRenderRange) {
                 startPointX = (int) (centroid.getX()-centroid.getWeight()*renderRange);
                 endPointX = (int) (startPointX + 2*centroid.getWeight()*renderRange);
-                if(startPointX<0) startPointX=0;
-                if(endPointX>getWidth()) endPointX = getWidth();
-                startPointY = (int) (centroid.getY()-centroid.getWeight()*renderRange);
-                endPointY = (int) (startPointY + 2*centroid.getWeight()*renderRange);
-                if(startPointY<0) startPointY=0;
-                if(endPointY>getHeight()) endPointY=getHeight();
             }
+            if(startPointX<0) startPointX=0;
+            if(endPointX>getWidth()) endPointX = getWidth();
+            if(startPointY<0) startPointY=0;
+            if(endPointY>getHeight()) endPointY=getHeight();
             for (int i=startPointX;i<endPointX;i++){
                 for (int j=startPointY;j<endPointY;j++){
                     double intensity = (2.0/((i-centroid.getX())*(i-centroid.getX())+(j-centroid.getY())*(j-centroid.getY()))*centroid.getWeight());
@@ -94,6 +89,17 @@ public class Render extends BufferedImage{
                     screenRed[i][j]+=intensity*(1-centroid.color.getRed()/255.0);
                     screenGreen[i][j]+=intensity*(1-centroid.color.getGreen()/255.0);
                     screenBlue[i][j]+=intensity*(1-centroid.color.getBlue()/255.0);
+                }
+            }
+        }*/
+        for (int i=0;i<getWidth();i++){
+            for (int j=0;j<getHeight();j++){
+                for (Centroid centroid : centroids) {
+                    double intensity = (2.0 / ((i - centroid.getX()) * (i - centroid.getX()) + (j - centroid.getY()) * (j - centroid.getY())) * centroid.getWeight());
+                    screen[i][j] += intensity;
+                    screenRed[i][j] += intensity * (1 - centroid.color.getRed() / 255.0);
+                    screenGreen[i][j] += intensity * (1 - centroid.color.getGreen() / 255.0);
+                    screenBlue[i][j] += intensity * (1 - centroid.color.getBlue() / 255.0);
                 }
             }
         }

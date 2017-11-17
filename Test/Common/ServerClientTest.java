@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.InetAddress;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ServerClientTest {
 
@@ -37,6 +38,7 @@ class ServerClientTest {
          */
         ClientSocket socket = new ClientSocket(InetAddress.getByName("localhost"),"test",messageLabel);
         socket.start();
+        assertEquals("Connecting...", messageLabel.getText());
 
     }
 
