@@ -2,7 +2,6 @@ package ColorioServer;
 
 import ColorioCommon.*;
 import com.sun.istack.internal.NotNull;
-import sun.rmi.runtime.Log;
 
 import java.awt.*;
 import java.time.Instant;
@@ -31,6 +30,8 @@ public class GameLogic{
     private HandleInput handleI = null;
     private SendGameStatus sendS = null;
     private boolean isRunning = false;
+    private int noInputTimeOut = 500;
+    private int commTimeOut = Constants.responseTimeOut;
     //endregion
 
     /**
@@ -79,7 +80,14 @@ public class GameLogic{
     }
 
     /**
-     * Thread for moving the players in regular time intervals
+     * Stopping the threads
+     */
+    public void stop(){
+        isRunning = false;
+    }
+
+    /**
+     * Thread for moving and checking the players in regular time intervals
      * Should not be manipulated from the outside
      */
     private class MovePlayers implements Runnable{
@@ -113,7 +121,8 @@ public class GameLogic{
 
         /**
          * Thread run method
-         *     Moves a player (or waits until it is possible)
+         *     Checks map for inactive players
+         *     Moves a (playing) player (or waits until it is possible)
          *     Checks map (with that player in the 'center of attention')
          * TODO implement
          */
@@ -123,15 +132,29 @@ public class GameLogic{
 
             while(isRunning){
                 Set<Map.Entry<Integer, Client>> es = clients.entrySet();
-
+                ArrayList<Integer> toRemove = new ArrayList<>();
+                /*Iterate through the clients*/
                 for(Map.Entry<Integer, Client> i : es){
+                    /*Get the inactive-client keys and skip them*/
+                    long atm = Instant.now().toEpochMilli();//So that it is calculated only once
+                    if(atm - i.getValue().getLastCheck() > commTimeOut){
+                        toRemove.add(i.getKey());
+                        continue;
+                    }
+
+                    /*Move the (active) players (clients)*/
                     if(i.getValue().isPlaying()) {
                         i.getValue().moveCentroid();
                         checkMap(i.getKey());
                     }
                 }
-            }
 
+                /*Remove the inactive clients*/
+                for(Integer i : toRemove){
+                    clients.remove(i);
+                }
+            }
+            LOGGER.info("Stopping thread " + threadName);
         }
 
         private void checkMap(int lastMovedId){
@@ -193,9 +216,9 @@ public class GameLogic{
 
                 KeyInput i = null;
                 try {
-                    i = toHandle.take();
+                    i = toHandle.poll(noInputTimeOut, TimeUnit.MILLISECONDS);
                 }catch (InterruptedException e){
-                    e.printStackTrace();
+                    continue;
                 }
 
                 if(i instanceof KeyEvent){
@@ -207,7 +230,7 @@ public class GameLogic{
                 }
 
             }
-
+            LOGGER.info("Stopping thread " + threadName);
         }
 
         /**
@@ -342,7 +365,7 @@ public class GameLogic{
                     e.printStackTrace();
                 }
             }
-
+            LOGGER.info("Stopping thread " + threadName);
         }
 
         /**

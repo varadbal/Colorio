@@ -21,6 +21,14 @@ public class ServerMain {
         serv.start();
         gl.start();
 
+        try {
+            Thread.sleep(10000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        gl.stop();
+        serv.stop();
 
     }
 }

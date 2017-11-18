@@ -8,6 +8,8 @@ import java.net.InetAddress;
 import java.security.Key;
 import java.time.Instant;
 
+import static ColorioCommon.Constants.baseSpeed;
+
 public class Client {
     //region Communication Variables
     private String name;            //Communciation modifies
@@ -17,7 +19,7 @@ public class Client {
     //region GameLogic Variables
     private boolean isPlaying = false;  //If true, all variables should be set
     private Centroid cent = null;       //Centroid of the Client
-    private long lastKeyCheck = 0L;     //Last Check of Keys ClientKeys.equals() updates
+    private long lastCheck = 0L;     //Last Check of Keys ClientKeys.equals() updates (and set once in c'tor)
     private long lastKeyUpdate = 0L;    //Last update of 'keys' (setKeys() updates)
     private ClientKeys keys = null;     //Keys pressed on the client
     //endregion
@@ -31,6 +33,7 @@ public class Client {
     Client(@NotNull String name, @NotNull InetAddress address){
         this.name = name;
         addr = address;
+        lastCheck = Instant.now().toEpochMilli();
     }
 
 
@@ -40,7 +43,7 @@ public class Client {
      * @return True if the two objects are similar
      */
     public boolean keyCheck(ClientKeys control){
-        lastKeyCheck = Instant.now().toEpochMilli();
+        lastCheck = Instant.now().toEpochMilli();
         if(keys.equals(control)){
             return true;
         }else{
@@ -71,8 +74,8 @@ public class Client {
         return keys;
     }
 
-    public long getLastKeyCheck() {
-        return lastKeyCheck;
+    public long getLastCheck() {
+        return lastCheck;
     }
 
     public long getLastKeyUpdate() {
@@ -110,7 +113,7 @@ public class Client {
      * @return
      */
     public boolean keyCheck(KeyStatus k){
-        lastKeyCheck = Instant.now().toEpochMilli();
+        lastCheck = Instant.now().toEpochMilli();
         if(keys.equals(toClientKeys(k))){
             return true;
         }
@@ -150,7 +153,7 @@ public class Client {
             vertical = 1;
         }
 
-        cent.setLocation(cent.getX() + horizontal * 1, cent.getY() + vertical * 1);
+        cent.setLocation(cent.getX() + horizontal * baseSpeed, cent.getY() + vertical * baseSpeed);
     }
 
     /**

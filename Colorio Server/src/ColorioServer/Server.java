@@ -4,10 +4,7 @@ import ColorioCommon.*;
 import com.sun.istack.internal.NotNull;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.SocketException;
+import java.net.*;
 import java.util.Collections;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -16,6 +13,7 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Logger;
 
 import static ColorioCommon.Constants.clientPort;
+import static ColorioCommon.Constants.responseTimeOut;
 import static ColorioCommon.Constants.serverPort;
 
 
@@ -57,11 +55,12 @@ public class Server {
     }
 
     /**
-     * Setting up the socket
+     * Setting up the socket, with a timeout of 10s
      */
     private void initializeServer(){
         try {
             socket = new DatagramSocket(inPort);
+            socket.setSoTimeout(responseTimeOut);
         }catch (SocketException e){
             e.printStackTrace();
         }
@@ -89,6 +88,36 @@ public class Server {
             /**
              * TODO throw exception
              */
+        }
+    }
+
+    /**
+     * Stops the threads by setting isRunning to false
+     * Waits a second then interrupts the ServerOut if necessary (because of the BlockingQueue)
+     * ServerIn should stop because of the timeOut
+     * Close Socket
+     */
+    public void stop(){
+        isRunning = false;
+
+        try {
+            Thread.sleep(1000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        if(sOut != null && sOut.isAlive()){
+            sOut.interrupt();
+        }
+
+        try {
+            Thread.sleep(responseTimeOut);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        if(socket != null){
+            socket.close();
         }
     }
 
@@ -141,12 +170,14 @@ public class Server {
          */
         @Override
         public void run() {
-            System.out.println("Running thread " + threadName);
+            LOGGER.info("Running thread " + threadName);
             while(Server.this.isRunning){
                 DatagramPacket receivePacket = new DatagramPacket(new byte[2048], 2048);
 
                 try {
                     socket.receive(receivePacket);
+                }catch(SocketTimeoutException e){
+                    continue;           //So that it doesn't get stuck before shutdown
                 }catch (IOException e){
                     e.printStackTrace();
                 }
@@ -165,6 +196,7 @@ public class Server {
                 }
 
             }
+            LOGGER.info("Stopping thread " + threadName);
         }
 
         /**
@@ -178,7 +210,7 @@ public class Server {
 
                 int nextId;
                 try {
-                    nextId = Collections.max(Server.this.clients.keySet()) + 1;             //TODO more elegant nextId
+                    nextId = Collections.max(Server.this.clients.keySet()) + 1;     //This way no problem from improper disconnects
                 }catch (NoSuchElementException e){
                     nextId = 1;
                 }
@@ -239,22 +271,42 @@ public class Server {
         /**
          * Thread run method - sends the elements of toSend
          *     Takes an element from toSend, converts its packet to DatagramPacket whose IP id the IP-Address of its client
-         * TODO use IP instead of localhost
          */
         @Override
         public void run() {
-            System.out.println("Running thread " + threadName);
+            LOGGER.info("Running thread " + threadName);
             while(Server.this.isRunning){
                 try {
                     OutPacket ts = toSend.take();
-                    DatagramPacket readyPacket = ts.getPacket().toDatagramPacket(InetAddress.getByName("localhost"), outPort);
+                    DatagramPacket readyPacket = ts.getPacket().toDatagramPacket(/*InetAddress.getByName("localhost")*/
+                            clients.get(ts.getTargetId()).getAddr(), outPort);
                     socket.send(readyPacket);
                 }catch (InterruptedException e){
-                    e.printStackTrace();
+                    continue;               //So that it doesn't get stuck on shutdown
                 }catch (IOException e){
                     e.printStackTrace();
                 }
             }
+            LOGGER.info("Stopping thread " + threadName);
+        }
+
+        /**
+         * Helper method for stopping the thread
+         * @return Thread.isAlive(); (of the running thread) or false
+         */
+        public boolean isAlive(){
+            if(t != null) {
+                return t.isAlive();
+            }else{
+                return false;
+            }
+        }
+
+        /**
+         * Helper method for stopping the thread
+         */
+        public void interrupt(){
+            t.interrupt();
         }
     }
 

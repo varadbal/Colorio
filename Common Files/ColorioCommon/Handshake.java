@@ -27,7 +27,7 @@ public class Handshake implements UDPSerializable{
     public String toString() {
         return ("name: " + name + ", id: " + id);
     }
-
+    @Override
     public DatagramPacket toDatagramPacket(InetAddress address, int port) {
         try {
             // Serializing the packet
@@ -42,7 +42,7 @@ public class Handshake implements UDPSerializable{
         }
         return null;
     }
-
+    @Override
     public boolean getFromDatagramPacket(DatagramPacket packet) {
         ByteArrayInputStream bais = new ByteArrayInputStream(packet.getData());
 
