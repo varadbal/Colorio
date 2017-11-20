@@ -8,7 +8,7 @@ public abstract class Constants {
     public static int connectionStopRepeatLimit=3;
 
     public static double startingWeight = 100.0;
-    public static double baseSpeed = 0.01;
+    public static double baseSpeed = 0.1;
 
     public static int serverPort = 49155;
     public static int clientPort = 49154;

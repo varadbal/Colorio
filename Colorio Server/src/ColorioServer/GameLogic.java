@@ -124,34 +124,40 @@ public class GameLogic{
          *     Checks map for inactive players
          *     Moves a (playing) player (or waits until it is possible)
          *     Checks map (with that player in the 'center of attention')
-         * TODO implement
+         * FIXME use ScheduledExecutorService
          */
         @Override
         public void run() {
             LOGGER.info("Running thread " + threadName);
 
+            long lastOne = 0L;
             while(isRunning){
-                Set<Map.Entry<Integer, Client>> es = clients.entrySet();
-                ArrayList<Integer> toRemove = new ArrayList<>();
+                if(Instant.now().toEpochMilli() - lastOne > Constants.serverSleep / 2) {
+                    lastOne = Instant.now().toEpochMilli();
+
+                    Set<Map.Entry<Integer, Client>> es = clients.entrySet();
+                    ArrayList<Integer> toRemove = new ArrayList<>();
                 /*Iterate through the clients*/
-                for(Map.Entry<Integer, Client> i : es){
+                    for (Map.Entry<Integer, Client> i : es) {
                     /*Get the inactive-client keys and skip them*/
-                    long atm = Instant.now().toEpochMilli();//So that it is calculated only once
-                    if(atm - i.getValue().getLastCheck() > commTimeOut){
-                        toRemove.add(i.getKey());
-                        continue;
-                    }
+                        long atm = Instant.now().toEpochMilli();//So that it is calculated only once
+                        if (atm - i.getValue().getLastCheck() > commTimeOut) {
+                            toRemove.add(i.getKey());
+                            continue;
+                        }
 
                     /*Move the (active) players (clients)*/
-                    if(i.getValue().isPlaying()) {
-                        i.getValue().moveCentroid();
-                        checkMap(i.getKey());
+                        if (i.getValue().isPlaying()) {
+                            i.getValue().moveCentroid();
+                            checkMap(i.getKey());
+                        }
                     }
-                }
 
                 /*Remove the inactive clients*/
-                for(Integer i : toRemove){
-                    clients.remove(i);
+                    for (Integer i : toRemove) {
+                        clients.remove(i);
+                    }
+
                 }
             }
             LOGGER.info("Stopping thread " + threadName);
@@ -360,7 +366,7 @@ public class GameLogic{
                 send();
 
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(Constants.serverSleep);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }

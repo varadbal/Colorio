@@ -21,6 +21,7 @@ public class Client {
     private Centroid cent = null;       //Centroid of the Client
     private long lastCheck = 0L;     //Last Check of Keys ClientKeys.equals() updates (and set once in c'tor)
     private long lastKeyUpdate = 0L;    //Last update of 'keys' (setKeys() updates)
+    private long lastMoved = 0L;
     private ClientKeys keys = null;     //Keys pressed on the client
     //endregion
 
@@ -135,6 +136,10 @@ public class Client {
      */
     public void moveCentroid(){
 
+        if(lastMoved == 0L){ //Check if it was ever moved (no -> initialize)
+            lastMoved = Instant.now().toEpochMilli();
+        }
+
         int horizontal = 0;
         int vertical = 0;
 
@@ -149,11 +154,13 @@ public class Client {
             vertical = 0;
         }else if(keys.isW()){
             vertical = -1;
-        }else if(keys.isD()){
+        }else if(keys.isS()){
             vertical = 1;
         }
 
-        cent.setLocation(cent.getX() + horizontal * baseSpeed, cent.getY() + vertical * baseSpeed);
+        long now = Instant.now().toEpochMilli();
+        cent.setLocation(cent.getX() + horizontal * baseSpeed * (now - lastMoved), cent.getY() + vertical * baseSpeed * (now - lastMoved));
+        lastMoved = now;
     }
 
     /**

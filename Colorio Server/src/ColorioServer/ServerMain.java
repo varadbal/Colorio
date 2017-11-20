@@ -27,8 +27,8 @@ public class ServerMain {
             e.printStackTrace();
         }
 
-        gl.stop();
-        serv.stop();
+        //gl.stop();
+        //serv.stop();
 
     }
 }
