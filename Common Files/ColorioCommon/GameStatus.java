@@ -47,6 +47,15 @@ public class GameStatus implements UDPSerializable{
         centroids.add(index, cent);
     }
 
+    @Override
+    public String toString() {
+        String ret = new String("");
+        for (Centroid centroid : centroids){
+            ret+=centroid.toString();
+        }
+        return ret;
+    }
+
     /**
      * UDPSerializable implementation
      */

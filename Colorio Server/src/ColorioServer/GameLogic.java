@@ -291,7 +291,7 @@ public class GameLogic{
                     LOGGER.info("-It is a handshake");
                     said.setKeys(k);
                     Random rand = new Random();
-                    said.setCent(new Centroid(1.0, 1.0, startingWeight, new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat())));
+                    said.setCent(new Centroid(50.0, 500.0, startingWeight, new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat())));
                     said.setPlaying(true);
                 }else{                                              //If initialized (handshake is done)
                     LOGGER.info("-It is a check");

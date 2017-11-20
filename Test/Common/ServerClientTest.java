@@ -1,6 +1,7 @@
 package Common;
 
 import ColorioClient.ClientSocket;
+import ColorioCommon.Constants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,23 +9,22 @@ import javax.swing.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ServerClientTest {
 
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final JLabel messageLabel = new JLabel();
-
+    private DatagramSocket server = null;
     /**
-     * For testing standard output
+     * Initialize tests
      * @throws IOException
      */
     @BeforeEach
-    public void setUpStreams() throws IOException {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
+    public void setUp() throws IOException {
+       server = new DatagramSocket(Constants.serverPort);
+
     }
 
     @Test

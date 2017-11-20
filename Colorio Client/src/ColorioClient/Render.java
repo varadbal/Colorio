@@ -64,6 +64,7 @@ public class Render extends BufferedImage{
      * This function renders the frame from gameStatus
      */
     public void render(){
+        System.out.println(status.toString());
         ArrayList<Centroid> centroids = status.getCentroids();
         double screen[][] = new double[ColorioFrame.width][ColorioFrame.height];
         double screenRed[][] = new double[ColorioFrame.width][ColorioFrame.height];

@@ -12,6 +12,11 @@ public class Centroid extends Point2D.Double {
         weight= weight0;
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
     public double getWeight() {
         return weight;
     }

@@ -92,6 +92,7 @@ public class ColorioFrame extends JFrame implements Runnable, ComponentListener{
      */
     public void refreshGameStatus(GameStatus status){
         this.status=status;
+        int s=5;
     }
 
     /**
@@ -153,5 +154,10 @@ public class ColorioFrame extends JFrame implements Runnable, ComponentListener{
     @Override
     public void componentHidden(ComponentEvent e) {
         isRenderingActive=false;
+    }
+
+
+    public GameStatus getStatus() {
+        return status;
     }
 }

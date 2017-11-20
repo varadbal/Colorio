@@ -192,6 +192,7 @@ public class ClientSocket extends DatagramSocket implements KeyListener {
                     }
                     if(initialStatus.getFromDatagramPacket(responsePacket)){
                         log("handshake","Initial game status received, and successfully deserialized.");
+                        frame.refreshGameStatus(initialStatus);
                         break;
                     }
                     else {
@@ -336,5 +337,12 @@ public class ClientSocket extends DatagramSocket implements KeyListener {
                 }
             }
         }
+    }
+
+    /**
+     * Tester method
+     */
+    public ColorioFrame getFrame() {
+        return frame;
     }
 }
