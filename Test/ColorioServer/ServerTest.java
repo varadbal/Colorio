@@ -110,17 +110,17 @@ class ServerTest {
         sock.receive(rec);
         GameStatus recGs = (GameStatus) UDPSerializable.getClassFromDatagramPacket(rec);
 
-        Assertions.assertNotNull(recGs.getCentroids().get(0));
+        Assertions.assertNotNull(recGs.getPlayers().get(0).getPlayer());
 
         //Another GameStatus
         rec = new DatagramPacket(new byte[10240], 10240);
         sock.receive(rec);
         recGs = (GameStatus) UDPSerializable.getClassFromDatagramPacket(rec);
 
-        Assertions.assertNotNull(recGs.getCentroids().get(0));
+        Assertions.assertNotNull(recGs.getPlayers().get(0));
 
         //Send KeyEvent
-        Centroid initCent = recGs.getCentroids().get(0);
+        Centroid initPlTop = recGs.getPlayers().get(0).getPlayer().getTop();
         ColorioCommon.KeyEvent ke = new KeyEvent(1, new java.awt.event.KeyEvent(new java.awt.Button(),
                 java.awt.event.KeyEvent.KEY_PRESSED, Instant.now().toEpochMilli(), 0,
                 java.awt.event.KeyEvent.VK_W, 'w'));
@@ -128,14 +128,14 @@ class ServerTest {
         sock.send(kep);
 
         boolean movedCorrectly = false;
-        Centroid newCent = null;
+        Centroid newPlTop = null;
         for(int i = 0; i < 5; ++i) {
             rec = new DatagramPacket(new byte[10240], 10240);
             sock.receive(rec);
             recGs = (GameStatus) UDPSerializable.getClassFromDatagramPacket(rec);
-            newCent = recGs.getCentroids().get(0);
+            newPlTop = recGs.getPlayers().get(0).getPlayer().getTop();
 
-            if( (newCent.getY() < initCent.getY()) &&  (newCent.getX() - initCent.getX() < 0.01)){
+            if( (newPlTop.getY() < initPlTop.getY()) &&  (newPlTop.getX() - initPlTop.getX() < 0.01)){
                 movedCorrectly = true;
                 break;
             }
@@ -143,8 +143,8 @@ class ServerTest {
         Assertions.assertTrue(movedCorrectly);
 
         //Send a conflicting KeyStatus
-        if(newCent == null){//At this point it should be initialized anyways
-            newCent = new Centroid(1.0, 1.0, Constants.startingWeight, new java.awt.Color(255, 255, 255));
+        if(newPlTop == null){//Don't cry compiler, at this point it should be initialized anyways
+            newPlTop = new Centroid(1.0, 1.0, Constants.startingWeight, new java.awt.Color(255, 255, 255));
         }
 
         DatagramPacket cks = new KeyStatus(1, false, false, true, true)
@@ -154,15 +154,15 @@ class ServerTest {
         sock.receive(rec);
         recGs = (GameStatus) UDPSerializable.getClassFromDatagramPacket(rec);
 
-        Centroid newestCent;
+        Centroid newestPlTop;
         movedCorrectly = false;
         for(int i = 0; i < 5; ++i) {
             rec = new DatagramPacket(new byte[10240], 10240);
             sock.receive(rec);
             recGs = (GameStatus) UDPSerializable.getClassFromDatagramPacket(rec);
-            newestCent = recGs.getCentroids().get(0);
+            newestPlTop = recGs.getPlayers().get(0).getPlayer().getTop();
 
-            if( (newestCent.getY() > newCent.getY()) &&  (newestCent.getX() > newCent.getX())){
+            if( (newestPlTop.getY() > newPlTop.getY()) &&  (newestPlTop.getX() > newPlTop.getX())){
                 movedCorrectly = true;
                 break;
             }
@@ -226,7 +226,7 @@ class ServerTest {
         sock.receive(rec);
         GameStatus recGs = (GameStatus) UDPSerializable.getClassFromDatagramPacket(rec);
 
-        Assertions.assertNotNull(recGs.getCentroids().get(0));
+        Assertions.assertNotNull(recGs.getPlayers().get(0));
 
         //No KeyStatus for some time
         boolean timedOut = false;
@@ -271,7 +271,7 @@ class ServerTest {
         sock.receive(rec);
         GameStatus recGs = (GameStatus) UDPSerializable.getClassFromDatagramPacket(rec);
 
-        Assertions.assertNotNull(recGs.getCentroids().get(0));
+        Assertions.assertNotNull(recGs.getPlayers().get(0));
 
         //Disconnect
         hs = new Handshake(null, 1).toDatagramPacket(InetAddress.getByName("localhost"), Constants.serverPort);

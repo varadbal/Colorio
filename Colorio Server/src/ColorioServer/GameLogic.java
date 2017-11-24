@@ -29,6 +29,7 @@ public class GameLogic{
     private MovePlayers moveP = null;
     private HandleInput handleI = null;
     private SendGameStatus sendS = null;
+    private HashSet<Centroid> foods = null;
     private boolean isRunning = false;
     private int noInputTimeOut = 500;
     private int commTimeOut = Constants.responseTimeOut;
@@ -43,6 +44,7 @@ public class GameLogic{
     public GameLogic(@NotNull ConcurrentMap<Integer, Client> clients,
                      @NotNull BlockingQueue<OutPacket> toSend, @NotNull BlockingQueue<KeyInput> toHandle){
         this.clients = clients;
+        this.foods = new HashSet<>();
         this.handleI = new HandleInput("HandleInput-1", toHandle);
         this.moveP = new MovePlayers("MovePlayers-1");
         this.sendS = new SendGameStatus("SendGameStatus-1", toSend);
@@ -297,7 +299,12 @@ public class GameLogic{
                     LOGGER.info("-It is a handshake");
                     said.setKeys(k);
                     Random rand = new Random();
-                    said.setCent(new Centroid(50.0, 500.0, startingWeight, new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat())));
+                    Color col = new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());
+                    said.setPlayer(new Player(
+                            new Centroid(50.0, 500.0, startingWeight, col),
+                            new Centroid(40.0, 500.0, startingWeight, col),
+                            new Centroid(45.0, 505.0, startingWeight, col),
+                            new Centroid(45.0, 495.0, startingWeight, col)));
                     said.setPlaying(true);
                 }else{                                              //If initialized (handshake is done)
                     LOGGER.info("-It is a check");
@@ -379,25 +386,11 @@ public class GameLogic{
          */
         private void send(){
             //LOGGER.info("Sending");
-            GameStatus currentStatus;
+            GameStatus currentStatus = new GameStatus();
             Set<Map.Entry<Integer, Client>> es = clients.entrySet();
 
             for(Map.Entry<Integer, Client> i : es){
-                if(i.getValue().isPlaying()) {
-                    currentStatus = new GameStatus();
-                    for (Map.Entry<Integer, Client> j : es) {
-                        if (j.getKey() == i.getKey()) {
-                            currentStatus.addCentroid(0, j.getValue().getCent());
-                        } else {
-                            currentStatus.addCentroid(j.getValue().getCent());
-                        }
-                    }
-                    try {
-                        toSend.put(new OutPacket(i.getKey(), currentStatus));
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+                currentStatus.addPlayerEntry(new PlayerEntry(i.getKey(), i.getValue().getPlayer(), i.getValue().getName()));
             }
         }
         //endregion

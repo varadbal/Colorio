@@ -11,50 +11,55 @@ import java.util.ArrayList;
 
 /**
  * UDPSerializable wrapper class for an ArrayList
- * ATM holds Centroids, maybe change that later
- * First one should be the client's own
+ * One ArrayList for Players and one for Foods
  */
 public class GameStatus implements UDPSerializable{
     /**
      * Instance variables
      */
-    private ArrayList<Centroid> centroids;
-
+    private ArrayList<PlayerEntry> players;
+    private ArrayList<Centroid> foods;          //Non-player objects?
     /**
      * Constructor
      */
-    public  GameStatus(){
-        centroids = new ArrayList<>();
+    public GameStatus() {
+        players = new ArrayList<>();
+        foods = new ArrayList<>();
     }
 
     /**
      * Getters, Setters
      */
-    public ArrayList<Centroid> getCentroids() {
-        return centroids;
-    }
-    public void setCentroids(@NotNull ArrayList<Centroid> newCents){ centroids = newCents; }
-    public void addCentroid (Centroid cent) {
-        if(centroids == null){
-            centroids = new ArrayList<Centroid>();
-        }
-        centroids.add(cent);
-    }
-    public void addCentroid (int index, Centroid cent){
-        if(centroids == null){
-            centroids = new ArrayList<Centroid>();
-        }
-        centroids.add(index, cent);
+    public ArrayList<PlayerEntry> getPlayers() {
+        return players;
     }
 
-    @Override
+    public ArrayList<Centroid> getFoods() {
+        return foods;
+    }
+
+    /**
+     * Add element to ArrayLists
+     */
+
+    public void addPlayerEntry (PlayerEntry toAdd) {
+        players.add(toAdd);
+    }
+    public void addFood(Centroid toAdd){
+        foods.add(toAdd);
+    }
+
+    //FIXME this
+    /*@Override
     public String toString() {
+
         String ret = new String("");
         for (Centroid centroid : centroids){
             ret+=centroid.toString();
         }
         return ret;
-    }
+        return "";
+    }*/
 
     /**
      * UDPSerializable implementation
@@ -101,7 +106,8 @@ public class GameStatus implements UDPSerializable{
             System.out.println("Wrong class!");
             return false;
         }
-        centroids = recivedPacket.centroids;
+        players = recivedPacket.players;
+        foods = recivedPacket.foods;
         return true;
     }
 }

@@ -1,11 +1,10 @@
 package ColorioServer;
 
-import ColorioCommon.Centroid;
 import ColorioCommon.KeyStatus;
+import ColorioCommon.Player;
 import com.sun.istack.internal.NotNull;
 
 import java.net.InetAddress;
-import java.security.Key;
 import java.time.Instant;
 
 import static ColorioCommon.Constants.baseSpeed;
@@ -18,7 +17,7 @@ public class Client {
 
     //region GameLogic Variables
     private boolean isPlaying = false;  //If true, all variables should be set
-    private Centroid cent = null;       //Centroid of the Client
+    private Player player = null;       //Centroid of the Client
     private long lastCheck = 0L;     //Last Check of Keys ClientKeys.equals() updates (and set once in c'tor)
     private long lastKeyUpdate = 0L;    //Last update of 'keys' (setKeys() updates)
     private long lastMoved = 0L;
@@ -63,8 +62,8 @@ public class Client {
         return addr;
     }
 
-    public Centroid getCent(){
-        return this.cent;
+    public Player getPlayer(){
+        return this.player;
     }
 
     public boolean isPlaying() {
@@ -94,8 +93,8 @@ public class Client {
         this.isPlaying = playing;
     }
 
-    public void setCent(Centroid cent) {
-        this.cent = cent;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public void setKeys(KeyStatus Keys) {
@@ -159,7 +158,7 @@ public class Client {
         }
 
         long now = Instant.now().toEpochMilli();
-        cent.setLocation(cent.getX() + horizontal * baseSpeed * (now - lastMoved), cent.getY() + vertical * baseSpeed * (now - lastMoved));
+        player.movePlayer(horizontal, vertical, now - lastMoved);
         lastMoved = now;
     }
 
