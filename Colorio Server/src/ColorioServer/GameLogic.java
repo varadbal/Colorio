@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.logging.Logger;
 
-import static ColorioCommon.Constants.startingWeight;
+import static ColorioCommon.Constants.*;
 
 /**
  * ColorIo Server Game Logic class
@@ -30,6 +30,8 @@ public class GameLogic{
     private HandleInput handleI = null;
     private SendGameStatus sendS = null;
     private HashSet<Centroid> foods = null;
+    private Color foodColor = new Color(255, 0, 0);
+    private int foodsAtOnce = 20;
     private boolean isRunning = false;
     private int noInputTimeOut = 500;
     private int commTimeOut = Constants.responseTimeOut;
@@ -44,10 +46,16 @@ public class GameLogic{
     public GameLogic(@NotNull ConcurrentMap<Integer, Client> clients,
                      @NotNull BlockingQueue<OutPacket> toSend, @NotNull BlockingQueue<KeyInput> toHandle){
         this.clients = clients;
-        this.foods = new HashSet<>();
         this.handleI = new HandleInput("HandleInput-1", toHandle);
         this.moveP = new MovePlayers("MovePlayers-1");
         this.sendS = new SendGameStatus("SendGameStatus-1", toSend);
+
+        //Initialize foods
+        this.foods = new HashSet<>();
+        Random rand = new Random();
+        for(int i = foods.size(); i < foodsAtOnce; ++i){
+            foods.add(new Centroid(rand.nextFloat() * mapMaxX, rand.nextFloat() * mapMaxY, foodWeight, foodColor));
+        }
     }
 
     /**
@@ -166,6 +174,10 @@ public class GameLogic{
         }
 
         private void checkMap(int lastMovedId){
+
+            if(foods.size() < foodsAtOnce){
+                foods.add(new Centroid(100, 400, foodWeight, foodColor));
+            }
 
         }
 
@@ -391,6 +403,17 @@ public class GameLogic{
 
             for(Map.Entry<Integer, Client> i : es){
                 currentStatus.addPlayerEntry(new PlayerEntry(i.getKey(), i.getValue().getPlayer(), i.getValue().getName()));
+            }
+            for(Centroid i : foods){
+                currentStatus.addFood(i);
+            }
+
+            for(Map.Entry<Integer, Client> i : es){
+                try {
+                    toSend.put(new OutPacket(i.getKey(), currentStatus));
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
             }
         }
         //endregion

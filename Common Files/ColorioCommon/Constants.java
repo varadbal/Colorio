@@ -12,6 +12,7 @@ public abstract class Constants {
     public static int clientPort = 49154;
 
     //Game constants
+    public static double foodWeight = 50;
     public static double startingWeight = 100.0;
     public static double baseSpeed = 0.1;
     public static double mapMaxX = 500;

@@ -20,67 +20,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Render.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/Render.java">
+      <file leaf-file-name="GameLogic.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="67" column="46" lean-forward="false" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
+            <state relative-caret-position="210">
+              <caret line="52" column="26" lean-forward="false" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#start#0;class#GameLogic#0" expanded="false" />
+                <element signature="e#2875#2893#0" expanded="false" />
+                <element signature="method#start#0;class#MovePlayers#0;class#GameLogic#0" expanded="false" />
+                <element signature="class#HandleInput#0;class#GameLogic#0" expanded="false" />
+                <element signature="e#5694#5712#0" expanded="false" />
+                <element signature="method#HandleInput#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+                <element signature="method#start#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+                <element signature="method#updateStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+                <element signature="e#8024#8086#0" expanded="false" />
+                <element signature="method#checkStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+                <element signature="class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
+                <element signature="method#SendGameStatus#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Player.java">
+      <file leaf-file-name="Render.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/Render.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-              <folding>
-                <element signature="method#Player#0;class#Player#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameStatus.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/GameStatus.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="32" column="33" lean-forward="false" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#toDatagramPacket#0;class#GameStatus#0" expanded="false" />
-                <element signature="method#getFromDatagramPacket#0;class#GameStatus#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Test/ColorioServer/ServerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="119" column="60" lean-forward="true" selection-start-line="119" selection-start-column="60" selection-end-line="119" selection-end-column="60" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#setUpSocketAndServer#0;class#ServerTest#0" expanded="false" />
-                <element signature="method#HandshakeResponseTest#0;class#ServerTest#0" expanded="false" />
-                <element signature="method#BadHandshakeTest#0;class#ServerTest#0" expanded="false" />
-                <element signature="method#NoPingTest#0;class#ServerTest#0" expanded="false" />
-                <element signature="method#closeSocketAndServer#0;class#ServerTest#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientSocketTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Test/ColorioClient/ClientSocketTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="183">
+              <caret line="67" column="46" lean-forward="false" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -152,12 +131,12 @@
         <option value="$PROJECT_DIR$/Common Files/ColorioCommon/GameObjects/PlayerEntry.java" />
         <option value="$PROJECT_DIR$/Common Files/ColorioCommon/PlayerEntry.java" />
         <option value="$PROJECT_DIR$/Common Files/ColorioCommon/GameObjects/Food.java" />
-        <option value="$PROJECT_DIR$/Common Files/ColorioCommon/Constants.java" />
         <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/Client.java" />
         <option value="$PROJECT_DIR$/Common Files/ColorioCommon/Player.java" />
-        <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java" />
         <option value="$PROJECT_DIR$/Test/ColorioServer/ServerTest.java" />
         <option value="$PROJECT_DIR$/Common Files/ColorioCommon/GameStatus.java" />
+        <option value="$PROJECT_DIR$/Common Files/ColorioCommon/Constants.java" />
+        <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java" />
       </list>
     </option>
   </component>
@@ -612,26 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="306" column="77" lean-forward="false" selection-start-line="306" selection-start-column="77" selection-end-line="306" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#start#0;class#GameLogic#0" expanded="false" />
-            <element signature="e#2555#2573#0" expanded="false" />
-            <element signature="method#start#0;class#MovePlayers#0;class#GameLogic#0" expanded="false" />
-            <element signature="method#checkMap#0;class#MovePlayers#0;class#GameLogic#0" expanded="false" />
-            <element signature="e#5241#5259#0" expanded="false" />
-            <element signature="method#HandleInput#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-            <element signature="method#start#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-            <element signature="method#updateStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-            <element signature="e#7571#7633#0" expanded="false" />
-            <element signature="method#SendGameStatus#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/OutPacket.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -682,14 +641,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -755,22 +706,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-          <folding>
-            <element signature="method#Player#0;class#Player#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Test/ColorioClient/ClientSocketTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
           <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/ColorioServer/ServerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="119" column="60" lean-forward="true" selection-start-line="119" selection-start-column="60" selection-end-line="119" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setUpSocketAndServer#0;class#ServerTest#0" expanded="false" />
+            <element signature="method#HandshakeResponseTest#0;class#ServerTest#0" expanded="false" />
+            <element signature="method#BadHandshakeTest#0;class#ServerTest#0" expanded="false" />
+            <element signature="method#NoPingTest#0;class#ServerTest#0" expanded="false" />
+            <element signature="method#closeSocketAndServer#0;class#ServerTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -787,26 +743,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="method#Player#0;class#Player#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="52" column="26" lean-forward="false" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#start#0;class#GameLogic#0" expanded="false" />
+            <element signature="e#2875#2893#0" expanded="false" />
+            <element signature="method#start#0;class#MovePlayers#0;class#GameLogic#0" expanded="false" />
+            <element signature="class#HandleInput#0;class#GameLogic#0" expanded="false" />
+            <element signature="e#5694#5712#0" expanded="false" />
+            <element signature="method#HandleInput#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+            <element signature="method#start#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+            <element signature="method#updateStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+            <element signature="e#8024#8086#0" expanded="false" />
+            <element signature="method#checkStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
+            <element signature="class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
+            <element signature="method#SendGameStatus#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/Render.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
           <caret line="67" column="46" lean-forward="false" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test/ColorioServer/ServerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="119" column="60" lean-forward="true" selection-start-line="119" selection-start-column="60" selection-end-line="119" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#setUpSocketAndServer#0;class#ServerTest#0" expanded="false" />
-            <element signature="method#HandshakeResponseTest#0;class#ServerTest#0" expanded="false" />
-            <element signature="method#BadHandshakeTest#0;class#ServerTest#0" expanded="false" />
-            <element signature="method#NoPingTest#0;class#ServerTest#0" expanded="false" />
-            <element signature="method#closeSocketAndServer#0;class#ServerTest#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
