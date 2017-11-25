@@ -64,8 +64,8 @@ public class Render extends BufferedImage{
      * This function renders the frame from gameStatus
      */
     public void render(){
-        System.out.println(status.toString());
-        ArrayList<Centroid> centroids = status.getCentroids();
+        //System.out.println(status.toString());
+        ArrayList<Centroid> centroids = status.getPlayerCentroids();
         double screen[][] = new double[ColorioFrame.width][ColorioFrame.height];
         double screenRed[][] = new double[ColorioFrame.width][ColorioFrame.height];
         double screenGreen[][] = new double[ColorioFrame.width][ColorioFrame.height];
@@ -119,6 +119,12 @@ public class Render extends BufferedImage{
                 }
                 else setRGB(i,j,0xFFFFFF);
             }
+        }
+
+        ArrayList<Centroid> foods = status.getFoods();
+
+        for (Centroid food : foods){
+            
         }
     }
 }

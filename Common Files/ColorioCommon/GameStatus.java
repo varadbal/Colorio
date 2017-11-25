@@ -34,6 +34,17 @@ public class GameStatus implements UDPSerializable{
         return players;
     }
 
+    public ArrayList<Centroid> getPlayerCentroids(){
+        ArrayList<Centroid> ret = new ArrayList<>(players.size()*4);
+        for(PlayerEntry player : players){
+            ret.add(player.getPlayer().getBottom());
+            ret.add(player.getPlayer().getTop());
+            ret.add(player.getPlayer().getRight());
+            ret.add(player.getPlayer().getLeft());
+        }
+        return ret;
+    }
+
     public ArrayList<Centroid> getFoods() {
         return foods;
     }

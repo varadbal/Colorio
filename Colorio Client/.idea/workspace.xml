@@ -26,8 +26,8 @@
       <file leaf-file-name="ClientSocket.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ColorioClient/ClientSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1031">
-              <caret line="308" column="26" lean-forward="true" selection-start-line="308" selection-start-column="26" selection-end-line="308" selection-end-column="26" />
+            <state relative-caret-position="0">
+              <caret line="308" column="26" lean-forward="false" selection-start-line="308" selection-start-column="26" selection-end-line="308" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3928#3929#0" expanded="true" />
@@ -39,33 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UDPSerializable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/UDPSerializable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Handshake.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/Handshake.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="69" column="9" lean-forward="false" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ColorioFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ColorioClient/ColorioFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="123" column="38" lean-forward="true" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
+            <state relative-caret-position="1904">
+              <caret line="123" column="38" lean-forward="false" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4422#4423#0" expanded="true" />
@@ -78,8 +56,8 @@
       <file leaf-file-name="Render.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ColorioClient/Render.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="66" column="44" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+            <state relative-caret-position="536">
+              <caret line="126" column="12" lean-forward="false" selection-start-line="126" selection-start-column="12" selection-end-line="126" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -90,9 +68,13 @@
       <file leaf-file-name="ServerTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Test/ColorioServer/ServerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4522">
+            <state relative-caret-position="68">
               <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-              <folding />
+              <folding>
+                <marker date="1511567775864" expanded="true" signature="10659:11297" ph="{...}" />
+                <marker date="1511567775864" expanded="true" signature="11246:11289" ph="{...}" />
+                <marker date="1511567775864" expanded="true" signature="11380:11572" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,10 +82,32 @@
       <file leaf-file-name="ClientSocketTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Test/ColorioClient/ClientSocketTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2415">
-              <caret line="40" column="10" lean-forward="false" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
+            <state relative-caret-position="334">
+              <caret line="180" column="59" lean-forward="false" selection-start-line="180" selection-start-column="59" selection-end-line="180" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Colorio Server/src/ColorioServer/Server.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="282" column="0" lean-forward="false" selection-start-line="282" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
+              <folding>
+                <marker date="1511092314319" expanded="true" signature="6231:6275" ph="{...}" />
+                <marker date="1511092314319" expanded="true" signature="6231:6281" ph="{...}" />
+                <marker date="1511092314319" expanded="true" signature="6382:6414" ph="/**...*/" />
+                <marker date="1511092314319" expanded="true" signature="6472:6515" ph="/**...*/" />
+                <marker date="1511092314319" expanded="true" signature="6641:6731" ph="/**...*/" />
+                <marker date="1511092314319" expanded="false" signature="6775:6790" ph=" { " />
+                <marker date="1511092314319" expanded="false" signature="6819:6829" ph=" }" />
+                <marker date="1511092314319" expanded="true" signature="6839:6924" ph="/**...*/" />
+                <marker date="1511092314319" expanded="true" signature="6953:7147" ph="{...}" />
+                <marker date="1511092314319" expanded="true" signature="7157:7356" ph="/**...*/" />
+                <marker date="1511092314319" expanded="true" signature="9874:9890" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -112,8 +116,28 @@
       <file leaf-file-name="GameStatus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/GameStatus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="55" column="19" lean-forward="false" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+            <state relative-caret-position="-8">
+              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerEntry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/PlayerEntry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -122,24 +146,12 @@
       <file leaf-file-name="Centroid.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/Centroid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="255">
               <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="32" />
               <folding>
                 <element signature="e#368#369#0" expanded="true" />
                 <element signature="e#407#408#0" expanded="true" />
-                <element signature="e#440#441#0" expanded="true" />
-                <element signature="e#469#470#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/Constants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -161,6 +173,7 @@
       <find>reciev</find>
       <find>log(</find>
       <find>sets</find>
+      <find>helyett</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -222,10 +235,11 @@
         <option value="$PROJECT_DIR$/../Test/Common/ServerClientTest.java" />
         <option value="$PROJECT_DIR$/src/ColorioClient/ColorioFrame.java" />
         <option value="$PROJECT_DIR$/src/ColorioClient/ClientSocket.java" />
-        <option value="$PROJECT_DIR$/../Test/ColorioClient/ClientSocketTest.java" />
         <option value="$PROJECT_DIR$/../Colorio Server/src/ColorioServer/GameLogic.java" />
         <option value="$PROJECT_DIR$/../Common Files/ColorioCommon/Centroid.java" />
+        <option value="D:/iskola/Egyetem/sza/gyak9/gyak.tex" />
         <option value="$PROJECT_DIR$/../Common Files/ColorioCommon/GameStatus.java" />
+        <option value="$PROJECT_DIR$/../Test/ColorioClient/ClientSocketTest.java" />
         <option value="$PROJECT_DIR$/src/ColorioClient/Render.java" />
       </list>
     </option>
@@ -252,6 +266,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -337,10 +355,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -466,31 +480,6 @@
       <option name="PACKAGE_NAME" value="ColorioClient" />
       <option name="MAIN_CLASS_NAME" value="ColorioClient.ClientSocketTest" />
       <option name="METHOD_NAME" value="communicationTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="ClientSocketTest.handshakeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="ColorioClient.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Colorio Client" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="ColorioClient" />
-      <option name="MAIN_CLASS_NAME" value="ColorioClient.ClientSocketTest" />
-      <option name="METHOD_NAME" value="handshakeTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -641,23 +630,33 @@
       <properties />
       <listeners />
     </configuration>
+    <configuration name="gyak" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" temporary="true">
+      <texify>
+        <compiler>PDFLATEX</compiler>
+        <compiler-path />
+        <main-file>D:/iskola/Egyetem/sza/gyak9/gyak.tex</main-file>
+        <aux-dir>true</aux-dir>
+        <output-format>PDF</output-format>
+        <bib-run-config />
+      </texify>
+    </configuration>
     <list size="8">
       <item index="0" class="java.lang.String" itemvalue="Application.CommonMain" />
       <item index="1" class="java.lang.String" itemvalue="Application.Main" />
       <item index="2" class="java.lang.String" itemvalue="Application.ServerMain" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.ClientSocketTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.handshakeTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.communicationTest" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.communicationClosedByServerTest" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.communicationClosedByClientTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.communicationTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.communicationClosedByServerTest" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.communicationClosedByClientTest" />
+      <item index="7" class="java.lang.String" itemvalue="LaTeX.gyak" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.communicationClosedByClientTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ClientSocketTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.communicationClosedByServerTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.communicationTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.handshakeTest" />
+        <item index="0" class="java.lang.String" itemvalue="LaTeX.gyak" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.communicationClosedByClientTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ClientSocketTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.communicationClosedByServerTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ClientSocketTest.communicationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -710,34 +709,35 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1933439" sideWeight="0.39970717" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19285043" sideWeight="0.39635417" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3866878" sideWeight="0.36310396" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3866416" sideWeight="0.365625" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3866878" sideWeight="0.6368961" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3866416" sideWeight="0.634375" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17715959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17708333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4088748" sideWeight="0.70278186" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4088748" sideWeight="0.70278186" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.49121523" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -759,26 +759,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ColorioClient/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ColorioClient/Render.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Centroid.java" />
-    <entry file="file://$PROJECT_DIR$/src/GameStatus.java" />
     <entry file="file://$PROJECT_DIR$/src/ColorioClient/ColorioFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -795,7 +775,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -827,7 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="38" lean-forward="false" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -847,7 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -865,7 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="294" column="0" lean-forward="false" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -882,28 +858,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Colorio Server/src/ColorioServer/ColorioServerIn.java" />
-    <entry file="file://$PROJECT_DIR$/../Colorio Server/src/ColorioServer/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="45" column="10" lean-forward="false" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
-          <folding>
-            <marker date="1511092314319" expanded="true" signature="6231:6275" ph="{...}" />
-            <marker date="1511092314319" expanded="true" signature="6231:6281" ph="{...}" />
-            <marker date="1511092314319" expanded="true" signature="6382:6414" ph="/**...*/" />
-            <marker date="1511092314319" expanded="true" signature="6382:6414" ph="/**...*/" />
-            <marker date="1511092314319" expanded="true" signature="9874:9890" ph="{...}" />
-            <marker date="1511092314319" expanded="true" signature="6472:6515" ph="/**...*/" />
-            <marker date="1511092314319" expanded="true" signature="6641:6731" ph="/**...*/" />
-            <marker date="1511092314319" expanded="false" signature="6775:6790" ph=" { " />
-            <marker date="1511092314319" expanded="false" signature="6819:6829" ph=" }" />
-            <marker date="1511092314319" expanded="true" signature="6839:6924" ph="/**...*/" />
-            <marker date="1511092314319" expanded="true" signature="6953:7147" ph="{...}" />
-            <marker date="1511092314319" expanded="true" signature="7157:7356" ph="/**...*/" />
-            <marker date="1511092314319" expanded="true" signature="9874:9884" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/UDPSerializedPacket.java" />
     <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/KeyInput.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -958,7 +912,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="37" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="5" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -984,7 +937,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="270" column="0" lean-forward="false" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -992,7 +944,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="744" column="0" lean-forward="false" selection-start-line="744" selection-start-column="0" selection-end-line="744" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1008,9 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="901">
           <caret line="60" column="18" lean-forward="false" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1024,14 +972,14 @@
         <state relative-caret-position="192">
           <caret line="27" column="5" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/UDPSerializable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
+        <state relative-caret-position="153">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
@@ -1039,18 +987,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Test/ColorioServer/ServerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4522">
+        <state relative-caret-position="68">
           <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Test/ColorioClient/ClientSocketTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2415">
-          <caret line="40" column="10" lean-forward="false" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1511567775864" expanded="true" signature="10659:11297" ph="{...}" />
+            <marker date="1511567775864" expanded="true" signature="11246:11289" ph="{...}" />
+            <marker date="1511567775864" expanded="true" signature="11380:11572" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1065,8 +1007,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ColorioClient/ClientSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1031">
-          <caret line="308" column="26" lean-forward="true" selection-start-line="308" selection-start-column="26" selection-end-line="308" selection-end-column="26" />
+        <state relative-caret-position="0">
+          <caret line="308" column="26" lean-forward="false" selection-start-line="308" selection-start-column="26" selection-end-line="308" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3928#3929#0" expanded="true" />
@@ -1077,31 +1019,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/Centroid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="32" />
-          <folding>
-            <element signature="e#368#369#0" expanded="true" />
-            <element signature="e#407#408#0" expanded="true" />
-            <element signature="e#440#441#0" expanded="true" />
-            <element signature="e#469#470#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/GameStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="55" column="19" lean-forward="false" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ColorioClient/ColorioFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="123" column="38" lean-forward="true" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
+        <state relative-caret-position="1904">
+          <caret line="123" column="38" lean-forward="false" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4422#4423#0" expanded="true" />
@@ -1110,10 +1031,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/iskola/Egyetem/sza/gyak9/gyak.tex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/iskola/Egyetem/sza/gyak9/ubung10.tex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="137" column="20" lean-forward="false" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/Centroid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="32" />
+          <folding>
+            <element signature="e#368#369#0" expanded="true" />
+            <element signature="e#407#408#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/PlayerEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Test/ColorioClient/ClientSocketTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="180" column="59" lean-forward="false" selection-start-line="180" selection-start-column="59" selection-end-line="180" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Colorio Server/src/ColorioServer/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="282" column="0" lean-forward="false" selection-start-line="282" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
+          <folding>
+            <marker date="1511092314319" expanded="true" signature="6231:6275" ph="{...}" />
+            <marker date="1511092314319" expanded="true" signature="6231:6281" ph="{...}" />
+            <marker date="1511092314319" expanded="true" signature="6382:6414" ph="/**...*/" />
+            <marker date="1511092314319" expanded="true" signature="6472:6515" ph="/**...*/" />
+            <marker date="1511092314319" expanded="true" signature="6641:6731" ph="/**...*/" />
+            <marker date="1511092314319" expanded="false" signature="6775:6790" ph=" { " />
+            <marker date="1511092314319" expanded="false" signature="6819:6829" ph=" }" />
+            <marker date="1511092314319" expanded="true" signature="6839:6924" ph="/**...*/" />
+            <marker date="1511092314319" expanded="true" signature="6953:7147" ph="{...}" />
+            <marker date="1511092314319" expanded="true" signature="7157:7356" ph="/**...*/" />
+            <marker date="1511092314319" expanded="true" signature="9874:9890" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/GameStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ColorioClient/Render.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="66" column="44" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+        <state relative-caret-position="536">
+          <caret line="126" column="12" lean-forward="false" selection-start-line="126" selection-start-column="12" selection-end-line="126" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
