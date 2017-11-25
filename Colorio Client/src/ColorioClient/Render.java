@@ -3,6 +3,7 @@ package ColorioClient;
 import ColorioCommon.Centroid;
 import ColorioCommon.GameStatus;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ public class Render extends BufferedImage{
     private final double minRenderRange=30;
     private static double sigmoidCache[];
     private static boolean isSigmoidCacheFilled=false;
+    private Graphics2D graphics2D;
 
     /**
      * Constructor
@@ -28,6 +30,7 @@ public class Render extends BufferedImage{
     public Render(int width, int height, GameStatus status) {
         super(width, height, BufferedImage.TYPE_INT_RGB);
         this.status =status;
+        this.graphics2D  = createGraphics();
         if(!isSigmoidCacheFilled){
             sigmoidCache=new double[sigmoidTableSize];
             for (int i=0;i<sigmoidTableSize;i++){
@@ -124,7 +127,8 @@ public class Render extends BufferedImage{
         ArrayList<Centroid> foods = status.getFoods();
 
         for (Centroid food : foods){
-            
+            graphics2D.setColor(food.getColor());
+            graphics2D.fillOval((int)food.getX(),(int)food.getY(),(int)food.getWeight()/10,(int)food.getWeight()/10);
         }
     }
 }

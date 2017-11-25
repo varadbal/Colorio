@@ -86,7 +86,7 @@ public class GameStatus implements UDPSerializable{
             byte[] bytes = baos.toByteArray();
             return new DatagramPacket(bytes,bytes.length,address,port);
         } catch (IOException e) {
-            System.out.println("Serialization problem");
+            System.out.println("Serialization problem on " + Thread.currentThread().getName());
         }
         return null;
     }

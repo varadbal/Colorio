@@ -147,6 +147,7 @@ public class ClientSocket extends DatagramSocket implements KeyListener {
     private class ColorioClientHandshake extends Thread{
         @Override
         public void run(){
+            setName("ClientHandshakeThread");
             try {
                 Handshake handshake = new Handshake(name,0);
                 Handshake handshakeResponse = new Handshake();
@@ -230,6 +231,7 @@ public class ClientSocket extends DatagramSocket implements KeyListener {
     private class StatusSendThread extends Thread{
         @Override
         public void run() {
+            setName("StatusSendThread");
             log("statusSend","StatusSendThread started.");
             while (frame.isVisible()){
                 try {
@@ -295,6 +297,7 @@ public class ClientSocket extends DatagramSocket implements KeyListener {
     private class ReceiveThread extends Thread{
         @Override
         public void run(){
+            setName("ReceiveThread");
             log("ReceiveThread","ReceiveThread started.");
             DatagramPacket receivePacket = new DatagramPacket(new byte[1024],1024);
             while (frame.isVisible()) {
