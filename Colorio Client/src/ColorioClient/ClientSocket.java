@@ -8,6 +8,8 @@ import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.net.*;
 
+import static ColorioCommon.Constants.minBufferSize;
+
 /**
  * This class is responsible for the communication with th server
  */
@@ -151,7 +153,7 @@ public class ClientSocket extends DatagramSocket implements KeyListener {
             try {
                 Handshake handshake = new Handshake(name,0);
                 Handshake handshakeResponse = new Handshake();
-                DatagramPacket responsePacket = new DatagramPacket(new byte[1024],1024);
+                DatagramPacket responsePacket = new DatagramPacket(new byte[minBufferSize],minBufferSize);
                 log("handshake","Sending handshake packet...");
                 send(handshake.toDatagramPacket(address, sendPort));
                 int failCounter=0;
@@ -299,7 +301,7 @@ public class ClientSocket extends DatagramSocket implements KeyListener {
         public void run(){
             setName("ReceiveThread");
             log("ReceiveThread","ReceiveThread started.");
-            DatagramPacket receivePacket = new DatagramPacket(new byte[1024],1024);
+            DatagramPacket receivePacket = new DatagramPacket(new byte[minBufferSize],minBufferSize);
             while (frame.isVisible()) {
                 try {
                     //log("ReceiveThread","Waiting for packet...");

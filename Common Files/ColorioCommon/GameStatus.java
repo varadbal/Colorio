@@ -9,6 +9,8 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
+import static ColorioCommon.Constants.minBufferSize;
+
 /**
  * UDPSerializable wrapper class for an ArrayList
  * One ArrayList for Players and one for Foods
@@ -50,11 +52,13 @@ public class GameStatus implements UDPSerializable{
     }
 
     /**
-     * Add element to ArrayLists
+     * Add element to the ArrayLists
      */
 
     public void addPlayerEntry (PlayerEntry toAdd) {
-        players.add(toAdd);
+        if(toAdd.getPlayer() != null) {
+            players.add(toAdd);
+        }
     }
     public void addFood(Centroid toAdd){
         foods.add(toAdd);
@@ -79,7 +83,7 @@ public class GameStatus implements UDPSerializable{
     public DatagramPacket toDatagramPacket(InetAddress address, int port) {
         try {
             // Serializing the packet
-            ByteArrayOutputStream baos = new ByteArrayOutputStream(6400);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream(minBufferSize);
             ObjectOutputStream oos = new ObjectOutputStream(baos);
             oos.writeObject(this);
             oos.flush();
@@ -99,7 +103,8 @@ public class GameStatus implements UDPSerializable{
         try {
             ois = new ObjectInputStream(bais);
         } catch (IOException e) {
-            System.out.println("ObjectInputStreem error: {0}");
+            System.out.println("ObjectInputStream error: {0}");
+            e.printStackTrace();
             return false;
         }
 
@@ -108,13 +113,16 @@ public class GameStatus implements UDPSerializable{
             recivedPacket = (GameStatus) ois.readObject();
         } catch (IOException e) {
             System.out.println("Read object error: {0}");
+            e.printStackTrace();
             return false;
         } catch (ClassNotFoundException e) {
             System.out.println("Class not found: {0}");
+            e.printStackTrace();
             return false;
         }
         catch (ClassCastException e){
             System.out.println("Wrong class!");
+            e.printStackTrace();
             return false;
         }
         players = recivedPacket.players;

@@ -402,7 +402,9 @@ public class GameLogic{
             Set<Map.Entry<Integer, Client>> es = clients.entrySet();
 
             for(Map.Entry<Integer, Client> i : es){
-                currentStatus.addPlayerEntry(new PlayerEntry(i.getKey(), i.getValue().getPlayer(), i.getValue().getName()));
+                if(i.getValue().isPlaying()) {
+                    currentStatus.addPlayerEntry(new PlayerEntry(i.getKey(), i.getValue().getPlayer(), i.getValue().getName()));
+                }
             }
             for(Centroid i : foods){
                 currentStatus.addFood(i);
@@ -410,7 +412,9 @@ public class GameLogic{
 
             for(Map.Entry<Integer, Client> i : es){
                 try {
-                    toSend.put(new OutPacket(i.getKey(), currentStatus));
+                    if(i.getValue().isPlaying()) {
+                        toSend.put(new OutPacket(i.getKey(), currentStatus));
+                    }
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }

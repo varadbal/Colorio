@@ -1,8 +1,10 @@
 package ColorioCommon;
 
+import java.io.Serializable;
+
 import static ColorioCommon.Constants.baseSpeed;
 
-public class Player {
+public class Player implements Serializable{
     private Centroid top;
     private Centroid bottom;
     private Centroid left;
@@ -48,9 +50,9 @@ public class Player {
             hDir = -1;
         }
         if(verticalDir > 0){
-            verticalDir = 1;
+            vDir = 1;
         }else if(verticalDir < 0){
-            verticalDir = -1;
+            vDir = -1;
         }
 
         //Moving the centroids FIXME way too linear (two-directional movement)
