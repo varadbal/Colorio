@@ -173,6 +173,10 @@ public class GameLogic{
             LOGGER.info("Stopping thread " + threadName);
         }
 
+        /**
+         * Adds new foods to the map, if necessary
+         * @param lastMovedId
+         */
         private void checkMap(int lastMovedId){
 
             if(foods.size() < foodsAtOnce){
@@ -310,18 +314,13 @@ public class GameLogic{
                 if(said.isPlaying() == false){                      //If uninitialized, complete handshake (initialize)
                     LOGGER.info("-It is a handshake");
                     said.setKeys(k);
-                    Random rand = new Random();
-                    Color col = new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());
-                    said.setPlayer(new Player(
-                            new Centroid(50.0, 500.0, startingWeight, col),
-                            new Centroid(40.0, 500.0, startingWeight, col),
-                            new Centroid(45.0, 505.0, startingWeight, col),
-                            new Centroid(45.0, 495.0, startingWeight, col)));
+                    said.setPlayer(createNewPlayer());
                     said.setPlaying(true);
                 }else{                                              //If initialized (handshake is done)
                     LOGGER.info("-It is a check");
                     if(!said.keyCheck(k)){                          //If check is not alright, update to correct (for now)
                         said.setKeys(k);
+                        LOGGER.info("Keys out of sync: Client-" + k.getPlayerId());
                     }else{                                          //If check is alright
                         //TODO: Yay!
                     }
@@ -329,7 +328,22 @@ public class GameLogic{
             }
         }
 
-
+        /**
+         * Returns a new Player-Object
+         * @return the created Player
+         */
+        private Player createNewPlayer(){
+            Random rand = new Random();
+            Color col = new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());
+            double initX = 50;
+            double initY = 50;
+            double radius = 50;
+            return new Player(
+                    new Centroid(initX, initY - radius, startingWeight, col),
+                    new Centroid(initX, initY + radius, startingWeight, col),
+                    new Centroid(initX + radius, initY, startingWeight, col),
+                    new Centroid(initX - radius, initY, startingWeight, col));
+        }
 
         //endregion
     }

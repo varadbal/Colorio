@@ -18,6 +18,8 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.awt.event.KeyEvent.*;
 
+import static ColorioCommon.Constants.minBufferSize;
+import static java.lang.Math.abs;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ServerTest {
@@ -85,37 +87,18 @@ class ServerTest {
 
     @Test
     /**
-     * Send a handshake (check response)
-     * Send an initial KeyStatus (check response)
+     * doHandshake()
      * Waits for a following GameStatus (check)
      * Sends a KeyEvent (and checks the following (5) GameStatuses)
      * Sends a conflicting KeyStatus (checks if updated correctly)
      */
     public void ConnectTest() throws IOException {
-        //Handshake
-        DatagramPacket hs = new Handshake("Player1", 0).toDatagramPacket(InetAddress.getByName("localhost"), Constants.serverPort);
-        sock.send(hs);
-        DatagramPacket rec = new DatagramPacket(new byte[10240], 10240);
-        sock.receive(rec);
-        Handshake recHs = (Handshake) UDPSerializable.getClassFromDatagramPacket(rec);
-
-        Assertions.assertEquals("Player1", recHs.getName());
-        Assertions.assertEquals(1, recHs.getId());
-
-        //Initial KeyStatus
-        DatagramPacket iks = new KeyStatus(1, false, false, false, false)
-                .toDatagramPacket(InetAddress.getByName("localhost"), Constants.serverPort);
-        sock.send(iks);
-        rec = new DatagramPacket(new byte[10240], 10240);
-        sock.receive(rec);
-        GameStatus recGs = (GameStatus) UDPSerializable.getClassFromDatagramPacket(rec);
-
-        Assertions.assertNotNull(recGs.getPlayers()/*.get(0).getPlayer()*/);
+        doHandshake();
 
         //Another GameStatus
-        rec = new DatagramPacket(new byte[10240], 10240);
+        DatagramPacket rec = new DatagramPacket(new byte[10240], 10240);
         sock.receive(rec);
-        recGs = (GameStatus) UDPSerializable.getClassFromDatagramPacket(rec);
+        GameStatus recGs = (GameStatus) UDPSerializable.getClassFromDatagramPacket(rec);
 
         Assertions.assertNotNull(recGs.getPlayers().get(0));
 
@@ -173,9 +156,10 @@ class ServerTest {
 
     @Test
     /**
-     * Send a handshake(check)
-     * Send KeyStatus with wrong id
-     * Wait for GameStatus (check for timeOut)
+     * Testing Inconsistent Handshake
+     *  Send a handshake(check)
+     *  Send KeyStatus with wrong id
+     *  Wait for GameStatus (check for timeOut)
      */
     public void BadHandshakeTest() throws IOException{
         //Handshake
@@ -203,30 +187,14 @@ class ServerTest {
 
     @Test
     /**
-     * Connects to a server(check)
-     * Then no KeyStatus for a time
-     * Wait for GameStatus(check for timeOut)
+     * Checks TimeOut of Clients
+     *  Full Handshake(check)
+     *  Then no KeyStatus for a time
+     *  Wait for GameStatus(check for timeOut)
      */
     public void NoPingTest() throws IOException, InterruptedException{
-        //Handshake
-        DatagramPacket hs = new Handshake("Player1", 0).toDatagramPacket(InetAddress.getByName("localhost"), Constants.serverPort);
-        sock.send(hs);
-        DatagramPacket rec = new DatagramPacket(new byte[10240], 10240);
-        sock.receive(rec);
-        Handshake recHs = (Handshake) UDPSerializable.getClassFromDatagramPacket(rec);
-
-        Assertions.assertEquals("Player1", recHs.getName());
-        Assertions.assertEquals(1, recHs.getId());
-
-        //Initial KeyStatus
-        DatagramPacket iks = new KeyStatus(1, false, false, false, false)
-                .toDatagramPacket(InetAddress.getByName("localhost"), Constants.serverPort);
-        sock.send(iks);
-        rec = new DatagramPacket(new byte[10240], 10240);
-        sock.receive(rec);
-        GameStatus recGs = (GameStatus) UDPSerializable.getClassFromDatagramPacket(rec);
-
-        Assertions.assertNotNull(recGs.getPlayers().get(0));
+        doHandshake();
+        DatagramPacket rec = new DatagramPacket(new byte[minBufferSize], minBufferSize);
 
         //No KeyStatus for some time
         boolean timedOut = false;
@@ -246,13 +214,70 @@ class ServerTest {
 
     @Test
     /**
-     * Connects to the Server(check)
-     * Waits a little
-     * Disconnects from the Server (check Handshake)
-     * Wait for response(check for timeOut)
+     * Checks Correct Disconnect Protocol
+     *  Full Handshake(check)
+     *  Disconnects from the Server (check Handshake)
+     *  Wait for response(check for timeOut)
      * TODO may fail because of checking only one incoming
      */
     public void DisconnectTest() throws IOException{
+        doHandshake();
+
+        DatagramPacket hs;
+        DatagramPacket rec;
+        Handshake recHs;
+        //Disconnect
+        hs = new Handshake(null, 1).toDatagramPacket(InetAddress.getByName("localhost"), Constants.serverPort);
+        sock.send(hs);
+        rec = new DatagramPacket(new byte[10240], 10240);
+        sock.receive(rec);
+        recHs = (Handshake) UDPSerializable.getClassFromDatagramPacket(rec);
+
+        Assertions.assertEquals(null, recHs.getName());
+        Assertions.assertEquals(0, recHs.getId());
+
+        final DatagramPacket recp = new DatagramPacket(new byte[10240], 10240);
+        Assertions.assertThrows(SocketTimeoutException.class, ()->{
+            sock.receive(recp);
+        });
+    }
+
+    @Test
+    public void CorrectPlayerObjectTest() throws IOException{
+        doHandshake();
+
+        DatagramPacket rec = new DatagramPacket(new byte[minBufferSize], minBufferSize);
+        sock.receive(rec);
+        GameStatus gs = new GameStatus();
+        gs.getFromDatagramPacket(rec);
+
+        PlayerEntry myPlayer = gs.getPlayers().get(0);
+
+        //Objects Exist
+        Assertions.assertEquals(1, myPlayer.getPlayerId());
+        Assertions.assertNotNull(myPlayer.getName());
+        Assertions.assertNotNull(myPlayer.getPlayer());
+        Assertions.assertNotNull(myPlayer.getPlayer().getTop());
+        Assertions.assertNotNull(myPlayer.getPlayer().getBottom());
+        Assertions.assertNotNull(myPlayer.getPlayer().getRight());
+        Assertions.assertNotNull(myPlayer.getPlayer().getLeft());
+
+        //Objects have the right values
+
+        Assertions.assertFalse(abs(myPlayer.getPlayer().getBottom().y - myPlayer.getPlayer().getTop().y) < 0.01);
+        Assertions.assertTrue(abs(myPlayer.getPlayer().getTop().x - myPlayer.getPlayer().getBottom().x) < 0.01);
+        Assertions.assertTrue(abs(myPlayer.getPlayer().getRight().y - myPlayer.getPlayer().getLeft().y)  < 0.01);
+        Assertions.assertFalse(abs(myPlayer.getPlayer().getRight().x - myPlayer.getPlayer().getLeft().x) < 0.01);
+        Assertions.assertEquals(myPlayer.getPlayer().getTop().getWeight(), myPlayer.getPlayer().getBottom().getWeight());
+        Assertions.assertEquals(myPlayer.getPlayer().getTop().getWeight(), myPlayer.getPlayer().getRight().getWeight());
+        Assertions.assertEquals(myPlayer.getPlayer().getTop().getWeight(), myPlayer.getPlayer().getLeft().getWeight());
+
+    }
+
+    /**
+     * Correct Handshake Procedure with Assertions
+     */
+    public void doHandshake() throws IOException{
         //Handshake
         DatagramPacket hs = new Handshake("Player1", 0).toDatagramPacket(InetAddress.getByName("localhost"), Constants.serverPort);
         sock.send(hs);
@@ -271,22 +296,7 @@ class ServerTest {
         sock.receive(rec);
         GameStatus recGs = (GameStatus) UDPSerializable.getClassFromDatagramPacket(rec);
 
-        Assertions.assertNotNull(recGs.getPlayers().get(0));
-
-        //Disconnect
-        hs = new Handshake(null, 1).toDatagramPacket(InetAddress.getByName("localhost"), Constants.serverPort);
-        sock.send(hs);
-        rec = new DatagramPacket(new byte[10240], 10240);
-        sock.receive(rec);
-        recHs = (Handshake) UDPSerializable.getClassFromDatagramPacket(rec);
-
-        Assertions.assertEquals(null, recHs.getName());
-        Assertions.assertEquals(0, recHs.getId());
-
-        final DatagramPacket recp = new DatagramPacket(new byte[10240], 10240);
-        Assertions.assertThrows(SocketTimeoutException.class, ()->{
-            sock.receive(recp);
-        });
+        Assertions.assertNotNull(recGs.getPlayers()/*.get(0).getPlayer()*/);
     }
 
     @AfterEach
