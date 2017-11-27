@@ -10,6 +10,7 @@ import java.util.concurrent.*;
 import java.util.logging.Logger;
 
 import static ColorioCommon.Constants.*;
+import static java.lang.Math.sqrt;
 
 /**
  * ColorIo Server Game Logic class
@@ -142,14 +143,17 @@ public class GameLogic{
 
             long lastOne = 0L;
             while(isRunning){
+                /*Troll Timing*/
                 if(Instant.now().toEpochMilli() - lastOne > Constants.serverSleep / 2) {
                     lastOne = Instant.now().toEpochMilli();
+                    /*Troll timing ends*/
+                    LOGGER.finest("Moving player");
 
                     Set<Map.Entry<Integer, Client>> es = clients.entrySet();
                     ArrayList<Integer> toRemove = new ArrayList<>();
-                /*Iterate through the clients*/
+
                     for (Map.Entry<Integer, Client> i : es) {
-                    /*Get the inactive-client keys and skip them*/
+                    /*Get the inactive-clients*/
                         long atm = Instant.now().toEpochMilli();//So that it is calculated only once
                         if (atm - i.getValue().getLastCheck() > commTimeOut) {
                             toRemove.add(i.getKey());
@@ -159,10 +163,9 @@ public class GameLogic{
                     /*Move the (active) players (clients)*/
                         if (i.getValue().isPlaying()) {
                             i.getValue().moveCentroid();
-                            checkMap(i.getKey());
                         }
                     }
-
+                    checkMap();
                 /*Remove the inactive clients*/
                     for (Integer i : toRemove) {
                         clients.remove(i);
@@ -175,14 +178,61 @@ public class GameLogic{
 
         /**
          * Adds new foods to the map, if necessary
-         * @param lastMovedId
          */
-        private void checkMap(int lastMovedId){
+        private void checkMap(){
+            Set<Map.Entry<Integer, Client>> es = clients.entrySet();
 
-            if(foods.size() < foodsAtOnce){
-                foods.add(new Centroid(100, 400, foodWeight, foodColor));
+            //Check Players-On-Foods
+            for(Map.Entry<Integer, Client> i : es) {
+                if (i.getValue().isPlaying()) {
+                    i.getValue().getPlayer().growPlayer(eatFoodsWithCentroid(i.getValue().getPlayer().getTop()));
+                    i.getValue().getPlayer().growPlayer(eatFoodsWithCentroid(i.getValue().getPlayer().getBottom()));
+                    i.getValue().getPlayer().growPlayer(eatFoodsWithCentroid(i.getValue().getPlayer().getLeft()));
+                    i.getValue().getPlayer().growPlayer(eatFoodsWithCentroid(i.getValue().getPlayer().getRight()));
+                }
             }
 
+            //Check Players-On-Players
+            for(Map.Entry<Integer, Client> i : es){
+                for(Map.Entry<Integer, Client> j : es){
+                    if(!i.equals(j)){
+                        //TODO implement
+                    }
+                }
+            }
+
+            //Add foods if necessary
+            Random rand = new Random();
+            for(int i = 0; i < foodsAtOnce-foods.size(); ++i){
+                foods.add(new Centroid(rand.nextDouble()*mapMaxX, rand.nextDouble()*mapMaxY, foodWeight, foodColor));
+            }
+
+        }
+
+        /**
+         *Checks (also eats if possible) the foods with the given Centroid
+         * @param c The Centroid to eat with
+         * @return The weight of the eaten foods
+         */
+        private double eatFoodsWithCentroid(Centroid c){
+            double toReturn = 0.0;
+
+            ArrayList<Centroid> foodsToRemove = new ArrayList<>();
+            for (Centroid f : foods) {
+                double distanceX = c.getX() - f.getX();
+                double distanceY = c.getY() - f.getY();
+                double distance = sqrt(distanceX * distanceX + distanceY * distanceY);
+
+                if(distance < c.weight / 10) {
+                    toReturn += f.getWeight();
+                    foodsToRemove.add(f);
+                }
+            }
+            for (Centroid k : foodsToRemove) {
+                foods.remove(k);
+            }
+
+            return toReturn;
         }
 
 
@@ -308,19 +358,19 @@ public class GameLogic{
          * @param k The incoming KeyStatus-Object
          */
         private void checkStatus(KeyStatus k){
-            LOGGER.info("Handling KeyStatus");
+            LOGGER.finest("Handling KeyStatus");
             Client said = clients.get(k.getPlayerId());
             if(said != null){                                       //If client exists
                 if(said.isPlaying() == false){                      //If uninitialized, complete handshake (initialize)
-                    LOGGER.info("-It is a handshake");
+                    LOGGER.finest("-It is a handshake");
                     said.setKeys(k);
                     said.setPlayer(createNewPlayer());
                     said.setPlaying(true);
                 }else{                                              //If initialized (handshake is done)
-                    LOGGER.info("-It is a check");
+                    LOGGER.finest("-It is a check");
                     if(!said.keyCheck(k)){                          //If check is not alright, update to correct (for now)
                         said.setKeys(k);
-                        LOGGER.info("Keys out of sync: Client-" + k.getPlayerId());
+                        //LOGGER.info("Keys out of sync: Client-" + k.getPlayerId());
                     }else{                                          //If check is alright
                         //TODO: Yay!
                     }
@@ -335,8 +385,8 @@ public class GameLogic{
         private Player createNewPlayer(){
             Random rand = new Random();
             Color col = new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());
-            double initX = 50;
-            double initY = 50;
+            double initX = 200;
+            double initY = 300;
             double radius = 50;
             return new Player(
                     new Centroid(initX, initY - radius, startingWeight, col),
