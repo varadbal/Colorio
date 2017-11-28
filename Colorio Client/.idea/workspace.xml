@@ -29,7 +29,7 @@
       <file leaf-file-name="ClientSocket.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ColorioClient/ClientSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
+            <state relative-caret-position="3111">
               <caret line="195" column="0" lean-forward="false" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -55,16 +55,18 @@
               <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <marker date="1511882639625" expanded="true" signature="3342:3363" ph="/**...*/" />
+                <marker date="1511882639625" expanded="true" signature="4216:4264" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Render.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Render.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ColorioClient/Render.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2193">
-              <caret line="132" column="9" lean-forward="false" selection-start-line="132" selection-start-column="9" selection-end-line="132" selection-end-column="9" />
+            <state relative-caret-position="146">
+              <caret line="131" column="77" lean-forward="false" selection-start-line="131" selection-start-column="77" selection-end-line="131" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,10 +96,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientSocketTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClientSocketTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Test/ColorioClient/ClientSocketTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1486">
+            <state relative-caret-position="296">
               <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -109,7 +111,7 @@
       <file leaf-file-name="UDPSerializable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/UDPSerializable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="561">
               <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
@@ -119,7 +121,7 @@
       <file leaf-file-name="GameStatus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/GameStatus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="832">
+            <state relative-caret-position="1649">
               <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
               <folding>
                 <marker date="1511800995723" expanded="true" signature="3516:3659" ph="{...}" />
@@ -222,11 +224,11 @@
         <option value="$PROJECT_DIR$/../Common Files/ColorioCommon/GameStatus.java" />
         <option value="$PROJECT_DIR$/../Common Files/ColorioCommon/KeyStatus.java" />
         <option value="$PROJECT_DIR$/src/ColorioClient/ClientSocket.java" />
-        <option value="$PROJECT_DIR$/src/ColorioClient/Render.java" />
         <option value="$PROJECT_DIR$/src/ColorioClient/StartDialog.java" />
         <option value="$PROJECT_DIR$/src/ColorioClient/ColorioFrame.java" />
         <option value="$PROJECT_DIR$/src/ColorioClient/Main.java" />
         <option value="$PROJECT_DIR$/../Test/ColorioClient/ClientSocketTest.java" />
+        <option value="$PROJECT_DIR$/src/ColorioClient/Render.java" />
       </list>
     </option>
   </component>
@@ -252,6 +254,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -343,9 +346,8 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -382,7 +384,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CommonMain">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="ClientSocketTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -709,11 +711,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40095088" sideWeight="0.39824304" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40095088" sideWeight="0.40190336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40095088" sideWeight="0.60175693" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40095088" sideWeight="0.5980966" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -729,6 +730,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.49121523" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -978,17 +980,17 @@
         <state relative-caret-position="209">
           <caret line="282" column="0" lean-forward="false" selection-start-line="282" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
           <folding>
-            <marker date="1511092314319" expanded="true" signature="6231:6275" ph="{...}" />
-            <marker date="1511092314319" expanded="true" signature="6231:6281" ph="{...}" />
-            <marker date="1511092314319" expanded="true" signature="6382:6414" ph="/**...*/" />
-            <marker date="1511092314319" expanded="true" signature="6472:6515" ph="/**...*/" />
-            <marker date="1511092314319" expanded="true" signature="6641:6731" ph="/**...*/" />
-            <marker date="1511092314319" expanded="false" signature="6775:6790" ph=" { " />
-            <marker date="1511092314319" expanded="false" signature="6819:6829" ph=" }" />
-            <marker date="1511092314319" expanded="true" signature="6839:6924" ph="/**...*/" />
-            <marker date="1511092314319" expanded="true" signature="6953:7147" ph="{...}" />
-            <marker date="1511092314319" expanded="true" signature="7157:7356" ph="/**...*/" />
-            <marker date="1511092314319" expanded="true" signature="9874:9890" ph="{...}" />
+            <marker date="1511882639627" expanded="true" signature="6231:6275" ph="{...}" />
+            <marker date="1511882639627" expanded="true" signature="6231:6281" ph="{...}" />
+            <marker date="1511882639627" expanded="true" signature="6382:6414" ph="/**...*/" />
+            <marker date="1511882639627" expanded="true" signature="6472:6515" ph="/**...*/" />
+            <marker date="1511882639627" expanded="true" signature="6641:6731" ph="/**...*/" />
+            <marker date="1511882639627" expanded="false" signature="6775:6790" ph=" { " />
+            <marker date="1511882639627" expanded="false" signature="6819:6829" ph=" }" />
+            <marker date="1511882639627" expanded="true" signature="6839:6924" ph="/**...*/" />
+            <marker date="1511882639627" expanded="true" signature="6953:7147" ph="{...}" />
+            <marker date="1511882639627" expanded="true" signature="7157:7356" ph="/**...*/" />
+            <marker date="1511882639627" expanded="true" signature="10221:10237" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1039,22 +1041,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ColorioClient/Render.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2193">
-          <caret line="132" column="9" lean-forward="false" selection-start-line="132" selection-start-column="9" selection-end-line="132" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Colorio Server/src/ColorioServer/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1511882639625" expanded="true" signature="3342:3363" ph="/**...*/" />
+            <marker date="1511882639625" expanded="true" signature="4216:4264" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1087,7 +1081,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ColorioClient/ClientSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
+        <state relative-caret-position="3111">
           <caret line="195" column="0" lean-forward="false" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1097,7 +1091,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/GameStatus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
+        <state relative-caret-position="1649">
           <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
           <folding>
             <marker date="1511800995723" expanded="true" signature="3516:3659" ph="{...}" />
@@ -1107,7 +1101,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/UDPSerializable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
+        <state relative-caret-position="561">
           <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
@@ -1115,8 +1109,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Test/ColorioClient/ClientSocketTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1486">
+        <state relative-caret-position="296">
           <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ColorioClient/Render.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="131" column="77" lean-forward="false" selection-start-line="131" selection-start-column="77" selection-end-line="131" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
