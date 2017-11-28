@@ -23,6 +23,7 @@ public class GameLogic{
      * Logger
      */
     private static final Logger LOGGER = Logger.getLogger(GameLogic.class.getName());
+    //Policy: INFO - once/server, FINE - once/client, FINER - other frequent events, FINEST - inner statuses
     /**
      * Instance variables
      */
@@ -30,7 +31,8 @@ public class GameLogic{
     private MovePlayers moveP = null;
     private HandleInput handleI = null;
     private SendGameStatus sendS = null;
-    private HashSet<Centroid> foods = null;
+    private ConcurrentMap<Integer, Centroid> foods = null;      //Concurrent Set part matters
+    private int foodId = 0;                                     //Just to have some unique keys
     private Color foodColor = new Color(255, 0, 0);
     private int foodsAtOnce = 20;
     private boolean isRunning = false;
@@ -52,10 +54,10 @@ public class GameLogic{
         this.sendS = new SendGameStatus("SendGameStatus-1", toSend);
 
         //Initialize foods
-        this.foods = new HashSet<>();
+        this.foods = new ConcurrentHashMap<>();
         Random rand = new Random();
         for(int i = foods.size(); i < foodsAtOnce; ++i){
-            foods.add(new Centroid(rand.nextFloat() * mapMaxX, rand.nextFloat() * mapMaxY, foodWeight, foodColor));
+            foods.put(++foodId, new Centroid(rand.nextFloat() * mapMaxX, rand.nextFloat() * mapMaxY, foodWeight, foodColor));
         }
     }
 
@@ -68,25 +70,21 @@ public class GameLogic{
 
         isRunning = true;
         if(moveP != null){
-            moveP.start();
+            //moveP.start();
+            Timer timer = new Timer();
+            timer.scheduleAtFixedRate(moveP, 0, Constants.serverSleep / 2);
         }else{
-            /**
-             * TODO throw exception
-             */
+            throw new IllegalStateException();
         }
         if(handleI != null){
             handleI.start();
         }else{
-            /**
-             * TODO throw exception
-             */
+            throw new IllegalStateException();
         }
         if(sendS != null){
             sendS.start();
         }else{
-            /**
-             * TODO throw exception
-             */
+            throw new IllegalStateException();
         }
     }
 
@@ -101,7 +99,7 @@ public class GameLogic{
      * Thread for moving and checking the players in regular time intervals
      * Should not be manipulated from the outside
      */
-    private class MovePlayers implements Runnable{
+    private class MovePlayers extends TimerTask{
         //region Variables
         /**
          * Thread variables
@@ -122,38 +120,37 @@ public class GameLogic{
         /**
          * Thread start method
          */
-        private void start(){
+        /*private void start(){
             LOGGER.info("Starting thread " + threadName);
             if(t == null){
                 t = new Thread(this, threadName);
                 t.start();
             }
-        }
+        }*/
 
         /**
          * Thread run method
          *     Checks map for inactive players
          *     Moves a (playing) player (or waits until it is possible)
          *     Checks map (with that player in the 'center of attention')
-         * FIXME use ScheduledExecutorService
          */
         @Override
         public void run() {
-            LOGGER.info("Running thread " + threadName);
+            LOGGER.finest("Running thread " + threadName);
 
-            long lastOne = 0L;
-            while(isRunning){
+            //long lastOne = 0L;
+            //while(isRunning){
                 /*Troll Timing*/
-                if(Instant.now().toEpochMilli() - lastOne > Constants.serverSleep / 2) {
-                    lastOne = Instant.now().toEpochMilli();
+                //if(Instant.now().toEpochMilli() - lastOne > Constants.serverSleep / 2) {
+                    //lastOne = Instant.now().toEpochMilli();
                     /*Troll timing ends*/
                     LOGGER.finest("Moving player");
 
                     Set<Map.Entry<Integer, Client>> es = clients.entrySet();
                     ArrayList<Integer> toRemove = new ArrayList<>();
 
-                    for (Map.Entry<Integer, Client> i : es) {
                     /*Get the inactive-clients*/
+                    for (Map.Entry<Integer, Client> i : es) {
                         long atm = Instant.now().toEpochMilli();//So that it is calculated only once
                         if (atm - i.getValue().getLastCheck() > commTimeOut) {
                             toRemove.add(i.getKey());
@@ -162,7 +159,7 @@ public class GameLogic{
 
                     /*Move the (active) players (clients)*/
                         if (i.getValue().isPlaying()) {
-                            i.getValue().moveCentroid();
+                            i.getValue().movePlayer();
                         }
                     }
                     checkMap();
@@ -171,9 +168,9 @@ public class GameLogic{
                         clients.remove(i);
                     }
 
-                }
-            }
-            LOGGER.info("Stopping thread " + threadName);
+                //}
+            //}
+            //LOGGER.info("Stopping thread " + threadName);
         }
 
         /**
@@ -204,7 +201,7 @@ public class GameLogic{
             //Add foods if necessary
             Random rand = new Random();
             for(int i = 0; i < foodsAtOnce-foods.size(); ++i){
-                foods.add(new Centroid(rand.nextDouble()*mapMaxX, rand.nextDouble()*mapMaxY, foodWeight, foodColor));
+                foods.put(++foodId, new Centroid(rand.nextDouble()*mapMaxX, rand.nextDouble()*mapMaxY, foodWeight, foodColor));
             }
 
         }
@@ -217,18 +214,18 @@ public class GameLogic{
         private double eatFoodsWithCentroid(Centroid c){
             double toReturn = 0.0;
 
-            ArrayList<Centroid> foodsToRemove = new ArrayList<>();
-            for (Centroid f : foods) {
-                double distanceX = c.getX() - f.getX();
-                double distanceY = c.getY() - f.getY();
+            ArrayList<Integer> foodsToRemove = new ArrayList<>();
+            for (Integer f : foods.keySet()) {
+                double distanceX = c.getX() - foods.get(f).getX();
+                double distanceY = c.getY() - foods.get(f).getY();
                 double distance = sqrt(distanceX * distanceX + distanceY * distanceY);
 
                 if(distance < c.weight / 10) {
-                    toReturn += f.getWeight();
+                    toReturn +=foods.get(f).getWeight();
                     foodsToRemove.add(f);
                 }
             }
-            for (Centroid k : foodsToRemove) {
+            for (Integer k : foodsToRemove) {
                 foods.remove(k);
             }
 
@@ -384,15 +381,17 @@ public class GameLogic{
          */
         private Player createNewPlayer(){
             Random rand = new Random();
-            Color col = new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());
+            float min = 0.7f;
+            float max = 1.0f;
+            Color col = new Color(rand.nextFloat() * (max-min)+min, rand.nextFloat() * (max-min)+min, rand.nextFloat() * (max-min)+min);
             double initX = 200;
             double initY = 300;
-            double radius = 50;
+            double radius = 2 * startingWeight / 10;
             return new Player(
-                    new Centroid(initX, initY - radius, startingWeight, col),
-                    new Centroid(initX, initY + radius, startingWeight, col),
-                    new Centroid(initX + radius, initY, startingWeight, col),
-                    new Centroid(initX - radius, initY, startingWeight, col));
+                    new Centroid(initX, initY - radius, startingWeight, /*new Color(255, 0, 0)),*/col),
+                    new Centroid(initX, initY + radius, startingWeight, /*new Color(0,255,255)),*/col),
+                    new Centroid(initX - radius, initY, startingWeight, /*new Color(0, 0, 255)),*/col),
+                    new Centroid(initX + radius, initY, startingWeight, /*new Color(200, 200, 200))*/col));
         }
 
         //endregion
@@ -470,7 +469,7 @@ public class GameLogic{
                     currentStatus.addPlayerEntry(new PlayerEntry(i.getKey(), i.getValue().getPlayer(), i.getValue().getName()));
                 }
             }
-            for(Centroid i : foods){
+            for(Centroid i : foods.values()){
                 currentStatus.addFood(i);
             }
 

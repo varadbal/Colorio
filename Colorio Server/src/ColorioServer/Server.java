@@ -27,6 +27,7 @@ public class Server {
      * Logger
      */
     private static final Logger LOGGER = Logger.getLogger(Server.class.getName());
+    //Policy: INFO - start/stop (once/server)etc. FINE - connect/disconnect (once/client), FINER - other messages, FINEST - inner statuses
     /**
      * Instance variables
      */
@@ -153,7 +154,7 @@ public class Server {
          * Creates a thread and starts it, (if it does not exist yet)
          */
         private void start(){
-            System.out.println("Starting thread " + threadName);
+            LOGGER.info("Starting thread " + threadName);
             if(t == null){
                 t = new Thread(this, threadName);
                 t.start();
@@ -193,6 +194,7 @@ public class Server {
                     KeyInput k = (KeyInput) o;
                     //clients.get(k.getPlayerId()).setAddr(receivePacket.getAddress()); //Update IP - might have changed
                     toHandle.add(k);
+                    LOGGER.finer("KeyInput received from Client ID" + k.getPlayerId());
                 }
 
             }
@@ -207,7 +209,6 @@ public class Server {
          */
         private void gotHandshake(@NotNull Handshake h, @NotNull InetAddress ip){
             if(h.getName() != null && h.getId() == 0){              //Connecting client
-
                 int nextId;
                 try {
                     nextId = Collections.max(Server.this.clients.keySet()) + 1;     //This way no problem from improper disconnects
@@ -221,7 +222,7 @@ public class Server {
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
-
+                LOGGER.fine("Client Connected - ID: " + nextId);
             }else if(h.getName() == null && h.getId() != 0) {         //Disconnecting Client
                 OutPacket op = new OutPacket(h.getId(), new Handshake(null, 0));
                 Server.this.clients.get(h.getId()).setPlaying(false);
@@ -230,6 +231,7 @@ public class Server {
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
+                LOGGER.fine("Client Disconnected - ID: " + h.getId());
             }
         }
     }
@@ -261,7 +263,7 @@ public class Server {
          * Creates a thread and starts it, (if it does not exist yet)
          */
         private void start(){
-            System.out.println("Starting thread " + threadName);
+            LOGGER.info("Starting thread " + threadName);
             if(t == null){
                 t = new Thread(this, threadName);
                 t.start();

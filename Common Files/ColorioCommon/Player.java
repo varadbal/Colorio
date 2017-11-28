@@ -2,9 +2,7 @@ package ColorioCommon;
 
 import java.io.Serializable;
 
-import static ColorioCommon.Constants.baseSpeed;
-import static ColorioCommon.Constants.mapMaxX;
-import static ColorioCommon.Constants.mapMaxY;
+import static ColorioCommon.Constants.*;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
@@ -38,10 +36,11 @@ public class Player implements Serializable{
     }
 
     /**
-     * Moves all centroids in the given direction(s) in the given interval (linear)
+     * Moves all centroids in the given direction(s) for the given time interval
      * @param horizontalDir positive, negative or no (0) movement on the x-Axis
      * @param verticalDir positive, negative or no (0) movement on the y-Axis
      * @param timeInterval how long the centroids moved (for linear movement)
+     * @implNote s=v*t movement, at the edge of the map moves slower (v*sqrt(2)) if diagonal movement would be expected
      */
     public void movePlayer(int horizontalDir, int verticalDir, long timeInterval){
 
@@ -59,49 +58,71 @@ public class Player implements Serializable{
             vDir = -1;
         }
 
-        double prevTopLocX = top.getX();
-        double prevTopLocY = top.getY();
-        double prevBotLocX = bottom.getX();
-        double prevBotLocY = bottom.getY();
-        double prevRightLocX = right.getX();
-        double prevRightLocY = right.getY();
-        double prevLeftLocX = left.getX();
-        double prevLeftLocY = left.getY();
+        //Calculate movement vectors (same for all Centroids)
+        double velocity = baseSpeed;
+        double movementVectorX = hDir * (velocity * timeInterval)/((abs(hDir) + abs(vDir)) == 2 ? sqrt(2.0) : 1.0);
+        double movementVectorY = vDir * (velocity * timeInterval)/((abs(hDir) + abs(vDir)) == 2 ? sqrt(2.0) : 1.0);
 
-        double nextTopLocX = top.getX() + hDir * baseSpeed * timeInterval ;// (abs(hDir)+abs(vDir) == 2 ? sqrt(2) : 1);
-        double nextTopLocY = top.getY() + vDir * baseSpeed * timeInterval ;// (abs(hDir)+abs(vDir) == 2 ? sqrt(2) : 1);
-        double nextBotLocX = bottom.getX() + hDir * baseSpeed * timeInterval ;// (abs(hDir)+abs(vDir) == 2 ? sqrt(2) : 1);
-        double nextBotLocY = bottom.getY() + vDir * baseSpeed * timeInterval ;// (abs(hDir)+abs(vDir) == 2 ? sqrt(2) : 1);
-        double nextRightLocX = right.getX() + hDir * baseSpeed * timeInterval ;// (abs(hDir)+abs(vDir) == 2 ? sqrt(2) : 1);
-        double nextRightLocY = right.getY() + vDir * baseSpeed * timeInterval ;// (abs(hDir)+abs(vDir) == 2 ? sqrt(2) : 1);
-        double nextLeftLocX = left.getX() + hDir * baseSpeed * timeInterval ;// (abs(hDir)+abs(vDir) == 2 ? sqrt(2) : 1);
-        double nextLeftLocY = left.getY() + vDir * baseSpeed * timeInterval ;// (abs(hDir)+abs(vDir) == 2 ? sqrt(2) : 1);
+        double newTopX = getTop().getX() + movementVectorX;
+        double newTopY = getTop().getY() + movementVectorY;
+        double newBotX = getBottom().getX() + movementVectorX;
+        double newBotY = getBottom().getY() + movementVectorY;
+        double newLeftX = getLeft().getX() + movementVectorX;
+        double newLeftY = getLeft().getY() + movementVectorY;
+        double newRightX = getRight().getX() + movementVectorX;
+        double newRightY = getRight().getY() + movementVectorY;
 
-        boolean horizontalOk = true;
-        boolean verticalOk = true;
-        if(     nextTopLocX > 0 && nextBotLocX > 0 && nextRightLocX > 0 && nextLeftLocX > 0 &&
-                nextTopLocX < mapMaxX && nextBotLocX < mapMaxX && nextRightLocX < mapMaxX && nextLeftLocX < mapMaxX){
-            horizontalOk = true;
+        //Check if stays inside the Map (should work if Centroids keep to their names)
+        boolean vOk = false;
+        boolean hOk = false;
+        if(newLeftX > 0 && newRightX < mapMaxX){
+            hOk = true;
         }
-        if(     nextTopLocY > 0 && nextBotLocY > 0 && nextRightLocY > 0 && nextLeftLocY > 0 &&
-                nextTopLocY < mapMaxY && nextBotLocY < mapMaxY && nextRightLocY < mapMaxY && nextLeftLocY < mapMaxY){
-            verticalOk = true;
+        if(newTopY > 0 && newBotY < mapMaxY){
+            vOk = true;
         }
 
-        top.setLocation(    horizontalOk ? nextTopLocX : prevTopLocX,       verticalOk ? nextTopLocY : prevTopLocY);
-        bottom.setLocation( horizontalOk ? nextBotLocX : prevBotLocX,       verticalOk ? nextBotLocY : prevBotLocY);
-        right.setLocation(  horizontalOk ? nextRightLocX : prevRightLocX,   verticalOk ? nextRightLocY : prevRightLocY);
-        left.setLocation(   horizontalOk ? nextLeftLocX : prevLeftLocX,      verticalOk ? nextLeftLocX : prevLeftLocY);
+        //Set values (if OK)
+        top.setLocation(hOk ? newTopX : getTop().getX(), vOk ? newTopY : getTop().getY());
+        bottom.setLocation(hOk ? newBotX : getBottom().getX(), vOk ? newBotY : getBottom().getY());
+        left.setLocation(hOk ? newLeftX : getLeft().getX(), vOk ? newLeftY : getLeft().getY());
+        right.setLocation(hOk ? newRightX : getRight().getX(), vOk ? newRightY : getRight().getY());
 
-       /* top.setLocation(nextTopLocX, nextTopLocY);
-        bottom.setLocation(nextBotLocX, nextBotLocY);
-        right.setLocation(nextRightLocX, nextRightLocY);
-        left.setLocation(nextLeftLocX, nextLeftLocX);*/
 
     }
 
     /**
-     * Grows all Centroids equally distributing the given weight between them
+     * Makes the centroids move towards their ideal distances from each other
+     * @param timeInterval the last time
+     */
+    public void manageDistances(long timeInterval){
+        //System.out.println(timeInterval + " " + top.weight);
+        double velocity = baseSpeed;
+
+        if((right.getX() - left.getX())/2 < (top.getWeight() / 10)){
+            double movementVector = velocity * timeInterval / (4*timeInterval);
+
+            double newTopX = top.getX();
+            double newTopY = top.getY() - movementVector;
+            double newBotX = bottom.getX();
+            double newBotY = bottom.getY() + movementVector;
+            double newLeftX = left.getX() - movementVector;
+            double newLeftY = left.getY();
+            double newRightX = right.getX() + movementVector;
+            double newRightY = right.getY();
+
+            if(newTopY > 0 && newBotY < mapMaxY && newLeftX > 0 && newRightX < mapMaxX){
+                top.setLocation(newTopX, newTopY);
+                bottom.setLocation(newBotX, newBotY);
+                right.setLocation(newRightX, newRightY);
+                left.setLocation(newLeftX, newLeftY);
+
+            }
+        }
+    }
+
+    /**
+     * Grows all Centroids by equally distributing the given weight among them
      * @param weight The weight to grow the player with
      */
     public void growPlayer(double weight){

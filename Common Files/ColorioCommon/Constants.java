@@ -13,7 +13,7 @@ public abstract class Constants {
     public static int clientPort = 49154;
 
     //Game constants
-    public static double foodWeight = 50;           //Default Food Weight
+    public static double foodWeight = 100;           //Default Food Weight
     public static double startingWeight = 100.0;    //Initial Player-Centroid Weight
     public static double baseSpeed = 0.1;           //Initial Movement Speed
     public static double mapMaxX = 800;             //Game Map X-Boundary

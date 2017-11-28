@@ -130,10 +130,10 @@ public class Client {
     }
 
     /**
-     * Moves the Centroid of the Client, according to the (currently) pressed keys
-     * FIXME for now only doing something
+     * Moves the Player of the Client, according to the (currently) pressed keys
+     * More like 'update'
      */
-    public void moveCentroid(){
+    public void movePlayer(){
 
         if(lastMoved == 0L){ //Check if it was ever moved (no -> initialize)
             lastMoved = Instant.now().toEpochMilli();
@@ -159,6 +159,7 @@ public class Client {
 
         long now = Instant.now().toEpochMilli();
         player.movePlayer(horizontal, vertical, now - lastMoved);
+        player.manageDistances(now - lastMoved);
         lastMoved = now;
     }
 
