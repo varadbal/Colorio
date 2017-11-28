@@ -255,7 +255,7 @@ public class ClientSocket extends DatagramSocket implements KeyListener {
                         log("statusSend","Sending stopHandshake...");
                         send(new Handshake(null,frame.getPlayerID()).toDatagramPacket(address,sendPort));
                         log("statusSend","stopHandshake sent");
-                        DatagramPacket receivePacket = new DatagramPacket(new byte[1024],1024);
+                        DatagramPacket receivePacket = new DatagramPacket(new byte[Constants.minBufferSize],Constants.minBufferSize);
                         log("statusSend","Waiting for stopHandshake response...");
                         receive(receivePacket);
                         Handshake stopHandshake = new Handshake();

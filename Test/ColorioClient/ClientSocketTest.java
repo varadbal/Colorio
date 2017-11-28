@@ -14,6 +14,9 @@ import java.net.InetAddress;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Client communication tester class
+ */
 class ClientSocketTest {
 
     private final JLabel messageLabel = new JLabel();
@@ -35,10 +38,13 @@ class ClientSocketTest {
         address = InetAddress.getByName("localhost");
     }
 
+    /**
+     * After tests
+     */
     @AfterEach
     public void closeSockets(){
-        //server.close();
-        //socket.close();
+        server.close();
+        socket.close();
     }
 
     /**
@@ -58,12 +64,13 @@ class ClientSocketTest {
         KeyStatus status = (KeyStatus)UDPSerializable.getClassFromDatagramPacket(receivePacket);
         assertEquals(5,status.getPlayerId());
         GameStatus status1 = new GameStatus();
-        /*status1.addCentroid(new Centroid(50,50,50, Color.BLUE));
+        PlayerEntry playerEntry = new PlayerEntry(5,new Player(new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE)),"tester");
+        status1.addPlayerEntry(playerEntry);
         server.send(status1.toDatagramPacket(address,Constants.clientPort));
         Thread.sleep(100);
         assertEquals(5,socket.getFrame().getPlayerID());
-        assertEquals(50,socket.getFrame().getStatus().getCentroids().get(0).x);
-        assertEquals("Connected",messageLabel.getText());*/
+        assertEquals(50,socket.getFrame().getStatus().getPlayers().get(0).getPlayer().getTop().x);
+        assertEquals("Connected",messageLabel.getText());
     }
 
     /**
@@ -84,20 +91,23 @@ class ClientSocketTest {
         KeyStatus status = (KeyStatus)UDPSerializable.getClassFromDatagramPacket(receivePacket);
         assertEquals(5,status.getPlayerId());
         GameStatus status1 = new GameStatus();
-        /*status1.addCentroid(new Centroid(50,50,50, Color.BLUE));
+        PlayerEntry playerEntry = new PlayerEntry(5,new Player(new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE)),"tester");
+        status1.addPlayerEntry(playerEntry);
         server.send(status1.toDatagramPacket(address,Constants.clientPort));
         Thread.sleep(100);
         assertEquals(5,socket.getFrame().getPlayerID());
-        assertEquals(50,socket.getFrame().getStatus().getCentroids().get(0).x);
-        assertEquals("Connected",messageLabel.getText());*/
+        assertEquals(50,socket.getFrame().getStatus().getPlayers().get(0).getPlayer().getTop().x);
+        assertEquals("Connected",messageLabel.getText());
 
         /**
-         * Testing, if the sent from the server GameStatuses are handled correctly
+         * Testing, if the received GameStatuses are handled correctly
          */
-        /*status1.addCentroid(new Centroid(150,50,50, Color.BLUE));
+        PlayerEntry playerEntry2 = new PlayerEntry(5,new Player(new Centroid(150,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE)),"tester");
+        status1.addPlayerEntry(playerEntry2);
         server.send(status1.toDatagramPacket(address,Constants.clientPort));
         Thread.sleep(100);
-        assertEquals(150,socket.getFrame().getStatus().getCentroids().get(1).x);*/
+        assertEquals(5,socket.getFrame().getPlayerID());
+        assertEquals(150,socket.getFrame().getStatus().getPlayers().get(1).getPlayer().getTop().x);
 
         /**
          * Testing if the right KeyStatuses will be sent
@@ -130,12 +140,13 @@ class ClientSocketTest {
         KeyStatus status = (KeyStatus)UDPSerializable.getClassFromDatagramPacket(receivePacket);
         assertEquals(5,status.getPlayerId());
         GameStatus status1 = new GameStatus();
-        /*status1.addCentroid(new Centroid(50,50,50, Color.BLUE));
+        PlayerEntry playerEntry = new PlayerEntry(5,new Player(new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE)),"tester");
+        status1.addPlayerEntry(playerEntry);
         server.send(status1.toDatagramPacket(address,Constants.clientPort));
         Thread.sleep(100);
         assertEquals(5,socket.getFrame().getPlayerID());
-        assertEquals(50,socket.getFrame().getStatus().getCentroids().get(0).x);
-        assertEquals("Connected",messageLabel.getText());*/
+        assertEquals(50,socket.getFrame().getStatus().getPlayers().get(0).getPlayer().getTop().x);
+        assertEquals("Connected",messageLabel.getText());
 
         /**
          * Waiting a second
@@ -173,12 +184,13 @@ class ClientSocketTest {
         KeyStatus status = (KeyStatus)UDPSerializable.getClassFromDatagramPacket(receivePacket);
         assertEquals(5,status.getPlayerId());
         GameStatus status1 = new GameStatus();
-        /*status1.addCentroid(new Centroid(50,50,50, Color.BLUE));
+        PlayerEntry playerEntry = new PlayerEntry(5,new Player(new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE),new Centroid(50,50,50,Color.BLUE)),"tester");
+        status1.addPlayerEntry(playerEntry);
         server.send(status1.toDatagramPacket(address,Constants.clientPort));
         Thread.sleep(100);
         assertEquals(5,socket.getFrame().getPlayerID());
-        assertEquals(50,socket.getFrame().getStatus().getCentroids().get(0).x);
-        assertEquals("Connected",messageLabel.getText());*/
+        assertEquals(50,socket.getFrame().getStatus().getPlayers().get(0).getPlayer().getTop().x);
+        assertEquals("Connected",messageLabel.getText());
 
         /**
          * Waiting a second

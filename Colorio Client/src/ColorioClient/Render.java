@@ -128,7 +128,8 @@ public class Render extends BufferedImage{
 
         for (Centroid food : foods){
             graphics2D.setColor(food.getColor());
-            graphics2D.fillOval((int)food.getX(),(int)food.getY(),(int)food.getWeight()/10,(int)food.getWeight()/10);
+            int weightInt=(int)(food.getWeight()/10);
+            graphics2D.fillOval((int)food.getX(),(int)food.getY(),6,6);
         }
     }
 }

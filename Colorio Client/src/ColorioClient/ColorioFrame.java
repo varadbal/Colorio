@@ -59,7 +59,7 @@ public class ColorioFrame extends JFrame implements Runnable, ComponentListener{
 
     /**
      * setter method
-     * @param playerID
+     * @param playerID playerid to set
      */
     public void setPlayerID(int playerID){
         this.playerID = playerID;
@@ -88,7 +88,7 @@ public class ColorioFrame extends JFrame implements Runnable, ComponentListener{
 
     /**
      * it refreshes the status of the game
-     * @param status
+     * @param status the new status
      */
     public void refreshGameStatus(GameStatus status){
         this.status=status;

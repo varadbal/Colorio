@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+/**
+ * This class is the opening window of the client
+ */
 public class StartDialog extends JFrame implements ComponentListener{
     private JTextField ipTextField;
     private JPanel mainPanel;
@@ -17,6 +20,9 @@ public class StartDialog extends JFrame implements ComponentListener{
     private JLabel messageLabel;
     private ClientSocket clientSocket;
 
+    /**
+     * Constructor
+     */
     public StartDialog(){
         addComponentListener(this);
         setContentPane(mainPanel);
@@ -55,6 +61,10 @@ public class StartDialog extends JFrame implements ComponentListener{
 
     }
 
+    /**
+     * This It stops the program correctly
+     * @param e the received event
+     */
     @Override
     public void componentHidden(ComponentEvent e) {
         clientSocket.stop();
