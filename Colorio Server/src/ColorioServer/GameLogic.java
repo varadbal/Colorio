@@ -10,6 +10,7 @@ import java.util.concurrent.*;
 import java.util.logging.Logger;
 
 import static ColorioCommon.Constants.*;
+import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
 /**
@@ -69,9 +70,9 @@ public class GameLogic{
         LOGGER.info("Starting GameLogic");
 
         isRunning = true;
+        Timer timer = new Timer();
         if(moveP != null){
             //moveP.start();
-            Timer timer = new Timer();
             timer.scheduleAtFixedRate(moveP, 0, Constants.serverSleep / 2);
         }else{
             throw new IllegalStateException();
@@ -82,7 +83,8 @@ public class GameLogic{
             throw new IllegalStateException();
         }
         if(sendS != null){
-            sendS.start();
+           // sendS.start();
+            timer.scheduleAtFixedRate(sendS, 0, Constants.serverSleep);
         }else{
             throw new IllegalStateException();
         }
@@ -193,7 +195,7 @@ public class GameLogic{
             for(Map.Entry<Integer, Client> i : es){
                 for(Map.Entry<Integer, Client> j : es){
                     if(!i.equals(j)){
-                        //TODO implement
+                        checkPoP(i.getValue().getPlayer(), j.getValue().getPlayer());
                     }
                 }
             }
@@ -220,9 +222,10 @@ public class GameLogic{
                 double distanceY = c.getY() - foods.get(f).getY();
                 double distance = sqrt(distanceX * distanceX + distanceY * distanceY);
 
-                if(distance < c.weight / 10) {
+                if(distance < ((c.getWeight() < 500.0) ? c.getWeight() / 10.0 : (c.getWeight() < 1000 ? c.getWeight()/15.0 : c.getWeight()/20.0))) {
                     toReturn +=foods.get(f).getWeight();
                     foodsToRemove.add(f);
+                    System.out.println(c.getWeight());
                 }
             }
             for (Integer k : foodsToRemove) {
@@ -230,6 +233,63 @@ public class GameLogic{
             }
 
             return toReturn;
+        }
+
+        /**
+         * Finds overlapping Players and handles them eating each other if necessary
+         * @param i One Player
+         * @param j Another Player
+         */
+        private void checkPoP(Player i, Player j){
+            /*ArrayList<Centroid> p1 = new ArrayList<>();
+            p1.add(i.getTop()); p1.add(i.getBottom()); p1.add(i.getLeft()); p1.add(i.getRight());*/
+            ArrayList<Centroid> p2 = new ArrayList<>();
+            p2.add(j.getTop()); p2.add(j.getBottom()); p2.add(j.getLeft()); p2.add(j.getRight());
+
+            Player eaten = null;    //if a whole player was eaten
+            for(Centroid c2 : p2){
+                double area1 = abs(((c2.getX())*(i.getTop().getY()-i.getRight().getY()) + (i.getTop().getX())*(i.getRight().getY()-c2.getY()) + (i.getRight().getX())*(c2.getY()-i.getTop().getY()))/2);
+                double area2 = abs(((c2.getX())*(i.getTop().getY()-i.getLeft().getY()) + (i.getTop().getX())*(i.getLeft().getY()-c2.getY()) + (i.getLeft().getX())*(c2.getY()-i.getTop().getY()))/2);
+                double area3 = abs(((c2.getX())*(i.getBottom().getY()-i.getRight().getY()) + (i.getBottom().getX())*(i.getRight().getY()-c2.getY()) + (i.getRight().getX())*(c2.getY()-i.getBottom().getY()))/2);
+                double area4 = abs(((c2.getX())*(i.getBottom().getY()-i.getLeft().getY()) + (i.getBottom().getX())*(i.getLeft().getY()-c2.getY()) + (i.getLeft().getX())*(c2.getY()-i.getBottom().getY()))/2);
+
+                double rectA = abs(((i.getTop().getX()*i.getRight().getY()-i.getTop().getY()*i.getRight().getX()) + (i.getRight().getX()*i.getBottom().getY()-i.getRight().getY()*i.getBottom().getX())
+                                + (i.getBottom().getX()*i.getLeft().getY()-i.getBottom().getY()*i.getLeft().getX() + (i.getLeft().getX()*i.getTop().getY()-i.getLeft().getY()*i.getTop().getX())))/2);
+
+
+                if(area1+area2+area3+area4 > rectA + 0.01){ //If true, c2 is outside the rectangle
+                    //Do nothing for now
+                }else if(abs(area1+area2+area3+area4 - rectA) < 0.01){  //If true, c2 is either on the rectangle (one area is 0) or inside (else)
+                    Centroid c1 = null;
+                    if(c2 == j.getTop()){
+                        c1 = i.getBottom();
+                    }else if(c2 == j.getBottom()){
+                        c1 = i.getTop();
+                    }else if(c2 == j.getLeft()){
+                        c1 = i.getRight();
+                    }else if(c2 == j.getRight()){
+                        c1 = i.getLeft();
+                    }
+                    if((c1 != null) && (c1.getWeight() < c2.getWeight())){  //p2(=j) eats c1(=Centroid of i)
+                        j.growPlayer(c1.weight);
+                        c1.setLocation(i.calculateMiddleX(),i.calculateMiddleY());
+                        i.shrinkPlayer(c1.weight);
+
+                        if(i.getTop().getWeight() < foodWeight){
+                            eaten = i;
+                        }
+                    }
+                }
+            }
+
+            if(eaten != null){//If eaten, set playing off. For now, this will generate a new Player for him (or dc)
+                for(Map.Entry<Integer, Client> c : clients.entrySet()){
+                    if(c.getValue().getPlayer() == eaten){
+                        c.getValue().setPlaying(false);
+                        c.getValue().setPlayer(null);
+                    }
+                }
+            }
         }
 
 
@@ -277,7 +337,7 @@ public class GameLogic{
 
         /**
          * Thread run method
-         *     Handles and incoming KeyInput (or waits until it becomes possible)
+         * Handles and incoming KeyInput (or waits until it becomes possible)
          */
         @Override
         public void run() {
@@ -305,6 +365,7 @@ public class GameLogic{
         }
 
         /**
+         * Handling KeyEvent
          * Updating the 'keys' (key status) of the Client according to the incoming KeyEvent
          * @param k The incoming KeyEvent
          */
@@ -351,6 +412,7 @@ public class GameLogic{
         }
 
         /**
+         * Handling KeyStatus
          * Either initializing the Client (completing handshake) or comparing the key status with the incoming one
          * @param k The incoming KeyStatus-Object
          */
@@ -376,8 +438,8 @@ public class GameLogic{
         }
 
         /**
-         * Returns a new Player-Object
-         * @return the created Player
+         * Creates a new Player-Object
+         * @return The new Player-Object
          */
         private Player createNewPlayer(){
             Random rand = new Random();
@@ -386,7 +448,7 @@ public class GameLogic{
             Color col = new Color(rand.nextFloat() * (max-min)+min, rand.nextFloat() * (max-min)+min, rand.nextFloat() * (max-min)+min);
             double initX = 200;
             double initY = 300;
-            double radius = 2 * startingWeight / 10;
+            double radius = radius(startingWeight);//2 * startingWeight / 10;
             return new Player(
                     new Centroid(initX, initY - radius, startingWeight, /*new Color(255, 0, 0)),*/col),
                     new Centroid(initX, initY + radius, startingWeight, /*new Color(0,255,255)),*/col),
@@ -398,26 +460,20 @@ public class GameLogic{
     }
 
     /**
-     * Thread for sending the GameStatus in regular time intervals
+     * TimerTask for sending the GameStatus in regular time intervals
      * Should not be manipulated from the outside
      */
-    private class SendGameStatus implements Runnable{
+    private class SendGameStatus extends TimerTask{
         //region Variables
-        /**
-         * Thread variables
-         */
-        Thread t;
         String threadName;
-        /**
-         * Instance variables
-         */
+
         private BlockingQueue<OutPacket> toSend = null;
         //endregion
 
         //region Methods
         /**
          * Constructor, initializing variables
-         * @param threadName The name of the Thread
+         * @param threadName The name of the Thread(/Task)
          * @param toSend A queue for communication with the ServerOut
          */
         private SendGameStatus(String threadName, @NotNull BlockingQueue<OutPacket> toSend){
@@ -426,53 +482,32 @@ public class GameLogic{
         }
 
         /**
-         * Thread start method
-         */
-        private void start(){
-            LOGGER.info("Starting thread " + threadName);
-            if(t == null){
-                t = new Thread(this, threadName);
-                t.start();
-            }
-        }
-
-        /**
          * Thread run method, calling send regularly
-         * TODO more elegant (e.g. with Timer & TimerTask ?)
          */
         @Override
         public void run() {
-            LOGGER.info("Running thread " + threadName);
-
-            while(isRunning){
+            LOGGER.finest("Running task " + threadName);
                 send();
-
-                try {
-                    Thread.sleep(Constants.serverSleep);
-                }catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-            }
-            LOGGER.info("Stopping thread " + threadName);
         }
 
         /**
          * Prepare and 'send' a GameStatus object for each (playing) client
          */
         private void send(){
-            //LOGGER.info("Sending");
             GameStatus currentStatus = new GameStatus();
             Set<Map.Entry<Integer, Client>> es = clients.entrySet();
 
+            //Put all Player-Objects in currentStatus
             for(Map.Entry<Integer, Client> i : es){
                 if(i.getValue().isPlaying()) {
                     currentStatus.addPlayerEntry(new PlayerEntry(i.getKey(), i.getValue().getPlayer(), i.getValue().getName()));
                 }
             }
+            //Put all Foods in currentStatus
             for(Centroid i : foods.values()){
                 currentStatus.addFood(i);
             }
-
+            //Schedule currentStatus to send to every Client
             for(Map.Entry<Integer, Client> i : es){
                 try {
                     if(i.getValue().isPlaying()) {

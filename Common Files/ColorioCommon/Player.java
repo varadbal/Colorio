@@ -98,9 +98,11 @@ public class Player implements Serializable{
     public void manageDistances(long timeInterval){
         //System.out.println(timeInterval + " " + top.weight);
         double velocity = baseSpeed;
+        double movementVector = velocity * timeInterval / (4*timeInterval);
 
-        if((right.getX() - left.getX())/2 < (top.getWeight() / 10)){
-            double movementVector = velocity * timeInterval / (4*timeInterval);
+        if((right.getX() - left.getX()) - (top.getY()-bottom.getY()) > 0.1
+                && (right.getX() - left.getX()) < radius(top.getWeight())){
+
 
             double newTopX = top.getX();
             double newTopY = top.getY() - movementVector;
@@ -118,17 +120,53 @@ public class Player implements Serializable{
                 left.setLocation(newLeftX, newLeftY);
 
             }
+        }else if((right.getX() - left.getX()) - (top.getY()-bottom.getY()) > 0.1){
+            double newTopX = top.getX();
+            double newBotX = bottom.getX();
+            double newLeftY = left.getY();
+            double newRightY = right.getY();
+
+            double newTopY = top.getY() < calculateMiddleY() - radius(top.getWeight()) ? top.getY()+movementVector : top.getY()-movementVector;
+            double newBotY = bottom.getY() < calculateMiddleY() + radius(top.getWeight()) ? bottom.getY()+movementVector : bottom.getY()-movementVector;
+            double newLeftX = left.getX() < calculateMiddleX() - radius(top.getWeight()) ? left.getX()+movementVector : left.getX()-movementVector;
+            double newRightX = right.getX() < calculateMiddleX() + radius(top.getWeight()) ? left.getX()+movementVector : left.getX()-movementVector;
+
         }
     }
 
     /**
      * Grows all Centroids by equally distributing the given weight among them
+     * Maximum set to 2000 ATM
      * @param weight The weight to grow the player with
      */
     public void growPlayer(double weight){
-        top.weight += weight / 4;
-        bottom.weight += weight / 4;
-        left.weight += weight / 4;
-        right.weight += weight / 4;
+        if(top.weight < 2000.0) {
+            top.weight += weight / 4;
+            bottom.weight += weight / 4;
+            left.weight += weight / 4;
+            right.weight += weight / 4;
+        }
     }
+
+    /**
+     * Shrinks all Centroids by equally "distributing" the negative of the given weight among them
+     * @param weight The weight to shrink the player with
+     */
+    public void shrinkPlayer(double weight){
+        top.weight -= weight / 4;
+        bottom.weight -= weight / 4;
+        left.weight -= weight / 4;
+        right.weight -= weight / 4;
+    }
+
+    public double calculateMiddleX(){
+        return (((top.getX()*bottom.getY()-top.getY()*bottom.getX())*(left.getX()-right.getX())-(top.getX()-bottom.getX())*(left.getX()*right.getY()-left.getY()*right.getX()))
+                /((top.getX()-bottom.getX())*(left.getY()-right.getY())-(top.getY()-bottom.getY())*(left.getX()-right.getX())));
+    }
+    public double calculateMiddleY(){
+        return (((top.getX()*bottom.getY()-top.getY()*bottom.getX())*(left.getY()-right.getY())-(top.getY()-bottom.getY())*(left.getX()*right.getY()-left.getY()*right.getX()))
+                /((top.getX()-bottom.getX())*(left.getY()-right.getY())-(top.getY()-bottom.getY())*(left.getX()-right.getX())));
+    }
+
+
 }

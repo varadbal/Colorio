@@ -165,7 +165,6 @@ public class Client {
 
     /**
      * Class representing the key-status of the Client on the server-side
-     * TODO comment
      */
     public class ClientKeys {
         /**
@@ -176,6 +175,13 @@ public class Client {
         private final boolean s;
         private final boolean d;
 
+        /**
+         * Constructor with every key
+         * @param w If the w-key is pressed
+         * @param a If the a-key is pressed
+         * @param s If the s-key is pressed
+         * @param d If the d-key is pressed
+         */
         public ClientKeys(boolean w, boolean a, boolean s, boolean d) {
             this.w = w;
             this.a = a;
