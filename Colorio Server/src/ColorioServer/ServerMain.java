@@ -6,8 +6,8 @@ import ColorioCommon.KeyInput;
 import java.util.concurrent.*;
 
 /**
+ * Tester class for the whole ColorIo Server
  * @author Balazs Varady
- *
  */
 public class ServerMain {
     public static void main(String[] args) {
