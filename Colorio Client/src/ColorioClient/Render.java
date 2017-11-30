@@ -17,7 +17,7 @@ public class Render extends BufferedImage{
     private final double whiteLimit=0.01;
     private final double renderRange=3.0;
     private final double minRenderRange=30;
-    private static double sigmoidCache[] = new double[sigmoidTableSize];
+    private static double sigmoidCache[];
     private static boolean isSigmoidCacheFilled=false;
     private Graphics2D graphics2D;
 
@@ -32,6 +32,7 @@ public class Render extends BufferedImage{
         this.status =status;
         this.graphics2D  = createGraphics();
         if(!isSigmoidCacheFilled){
+            sigmoidCache=new double[sigmoidTableSize];
             for (int i=0;i<sigmoidTableSize;i++){
                 sigmoidCache[i]=sigmoid(i*sigmoidStep);
             }
