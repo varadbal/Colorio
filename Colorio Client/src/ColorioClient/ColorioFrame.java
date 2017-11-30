@@ -42,7 +42,7 @@ public class ColorioFrame extends JFrame implements Runnable, ComponentListener{
         pack();
         status=new GameStatus();
         render = new Render(width,height,status);
-        render.render();
+        //render.render(status);
         drawBufferedImage(render);
     }
 
