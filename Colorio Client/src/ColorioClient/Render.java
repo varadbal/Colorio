@@ -14,10 +14,10 @@ public class Render extends BufferedImage{
     private GameStatus status;
     private static final double sigmoidStep=0.0005;
     private static final int sigmoidTableSize=32768;
-    private final double whiteLimit=0.01;
+    private final double whiteLimit=0.03;
     private final double renderRange=3.0;
     private final double minRenderRange=30;
-    private static double sigmoidCache[];
+    private static int sigmoidCache[] = new int[sigmoidTableSize];
     private static boolean isSigmoidCacheFilled=false;
     private Graphics2D graphics2D;
 
@@ -32,9 +32,9 @@ public class Render extends BufferedImage{
         this.status =status;
         this.graphics2D  = createGraphics();
         if(!isSigmoidCacheFilled){
-            sigmoidCache=new double[sigmoidTableSize];
             for (int i=0;i<sigmoidTableSize;i++){
-                sigmoidCache[i]=sigmoid(i*sigmoidStep);
+                sigmoidCache[i]=(int)(255-(sigmoid(i*sigmoidStep)-0.5)*2*255);
+                System.out.println(i+": "+sigmoidCache[i]);
             }
             isSigmoidCacheFilled=true;
         }
@@ -51,26 +51,40 @@ public class Render extends BufferedImage{
     }
 
     /**
-     * This is a sigmoid function, accelerated with cache table
+     * This is a sigmoid function, accelerated with cache table, and adjusted to the render use
      * @param x the value
      * @return sigmoid value od x
      */
-    private double cacheSigmoid(double x){
+    private int cacheSigmoid(double x){
         int q = (int) (x/sigmoidStep);
-        if(q>(sigmoidTableSize-1)) return 1;
+        if(q>(sigmoidTableSize-1)) return 0;
         else {
             return sigmoidCache[q];
+        }
+    }
+
+    private class PixelInfo{
+        public double intensity;
+        public double red;
+        public double green;
+        public double blue;
+        public PixelInfo(double intensity, double red, double green, double blue){
+
+            this.intensity = intensity;
+            this.red = red;
+            this.green = green;
+            this.blue = blue;
         }
     }
 
     /**
      * This function renders the frame from gameStatus
      */
-    public void render(){
-        //this.status=status;
-        //System.out.println(status.toString());
+    public void render(GameStatus status){
+        this.status=status;
         ArrayList<Centroid> centroids = status.getPlayerCentroids();
-        double screen[][] = new double[ColorioFrame.width][ColorioFrame.height];
+        PixelInfo pixelInfos[][] = new PixelInfo[ColorioFrame.width][ColorioFrame.height];
+        //double screen[][] = new double[ColorioFrame.width][ColorioFrame.height];
         double screenRed[][] = new double[ColorioFrame.width][ColorioFrame.height];
         double screenGreen[][] = new double[ColorioFrame.width][ColorioFrame.height];
         double screenBlue[][] = new double[ColorioFrame.width][ColorioFrame.height];/*
@@ -101,27 +115,32 @@ public class Render extends BufferedImage{
             for (int j=0;j<getHeight();j++){
                 for (Centroid centroid : centroids) {
                     double intensity = (2.0 / ((i - centroid.getX()) * (i - centroid.getX()) + (j - centroid.getY()) * (j - centroid.getY())) * centroid.getWeight());
-                    screen[i][j] += intensity;
-                    screenRed[i][j] += intensity * (1 - centroid.color.getRed() / 255.0);
-                    screenGreen[i][j] += intensity * (1 - centroid.color.getGreen() / 255.0);
-                    screenBlue[i][j] += intensity * (1 - centroid.color.getBlue() / 255.0);
+                    //screen[i][j] += intensity;
+                    screenRed[i][j] += intensity * centroid.getRedIntensityFactor();
+                    screenGreen[i][j] += intensity * centroid.getGreenIntensityFactor();
+                    screenBlue[i][j] += intensity * centroid.getBlueIntensityFactor();
+                    /*intensity += intensity * centroid.getRedIntensityFactor();
+                    intensity += intensity * centroid.getGreenIntensityFactor();
+                    intensity += intensity * centroid.getBlueIntensityFactor();*/
+                    //pixelInfos[i][j]=new PixelInfo(intensity,intensity * centroid.getRedIntensityFactor(),intensity * centroid.getGreenIntensityFactor(),intensity * centroid.getBlueIntensityFactor());
                 }
             }
         }
 
         for (int i=0;i<getWidth();i++) {
             for (int j = 0; j < getHeight(); j++) {
-                if (screen[i][j]>whiteLimit) {
+                //if (screen[i][j]>whiteLimit) {
                     //double intensity=((cacheSigmoid(screen[i][j])-0.5))*2;
-                    int red=255 - (int) (((cacheSigmoid(screenRed[i][j])-0.5))*2*255);
-                    int green=255 - (int) (((cacheSigmoid(screenGreen[i][j])-0.5))*2*255);
-                    int blue=255 - (int) (((cacheSigmoid(screenBlue[i][j])-0.5))*2*255);
+
+                    int red=cacheSigmoid(screenRed[i][j]);
+                    int green=cacheSigmoid(screenGreen[i][j]);
+                    int blue=cacheSigmoid(screenBlue[i][j]);
                     int rgb = red;
                     rgb = (rgb << 8) + green;
                     rgb = (rgb << 8) + blue;
                     setRGB(i,j,rgb);
-                }
-                else setRGB(i,j,0xFFFFFF);
+                //}
+                //else setRGB(i,j,0xFFFFFF);
             }
         }
 

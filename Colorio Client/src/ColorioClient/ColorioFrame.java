@@ -117,7 +117,7 @@ public class ColorioFrame extends JFrame implements Runnable, ComponentListener{
                 if(c.x<width) c.setLocation(c.x + 1, c.y);
             }*/
             render=new Render(width,height,status);
-            render.render();
+            render.render(status);
             if(i%20==0) {
                 timerRecord("render", i);
             }
