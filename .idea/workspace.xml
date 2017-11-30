@@ -20,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="GameLogic.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameLogic.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3738">
-              <caret line="224" column="146" lean-forward="false" selection-start-line="224" selection-start-column="146" selection-end-line="224" selection-end-column="146" />
+            <state relative-caret-position="393">
+              <caret line="196" column="91" lean-forward="false" selection-start-line="196" selection-start-column="91" selection-end-line="196" selection-end-column="91" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3341#3359#0" expanded="false" />
@@ -38,9 +38,9 @@
         <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/Render.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2541">
-              <caret line="131" column="44" lean-forward="false" selection-start-line="131" selection-start-column="44" selection-end-line="131" selection-end-column="44" />
+              <caret line="150" column="44" lean-forward="false" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="44" />
               <folding>
-                <marker date="1512040439167" expanded="true" signature="1971:5517" ph="{...}" />
+                <marker date="1512041305291" expanded="true" signature="6039:6392" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -76,7 +76,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/Server.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="147">
@@ -349,7 +349,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ServerDevelopment">
+  <component name="RunManager" selected="Application.TestClient">
     <configuration name="GameTest" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="Colorio" />
@@ -645,6 +645,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -655,7 +656,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289183" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289183" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -798,10 +799,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding>
-            <element signature="e#368#369#0" expanded="false" />
-            <element signature="e#407#408#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -881,9 +879,9 @@
     <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/Render.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2541">
-          <caret line="131" column="44" lean-forward="false" selection-start-line="131" selection-start-column="44" selection-end-line="131" selection-end-column="44" />
+          <caret line="150" column="44" lean-forward="false" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="44" />
           <folding>
-            <marker date="1512040439167" expanded="true" signature="1971:5517" ph="{...}" />
+            <marker date="1512041305291" expanded="true" signature="6039:6392" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -977,18 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3738">
-          <caret line="224" column="146" lean-forward="false" selection-start-line="224" selection-start-column="146" selection-end-line="224" selection-end-column="146" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3341#3359#0" expanded="false" />
-            <element signature="method#run#0;class#MovePlayers#0;class#GameLogic#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -999,6 +985,18 @@
             <element signature="method#start#0;class#Server#0" expanded="false" />
             <element signature="e#3591#3609#0" expanded="false" />
             <element signature="method#ServerIn#0;class#ServerIn#0;class#Server#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="196" column="91" lean-forward="false" selection-start-line="196" selection-start-column="91" selection-end-line="196" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3341#3359#0" expanded="false" />
+            <element signature="method#run#0;class#MovePlayers#0;class#GameLogic#0" expanded="false" />
           </folding>
         </state>
       </provider>

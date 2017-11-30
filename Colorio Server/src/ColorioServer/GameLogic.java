@@ -194,7 +194,7 @@ public class GameLogic{
             //Check Players-On-Players
             for(Map.Entry<Integer, Client> i : es){
                 for(Map.Entry<Integer, Client> j : es){
-                    if(!i.equals(j)){
+                    if(!i.equals(j) && i.getValue().isPlaying() && j.getValue().isPlaying()){
                         checkPoP(i.getValue().getPlayer(), j.getValue().getPlayer());
                     }
                 }
