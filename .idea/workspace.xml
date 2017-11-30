@@ -23,24 +23,12 @@
       <file leaf-file-name="GameLogic.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1894">
+            <state relative-caret-position="21">
               <caret line="224" column="146" lean-forward="false" selection-start-line="224" selection-start-column="146" selection-end-line="224" selection-end-column="146" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3341#3359#0" expanded="false" />
                 <element signature="method#run#0;class#MovePlayers#0;class#GameLogic#0" expanded="false" />
-                <element signature="e#11971#11989#0" expanded="false" />
-                <element signature="method#HandleInput#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-                <element signature="method#start#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-                <element signature="method#run#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-                <element signature="method#updateStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-                <element signature="e#14326#14388#0" expanded="false" />
-                <element signature="method#checkStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-                <element signature="class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
-                <element signature="n#!!doc;n#threadName#0;n#SendGameStatus#0;n#GameLogic#0" expanded="false" />
-                <element signature="method#SendGameStatus#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
-                <element signature="method#run#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
-                <element signature="method#send#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -49,9 +37,18 @@
       <file leaf-file-name="Render.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/Render.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="662">
-              <caret line="130" column="44" lean-forward="false" selection-start-line="130" selection-start-column="44" selection-end-line="130" selection-end-column="44" />
-              <folding />
+            <state relative-caret-position="2541">
+              <caret line="129" column="44" lean-forward="false" selection-start-line="129" selection-start-column="44" selection-end-line="129" selection-end-column="44" />
+              <folding>
+                <marker date="1512031022645" expanded="true" signature="1103:1278" ph="{...}" />
+                <marker date="1512031022645" expanded="true" signature="1284:1389" ph="/**...*/" />
+                <marker date="1512031022645" expanded="false" signature="1433:1448" ph=" { " />
+                <marker date="1512031022645" expanded="false" signature="1478:1484" ph=" }" />
+                <marker date="1512031022645" expanded="true" signature="1490:1625" ph="/**...*/" />
+                <marker date="1512031022645" expanded="true" signature="1667:1819" ph="{...}" />
+                <marker date="1512031022645" expanded="true" signature="1825:1891" ph="/**...*/" />
+                <marker date="1512031022645" expanded="true" signature="1916:5463" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -69,7 +66,7 @@
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
+            <state relative-caret-position="1743">
               <caret line="135" column="28" lean-forward="false" selection-start-line="135" selection-start-column="28" selection-end-line="135" selection-end-column="28" />
               <folding>
                 <element signature="method#Client#0;class#Client#0" expanded="false" />
@@ -97,8 +94,22 @@
                 <element signature="method#start#0;class#Server#0" expanded="false" />
                 <element signature="e#3591#3609#0" expanded="false" />
                 <element signature="method#ServerIn#0;class#ServerIn#0;class#Server#0" expanded="false" />
-                <element signature="method#run#0;class#ServerOut#0;class#Server#0" expanded="false" />
-                <element signature="method#isAlive#0;class#ServerOut#0;class#Server#0" expanded="false" />
+                <marker date="1512027321141" expanded="true" signature="7748:7915" ph="{...}" />
+                <marker date="1512027321141" expanded="true" signature="7927:8058" ph="/**...*/" />
+                <marker date="1512027321141" expanded="true" signature="8106:10237" ph="{...}" />
+                <marker date="1512027321141" expanded="true" signature="8116:8159" ph="/**...*/" />
+                <marker date="1512027321141" expanded="true" signature="8285:8375" ph="/**...*/" />
+                <marker date="1512027321141" expanded="false" signature="8419:8434" ph=" { " />
+                <marker date="1512027321141" expanded="false" signature="8463:8473" ph=" }" />
+                <marker date="1512027321141" expanded="true" signature="8483:8568" ph="/**...*/" />
+                <marker date="1512027321141" expanded="true" signature="8597:8784" ph="{...}" />
+                <marker date="1512027321141" expanded="true" signature="8794:8993" ph="/**...*/" />
+                <marker date="1512027321141" expanded="false" signature="9038:9772" ph="{...}" />
+                <marker date="1512027321141" expanded="true" signature="9782:9916" ph="/**...*/" />
+                <marker date="1512027321141" expanded="false" signature="9949:10087" ph="{...}" />
+                <marker date="1512027321141" expanded="true" signature="10097:10161" ph="/**...*/" />
+                <marker date="1512027321141" expanded="false" signature="10193:10207" ph=" { " />
+                <marker date="1512027321141" expanded="false" signature="10221:10231" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -107,7 +118,7 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17">
+            <state relative-caret-position="882">
               <caret line="102" column="74" lean-forward="false" selection-start-line="102" selection-start-column="74" selection-end-line="102" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -125,8 +136,8 @@
       <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+            <state relative-caret-position="189">
+              <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
               <folding>
                 <element signature="e#842#843#0" expanded="true" />
                 <element signature="e#953#954#0" expanded="true" />
@@ -211,9 +222,9 @@
         <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/Server.java" />
         <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/Client.java" />
         <option value="$PROJECT_DIR$/Test/ColorioServer/GameTest.java" />
-        <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java" />
         <option value="$PROJECT_DIR$/Common Files/ColorioCommon/Constants.java" />
         <option value="$PROJECT_DIR$/Common Files/ColorioCommon/Player.java" />
+        <option value="$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java" />
       </list>
     </option>
   </component>
@@ -324,10 +335,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -361,7 +372,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestClient">
+  <component name="RunManager" selected="Application.ServerDevelopment">
     <configuration name="GameTest" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="Colorio" />
@@ -657,7 +668,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
+      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.49791667" order="10" side_tool="false" content_ui="tabs" />
@@ -671,13 +684,14 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19166666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19166666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39955848" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -849,9 +863,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
           <caret line="71" column="30" lean-forward="false" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
-          <folding>
-            <marker date="1511882507696" expanded="false" signature="2791:2796" ph=" }" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -892,9 +904,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Colorio Client/src/ColorioClient/Render.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="662">
-          <caret line="130" column="44" lean-forward="false" selection-start-line="130" selection-start-column="44" selection-end-line="130" selection-end-column="44" />
-          <folding />
+        <state relative-caret-position="2541">
+          <caret line="129" column="44" lean-forward="false" selection-start-line="129" selection-start-column="44" selection-end-line="129" selection-end-column="44" />
+          <folding>
+            <marker date="1512031022645" expanded="true" signature="1103:1278" ph="{...}" />
+            <marker date="1512031022645" expanded="true" signature="1284:1389" ph="/**...*/" />
+            <marker date="1512031022645" expanded="false" signature="1433:1448" ph=" { " />
+            <marker date="1512031022645" expanded="false" signature="1478:1484" ph=" }" />
+            <marker date="1512031022645" expanded="true" signature="1490:1625" ph="/**...*/" />
+            <marker date="1512031022645" expanded="true" signature="1667:1819" ph="{...}" />
+            <marker date="1512031022645" expanded="true" signature="1825:1891" ph="/**...*/" />
+            <marker date="1512031022645" expanded="true" signature="1916:5463" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -908,8 +929,22 @@
             <element signature="method#start#0;class#Server#0" expanded="false" />
             <element signature="e#3591#3609#0" expanded="false" />
             <element signature="method#ServerIn#0;class#ServerIn#0;class#Server#0" expanded="false" />
-            <element signature="method#run#0;class#ServerOut#0;class#Server#0" expanded="false" />
-            <element signature="method#isAlive#0;class#ServerOut#0;class#Server#0" expanded="false" />
+            <marker date="1512027321141" expanded="true" signature="7748:7915" ph="{...}" />
+            <marker date="1512027321141" expanded="true" signature="7927:8058" ph="/**...*/" />
+            <marker date="1512027321141" expanded="true" signature="8106:10237" ph="{...}" />
+            <marker date="1512027321141" expanded="true" signature="8116:8159" ph="/**...*/" />
+            <marker date="1512027321141" expanded="true" signature="8285:8375" ph="/**...*/" />
+            <marker date="1512027321141" expanded="false" signature="8419:8434" ph=" { " />
+            <marker date="1512027321141" expanded="false" signature="8463:8473" ph=" }" />
+            <marker date="1512027321141" expanded="true" signature="8483:8568" ph="/**...*/" />
+            <marker date="1512027321141" expanded="true" signature="8597:8784" ph="{...}" />
+            <marker date="1512027321141" expanded="true" signature="8794:8993" ph="/**...*/" />
+            <marker date="1512027321141" expanded="false" signature="9038:9772" ph="{...}" />
+            <marker date="1512027321141" expanded="true" signature="9782:9916" ph="/**...*/" />
+            <marker date="1512027321141" expanded="false" signature="9949:10087" ph="{...}" />
+            <marker date="1512027321141" expanded="true" signature="10097:10161" ph="/**...*/" />
+            <marker date="1512027321141" expanded="false" signature="10193:10207" ph=" { " />
+            <marker date="1512027321141" expanded="false" signature="10221:10231" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -960,7 +995,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
+        <state relative-caret-position="1743">
           <caret line="135" column="28" lean-forward="false" selection-start-line="135" selection-start-column="28" selection-end-line="135" selection-end-column="28" />
           <folding>
             <element signature="method#Client#0;class#Client#0" expanded="false" />
@@ -978,8 +1013,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+        <state relative-caret-position="189">
+          <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
           <folding>
             <element signature="e#842#843#0" expanded="true" />
             <element signature="e#953#954#0" expanded="true" />
@@ -989,7 +1024,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Common Files/ColorioCommon/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
+        <state relative-caret-position="882">
           <caret line="102" column="74" lean-forward="false" selection-start-line="102" selection-start-column="74" selection-end-line="102" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1005,24 +1040,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Colorio Server/src/ColorioServer/GameLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1894">
+        <state relative-caret-position="21">
           <caret line="224" column="146" lean-forward="false" selection-start-line="224" selection-start-column="146" selection-end-line="224" selection-end-column="146" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3341#3359#0" expanded="false" />
             <element signature="method#run#0;class#MovePlayers#0;class#GameLogic#0" expanded="false" />
-            <element signature="e#11971#11989#0" expanded="false" />
-            <element signature="method#HandleInput#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-            <element signature="method#start#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-            <element signature="method#run#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-            <element signature="method#updateStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-            <element signature="e#14326#14388#0" expanded="false" />
-            <element signature="method#checkStatus#0;class#HandleInput#0;class#GameLogic#0" expanded="false" />
-            <element signature="class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
-            <element signature="n#!!doc;n#threadName#0;n#SendGameStatus#0;n#GameLogic#0" expanded="false" />
-            <element signature="method#SendGameStatus#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
-            <element signature="method#run#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
-            <element signature="method#send#0;class#SendGameStatus#0;class#GameLogic#0" expanded="false" />
           </folding>
         </state>
       </provider>
