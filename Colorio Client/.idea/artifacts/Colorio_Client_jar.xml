@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Colorio Client:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Colorio_Client_jar</output-path>
+    <root id="archive" name="Colorio Client.jar">
+      <element id="module-output" name="Colorio Client" />
+    </root>
+  </artifact>
+</component>

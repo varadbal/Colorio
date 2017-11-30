@@ -1,5 +1,6 @@
 package ColorioClient;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +30,11 @@ public class StartDialog extends JFrame implements ComponentListener{
         setSize(280,175);
         setResizable(false);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
+        try {
+            setIconImage(ImageIO.read(new java.io.File("colorioIcon.png")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         connectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -68,6 +74,12 @@ public class StartDialog extends JFrame implements ComponentListener{
     @Override
     public void componentHidden(ComponentEvent e) {
         clientSocket.stop();
-        dispose();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
+        clientSocket.close();
+        System.exit(0);
     }
 }

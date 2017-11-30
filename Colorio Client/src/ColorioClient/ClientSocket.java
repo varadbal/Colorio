@@ -212,8 +212,10 @@ public class ClientSocket extends DatagramSocket implements KeyListener {
                 frame.setVisible(true);
                 log("handshake","Starting receive and send threads...");
                 ReceiveThread receiveThread = new ReceiveThread();
+                receiveThread.setDaemon(true);
                 receiveThread.start();
                 StatusSendThread statusSendThread = new StatusSendThread();
+                statusSendThread.setDaemon(true);
                 statusSendThread.start();
 
             } catch (IOException e) {
