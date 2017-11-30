@@ -15,14 +15,17 @@ import static java.lang.Math.sqrt;
 
 /**
  * ColorIo Server Game Logic class
- * @author Balazs Varady
+ * @Author Balazs Varady
  */
 
 public class GameLogic{
     //region Variables
+    /**
+     * Logger
+     */
     private static final Logger LOGGER = Logger.getLogger(GameLogic.class.getName());
     //Policy: INFO - once/server, FINE - once/client, FINER - other frequent events, FINEST - inner statuses
-    /*
+    /**
      * Instance variables
      */
     private ConcurrentMap<Integer, Client> clients = null;
@@ -36,11 +39,10 @@ public class GameLogic{
     private boolean isRunning = false;
     private int noInputTimeOut = 500;
     private int commTimeOut = Constants.responseTimeOut;
-    private Timer timer = null;
     //endregion
 
     /**
-     * Constructor, initializing clients, foods and the Threads/Tasks
+     * Constructor, initializing 'clients' and the Threads
      * @param clients A map of the clients (id, Client)
      * @param toSend A queue for communication with ServerOut
      * @param toHandle A queue for the incoming KeyInputs
@@ -51,7 +53,6 @@ public class GameLogic{
         this.handleI = new HandleInput("HandleInput-1", toHandle);
         this.moveP = new MovePlayers("MovePlayers-1");
         this.sendS = new SendGameStatus("SendGameStatus-1", toSend);
-        this.timer = new Timer();
 
         //Initialize foods
         this.foods = new ConcurrentHashMap<>();
@@ -62,12 +63,14 @@ public class GameLogic{
     }
 
     /**
-     * Starting the Move-, Send and Handle-threads/tasks
+     * Starting the Move-, Send and Handle-threads
+     * TODO complete
      */
     public void start(){
         LOGGER.info("Starting GameLogic");
 
         isRunning = true;
+        Timer timer = new Timer();
         if(moveP != null){
             //moveP.start();
             timer.scheduleAtFixedRate(moveP, 0, Constants.serverSleep / 2);
@@ -88,33 +91,47 @@ public class GameLogic{
     }
 
     /**
-     * Stopping the threads and tasks
+     * Stopping the threads
      */
     public void stop(){
         isRunning = false;
-        timer.cancel();
     }
 
     /**
-     * TimerTask (to schedule) for moving and checking the players in regular time intervals
+     * Thread for moving and checking the players in regular time intervals
+     * Should not be manipulated from the outside
      */
     private class MovePlayers extends TimerTask{
         //region Variables
-        /**The name of this Thread for logging*/
-        private String threadName;
+        /**
+         * Thread variables
+         */
+        Thread t;
+        String threadName;
         //endregion
 
         //region Methods
         /**
          * Constructor, initializing variables
-         * @param threadName The name of the Thread/Task for logging
+         * @param threadName The name of the Thread
          */
         private MovePlayers(String threadName){
             this.threadName = threadName;
         }
 
         /**
-         * TimerTask run method
+         * Thread start method
+         */
+        /*private void start(){
+            LOGGER.info("Starting thread " + threadName);
+            if(t == null){
+                t = new Thread(this, threadName);
+                t.start();
+            }
+        }*/
+
+        /**
+         * Thread run method
          *     Checks map for inactive players
          *     Moves a (playing) player (or waits until it is possible)
          *     Checks map (with that player in the 'center of attention')
@@ -159,10 +176,7 @@ public class GameLogic{
         }
 
         /**
-         * Checks the game-map for 'game-events'
-         *  Checks if players have eaten any foods
-         *  Checks if players have eaten each other
-         *  Adds new foods to the map, if necessary
+         * Adds new foods to the map, if necessary
          */
         private void checkMap(){
             Set<Map.Entry<Integer, Client>> es = clients.entrySet();
@@ -284,14 +298,18 @@ public class GameLogic{
 
     /**
      * Thread for handling the incoming KeyInputs
+     * Should not be manipulated from the outside
      */
     private class HandleInput implements Runnable{
         //region Variables
-        /**A thread to run this class*/
-        private Thread t;
-        /**The name of this Thread for logging*/
-        private String threadName;
-        /**A queue of the incoming Events to handle*/
+        /**
+         * Thread variables
+         */
+        Thread t;
+        String threadName;
+        /**
+         * Instance variables
+         */
         private BlockingQueue<KeyInput> toHandle = null;
         //endregion
 
@@ -319,7 +337,7 @@ public class GameLogic{
 
         /**
          * Thread run method
-         *  Handles the incoming KeyInputs (or waits until it becomes possible)
+         * Handles and incoming KeyInput (or waits until it becomes possible)
          */
         @Override
         public void run() {
@@ -348,7 +366,7 @@ public class GameLogic{
 
         /**
          * Handling KeyEvent
-         *  Updating the 'keys' (key status) of the Client according to the incoming KeyEvent
+         * Updating the 'keys' (key status) of the Client according to the incoming KeyEvent
          * @param k The incoming KeyEvent
          */
         private void updateStatus(KeyEvent k){
@@ -395,7 +413,7 @@ public class GameLogic{
 
         /**
          * Handling KeyStatus
-         *  Either initializing the Client (completing handshake) or comparing the key status with the incoming one
+         * Either initializing the Client (completing handshake) or comparing the key status with the incoming one
          * @param k The incoming KeyStatus-Object
          */
         private void checkStatus(KeyStatus k){
@@ -443,12 +461,12 @@ public class GameLogic{
 
     /**
      * TimerTask for sending the GameStatus in regular time intervals
+     * Should not be manipulated from the outside
      */
     private class SendGameStatus extends TimerTask{
         //region Variables
-        /**The name of this Thread for logging*/
         String threadName;
-        /**A queue of the OutPackets to send*/
+
         private BlockingQueue<OutPacket> toSend = null;
         //endregion
 
@@ -464,8 +482,7 @@ public class GameLogic{
         }
 
         /**
-         * TimerTask run method
-         *  Calling send regularly
+         * Thread run method, calling send regularly
          */
         @Override
         public void run() {
@@ -474,7 +491,7 @@ public class GameLogic{
         }
 
         /**
-         * Prepares and 'sends' a GameStatus object for each (playing) client
+         * Prepare and 'send' a GameStatus object for each (playing) client
          */
         private void send(){
             GameStatus currentStatus = new GameStatus();

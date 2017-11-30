@@ -7,14 +7,10 @@ import com.sun.istack.internal.NotNull;
 import java.net.InetAddress;
 import java.time.Instant;
 
+import static ColorioCommon.Constants.baseSpeed;
 
-/**
- * Class representing a client on the server-side
- * @author Balazs Varady
- */
 public class Client {
     //region Communication Variables
-
     private String name;            //Communciation modifies
     private InetAddress addr;       //Communication modifies
     //endregion
@@ -30,9 +26,9 @@ public class Client {
 
 
     /**
-     * Constructor, initializing an empty Client
-     * @param name The name of the client
-     * @param address The IP-address of the client
+     * Constructor initializing an empty Client
+     * @param name
+     * @param address
      */
     Client(@NotNull String name, @NotNull InetAddress address){
         this.name = name;
@@ -55,7 +51,7 @@ public class Client {
         }
     }
 
-    /*
+    /**
      * Getters
      */
     public String getName() {
@@ -86,7 +82,7 @@ public class Client {
         return lastKeyUpdate;
     }
 
-    /*
+    /**
      * Setters
      */
     public void setAddr(@NotNull InetAddress addr) {
@@ -113,8 +109,8 @@ public class Client {
 
     /**
      * Checks if 'keys' is the same as the provided KeyStatus object (converted to ClientKeys)
-     * @param k The KeyStatus-Object to compare with
-     * @return If the two objects represent the same keys
+     * @param k
+     * @return
      */
     public boolean keyCheck(KeyStatus k){
         lastCheck = Instant.now().toEpochMilli();
@@ -135,7 +131,7 @@ public class Client {
 
     /**
      * Moves the Player of the Client, according to the (currently) pressed keys
-     *  More like 'update'
+     * More like 'update'
      */
     public void movePlayer(){
 
@@ -181,10 +177,10 @@ public class Client {
 
         /**
          * Constructor with every key
-         * @param w Whether the w-key is pressed
-         * @param a Whether the a-key is pressed
-         * @param s Whether the s-key is pressed
-         * @param d Whether the d-key is pressed
+         * @param w If the w-key is pressed
+         * @param a If the a-key is pressed
+         * @param s If the s-key is pressed
+         * @param d If the d-key is pressed
          */
         public ClientKeys(boolean w, boolean a, boolean s, boolean d) {
             this.w = w;
@@ -204,19 +200,6 @@ public class Client {
         }
         public boolean isD() {
             return d;
-        }
-
-        @Override
-        public boolean equals(Object o){
-            if(o instanceof ClientKeys){
-                if(     this.w == ((ClientKeys) o).w
-                        && this.a == ((ClientKeys) o).a
-                        && this.s == ((ClientKeys) o).s
-                        && this.d == ((ClientKeys) o).d){
-                    return true;
-                }
-            }
-            return false;
         }
 
     }

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.*;
 import java.util.Collections;
 import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Logger;
@@ -17,17 +18,17 @@ import static ColorioCommon.Constants.serverPort;
 
 
 /**
- * ColorIo Server Communication class
- * @author Balazs Varady
+ * ColorIo server-end communication class
+ * @Author Balazs Varady
  */
 
 public class Server {
-    /*
+    /**
      * Logger
      */
     private static final Logger LOGGER = Logger.getLogger(Server.class.getName());
     //Policy: INFO - start/stop (once/server)etc. FINE - connect/disconnect (once/client), FINER - other messages, FINEST - inner statuses
-    /*
+    /**
      * Instance variables
      */
     private BlockingQueue<OutPacket> toSend = null;
@@ -55,7 +56,7 @@ public class Server {
     }
 
     /**
-     * Setting up the socket, with a timeout
+     * Setting up the socket, with a timeout of 10s
      */
     private void initializeServer(){
         try {
@@ -68,6 +69,7 @@ public class Server {
 
     /**
      * Starting the in- and out-threads, (if they exist)
+     * TODO complete
      */
     public void start(){
         initializeServer();
@@ -77,20 +79,24 @@ public class Server {
         if(sIn != null){
             sIn.start();
         }else{
-            throw new IllegalStateException();
+            /**
+             * TODO throw exception
+             */
         }
         if(sOut != null){
             sOut.start();
         }else{
-            throw new IllegalStateException();
+            /**
+             * TODO throw exception
+             */
         }
     }
 
     /**
      * Stops the threads by setting isRunning to false
-     *  Waits a second then interrupts the ServerOut if necessary (because of the BlockingQueue)
-     *  ServerIn should stop because of the timeOut
-     *  Closes the Socket
+     * Waits a second then interrupts the ServerOut if necessary (because of the BlockingQueue)
+     * ServerIn should stop because of the timeOut
+     * Close Socket
      */
     public void stop(){
         isRunning = false;
@@ -123,12 +129,12 @@ public class Server {
      */
     private class ServerIn implements Runnable{
         //region Variables
-        /*
+        /**
          * Thread variables
          */
         private Thread t;
         private String threadName;
-        /*
+        /**
          * Instance variables
          */
         private BlockingQueue<KeyInput> toHandle;
@@ -136,7 +142,7 @@ public class Server {
 
         /**
          * Constructor
-         * @param threadName The name of the thread for logging
+         * @param threadName The name of the thread
          * @param toHandle The queue of the KeyEvents to handle
          */
         private ServerIn(String threadName, @NotNull BlockingQueue<KeyInput> toHandle) {
@@ -157,10 +163,11 @@ public class Server {
 
         /**
          * Thread run method:
-         *     Creates a DatagramPacket: receivePacket
-         *     Receives data from the socket
-         *     Deserializes the data
-         *     Decides its type and acts accordingly (do handshake or add KeyInput to the toHandle-queue)
+         *     Create a DatagramPacket: receivePacket
+         *     Receive data from the socket
+         *     Deserialize the data
+         *     Decide its type and act accordingly (do handshake or add KeyInput to the handle queue)
+         *     TODO refresh IP
          */
         @Override
         public void run() {
@@ -185,7 +192,7 @@ public class Server {
 
                 } else if(o instanceof KeyInput){   //At this point it does not matter what kind, just pass it to GameLogic
                     KeyInput k = (KeyInput) o;
-                    clients.get(k.getPlayerId()).setAddr(receivePacket.getAddress()); //Update IP - might have changed
+                    //clients.get(k.getPlayerId()).setAddr(receivePacket.getAddress()); //Update IP - might have changed
                     toHandle.add(k);
                     LOGGER.finer("KeyInput received from Client ID" + k.getPlayerId());
                 }
@@ -234,11 +241,15 @@ public class Server {
      * Should not be manipulated from outside
      */
     private class ServerOut implements Runnable{
-        /*
+        /**
          * Thread variables
          */
         private Thread t;
         private String threadName;
+
+        /**
+         * Instance variables
+         */
 
         /**
          * Constructor
@@ -261,7 +272,7 @@ public class Server {
 
         /**
          * Thread run method - sends the elements of toSend
-         *  Takes an element from toSend, converts its packet to DatagramPacket whose IP is the IP-Address of its client
+         *     Takes an element from toSend, converts its packet to DatagramPacket whose IP id the IP-Address of its client
          */
         @Override
         public void run() {
