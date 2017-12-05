@@ -5,7 +5,7 @@ public abstract class Constants {
     //Communication constants
     public static int responseTimeOut=5000;
     public static int serverSleep=10;
-    public static int clientSleep=50;
+    public static int clientSleep=10;
     public static int connectionStopRepeatLimit=3;
     public static int minBufferSize = 6400;
 

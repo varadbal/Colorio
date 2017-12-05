@@ -34,6 +34,7 @@ public class ColorioFrame extends JFrame implements Runnable, ComponentListener{
         super("Colorio");
         this.clientSocket = clientSocket;
         setSize(width,height);
+        setResizable(false);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         //addKeyListener(this);
         addComponentListener(this);

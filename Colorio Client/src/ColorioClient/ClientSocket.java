@@ -239,9 +239,9 @@ public class ClientSocket extends DatagramSocket implements KeyListener {
             log("statusSend","StatusSendThread started.");
             while (frame.isVisible()){
                 try {
-                    //log("statusSend","Sending KeyStatus...");
+                    log("statusSend","Sending KeyStatus...");
                     send(getKeyStatus().toDatagramPacket(address, sendPort));
-                    //log("statusSend","KeyStatus sent");
+                    log("statusSend","KeyStatus sent");
                     sleep(Constants.clientSleep);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -306,9 +306,9 @@ public class ClientSocket extends DatagramSocket implements KeyListener {
             DatagramPacket receivePacket = new DatagramPacket(new byte[minBufferSize],minBufferSize);
             while (frame.isVisible()) {
                 try {
-                    //log("ReceiveThread","Waiting for packet...");
+                    log("ReceiveThread","Waiting for packet...");
                     receive(receivePacket);
-                    //log("ReceiveThread","Packet received.");
+                    log("ReceiveThread","Packet received.");
                     UDPSerializable receivedClass = UDPSerializable.getClassFromDatagramPacket(receivePacket);
                     if(receivedClass instanceof GameStatus){
                         frame.refreshGameStatus((GameStatus)receivedClass);

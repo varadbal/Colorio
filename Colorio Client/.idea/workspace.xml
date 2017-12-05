@@ -32,21 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ClientSocket.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ClientSocket.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ColorioClient/ClientSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3502">
-              <caret line="218" column="41" lean-forward="false" selection-start-line="218" selection-start-column="41" selection-end-line="218" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StartDialog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ColorioClient/StartDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="77" column="31" lean-forward="false" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
+            <state relative-caret-position="170">
+              <caret line="111" column="63" lean-forward="false" selection-start-line="111" selection-start-column="63" selection-end-line="111" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -74,7 +64,7 @@
       <file leaf-file-name="Render.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ColorioClient/Render.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
+            <state relative-caret-position="17">
               <caret line="118" column="59" lean-forward="false" selection-start-line="118" selection-start-column="59" selection-end-line="118" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -85,14 +75,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ColorioFrame.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ColorioFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ColorioClient/ColorioFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="119" column="32" lean-forward="false" selection-start-line="119" selection-start-column="32" selection-end-line="119" selection-end-column="32" />
+            <state relative-caret-position="153">
+              <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,7 +110,7 @@
       <file leaf-file-name="ClientSocketTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Test/ColorioClient/ClientSocketTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
+            <state relative-caret-position="-561">
               <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -211,7 +211,6 @@
         <option value="$PROJECT_DIR$/../Common Files/ColorioCommon/UDPSerializable.java" />
         <option value="$PROJECT_DIR$/../Common Files/ColorioCommon/Exceptions/HandshakeFailedException.java" />
         <option value="$PROJECT_DIR$/../Common Files/ColorioCommon/CommonMain.java" />
-        <option value="$PROJECT_DIR$/../Common Files/ColorioCommon/Constants.java" />
         <option value="$PROJECT_DIR$/src/ColorioClient/StartDialog.form" />
         <option value="$PROJECT_DIR$/../Test/Common/ServerClientTest.java" />
         <option value="$PROJECT_DIR$/../Colorio Server/src/ColorioServer/GameLogic.java" />
@@ -223,10 +222,11 @@
         <option value="$PROJECT_DIR$/../Common Files/ColorioCommon/KeyStatus.java" />
         <option value="$PROJECT_DIR$/src/ColorioClient/Main.java" />
         <option value="$PROJECT_DIR$/../Test/ColorioClient/ClientSocketTest.java" />
-        <option value="$PROJECT_DIR$/src/ColorioClient/ClientSocket.java" />
         <option value="$PROJECT_DIR$/src/ColorioClient/StartDialog.java" />
         <option value="$PROJECT_DIR$/src/ColorioClient/Render.java" />
+        <option value="$PROJECT_DIR$/../Common Files/ColorioCommon/Constants.java" />
         <option value="$PROJECT_DIR$/src/ColorioClient/ColorioFrame.java" />
+        <option value="$PROJECT_DIR$/src/ColorioClient/ClientSocket.java" />
       </list>
     </option>
   </component>
@@ -252,8 +252,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -345,6 +343,8 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -382,7 +382,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CommonMain">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="ClientSocketTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -968,13 +968,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/Centroid.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -984,14 +977,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ColorioClient/hhh.puml" />
-    <entry file="file://$PROJECT_DIR$/src/ColorioClient/ClientSocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3502">
-          <caret line="218" column="41" lean-forward="false" selection-start-line="218" selection-start-column="41" selection-end-line="218" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ColorioClient/StartDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
@@ -1023,16 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Test/ColorioClient/ClientSocketTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/UDPSerializable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -1049,9 +1024,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../Common Files/ColorioCommon/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ColorioClient/Render.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
+        <state relative-caret-position="17">
           <caret line="118" column="59" lean-forward="false" selection-start-line="118" selection-start-column="59" selection-end-line="118" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1063,11 +1046,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ColorioClient/ColorioFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="119" column="32" lean-forward="false" selection-start-line="119" selection-start-column="32" selection-end-line="119" selection-end-column="32" />
+        <state relative-caret-position="153">
+          <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Test/ColorioClient/ClientSocketTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-561">
+          <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ColorioClient/ClientSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="111" column="63" lean-forward="false" selection-start-line="111" selection-start-column="63" selection-end-line="111" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>
